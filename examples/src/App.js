@@ -1,24 +1,22 @@
 import './App.css';
-import {Test} from "./lib/index"
-// import {Test} from "check-com"
-// console.log(Test,'=---')
+// import {NbSmallSelect} from "./lib/index"
+import {NbSmallSelect} from "check-com"
 function App() {
+  console.log(NbSmallSelect);
+  const show = false;
   return (
     <div className="App">
-      <header className="App-header">
-        <Test>123</Test>
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h2>small-size 下拉框</h2>
+      <NbSmallSelect></NbSmallSelect>
+      {/* <h2>button</h2>
+      <NbButton onClick={()=>{
+        NbMessage.info('hello')
+      }}>
+        <div>23</div>
+      </NbButton>
+      <NbDialog visible={show}>
+        hello
+      </NbDialog> */}
     </div>
   );
 }

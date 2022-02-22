@@ -13,6 +13,7 @@ var _antd = require("antd");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function test() {
-  return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("h1", null, "hello"), /*#__PURE__*/_react.default.createElement(_antd.Button, null, "hello"));
+function test(props) {
+  console.log(props);
+  return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("h1", null, "hello"), /*#__PURE__*/_react.default.createElement(_antd.Button, props, props.children));
 }

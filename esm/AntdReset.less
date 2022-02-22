@@ -1,0 +1,122 @@
+.line{
+  width: 100%;
+  height: 1px;
+  background: #E4E7EF;
+}
+.rc-virtual-list-scrollbar-thumb{
+  background: #CAD0E0!important;
+  border-radius: 3px!important;
+}
+.ant-select{
+  width:314px;
+}
+.ant-select-dropdown .ant-select-item-option-active:not(.ant-select-item-option-disabled){
+  background-color: #F3F7FD;
+}
+.ant-select-dropdown{
+  padding:0!important;
+  border-radius: 7px!important;
+  .ant-select-item{
+    padding:0;
+  }
+  &.nb-small{
+    width: 279px!important;
+    .ant-select-item{
+      padding:0 24px 0 21px;
+    }
+  }
+}
+.nb-small{
+  &.ant-select-single.ant-select-sm:not(.ant-select-customize-input) .ant-select-selector{
+    border-radius: 7px;
+  }
+  &.ant-select-dropdown .ant-select-item{
+    height:63px;
+  }
+}
+.ant-select-item.ant-select-item-option{
+  height: 77px;
+}
+.ant-select-item-option-active:not(.ant-select-item-option-disabled),.ant-select-item.ant-select-item-option.ant-select-item-option-selected{
+  background-color: #F3F7FD;
+}
+.nb-dropdown.ant-dropdown.ant-dropdown-show-arrow{
+  padding-top:17px;
+  .ant-dropdown-arrow{
+    border-width: 11px;;
+  }
+}
+.nb-dropdown.ant-dropdown {
+  .ant-menu{
+    width:314px;
+    border-radius: 7px;
+    box-shadow: 0px 5px 16px 0px rgba(24,29,65,0.18);
+    overflow: auto;
+    .ant-menu-item{
+      height: 77px;
+      line-height: 77px;
+      padding:0 28px;
+      margin: 0;
+      position: relative;
+      .ant-menu-title-content{
+        display: flex;
+        flex-direction: column;
+        >*:first-child{
+          height: 76px;
+        }
+      }
+    }
+  }
+  .ant-menu:not(.ant-menu-horizontal) .ant-menu-item-selected{
+    background: #F3F7FD;
+  }
+  .ant-menu-item-selected a, .ant-menu-item-selected a:hover, .ant-menu-item-active a, .ant-menu-item-active a:hover{
+    color: #0066E0;
+  }
+  .ant-menu-item-selected,.ant-menu-light .ant-menu-item:hover, .ant-menu-light .ant-menu-item-active, .ant-menu-light .ant-menu:not(.ant-menu-inline) .ant-menu-submenu-open, .ant-menu-light .ant-menu-submenu-active, .ant-menu-light .ant-menu-submenu-title:hover{
+    color: #0066E0;
+    background: #F3F7FD;
+  }
+}
+.ant-select-sm{
+  width: 209px;
+  height: 49px;
+  .ant-select-arrow{
+    width: 28px;
+    height: auto;
+    margin-top: -13px;
+    right: 14px;
+    transform: rotate(0deg);
+    transition: all .3s;
+    span, svg{
+      width: 100%;
+      height: 100%;
+    }
+  }
+  &.ant-select-open{
+    .ant-select-arrow{
+      transform: rotate(-180deg);
+    }
+  }
+}
+.nb-small.ant-select-single.ant-select-sm:not(.ant-select-customize-input) .ant-select-selector{
+  padding-left: 14px;
+  height: 49px;
+  border-width: 2px;
+}
+.ant-select.ant-select-sm{
+  font-size: 21px;
+  text-align: left;
+  .ant-select-selection-item{
+    color: #181D41;
+  }
+  .ant-select-selection-placeholder{
+    color: rgba(24, 29, 65, 0.5);
+  }
+} 
+.nb-small.ant-select-single.ant-select-sm:not(.ant-select-customize-input):not(.ant-select-customize-input) .ant-select-selection-search-input{
+  height: 47px;
+}
+.nb-small.ant-select-single.ant-select-sm:not(.ant-select-customize-input) .ant-select-selector::after,.nb-small.ant-select-single.ant-select-sm:not(.ant-select-customize-input) .ant-select-selector .ant-select-selection-item, .nb-small.ant-select-single.ant-select-sm:not(.ant-select-customize-input) .ant-select-selector .ant-select-selection-placeholder{
+  line-height: 47px;
+}
