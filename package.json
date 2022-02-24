@@ -1,6 +1,6 @@
 {
-  "name": "check-com2",
-  "version": "0.3.3",
+  "name": "check-com",
+  "version": "0.3.4",
   "private": false,
   "homepage": ".",
   "main": "lib/index.js",
@@ -23,8 +23,10 @@
     "eject": "react-app-rewired eject",
     "build:commonjs": "cross-env BABEL_OUTPUT=commonjs babel src/components --out-dir lib/ --ignore **/__tests__,**/__mocks__",
     "build:esm": "babel src/components --out-dir esm/ --ignore **/__tests__,**/__mocks__",
-    "copy-css:esm": "cpx \"src/components/*.less\" esm",
-    "copy-css:lib": "cpx \"src/components/*.less\" lib"
+    "copy-css:esm": "cpx \"src/components/*/*.less\" esm",
+    "copy-css:lib": "cpx \"src/components/*/*.less\" lib",
+    "copy-font:lib": "cpx \"src/components/fonts/*\" lib/fonts",
+    "pack":"npm run build:commonjs && npm run copy-css:lib && npm run copy-font:lib"
   },
   "eslintConfig": {
     "extends": [

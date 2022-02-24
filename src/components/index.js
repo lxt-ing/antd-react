@@ -1,5 +1,3 @@
-// import "../assets/fonts/iconfont.css";
-// import "./style/AntdReset.less";
 import "./style/NbStyle.less";
 export {default as NbButton} from "./NbButton"
 export {default as NbSelect} from "./NbSelect"

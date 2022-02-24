@@ -4,7 +4,7 @@ import './App.css';
 import classnames from "classnames"
 import {useState} from "react"
 import {Modal, Select} from "antd"
-import {NbButton, NbDropdown, NbDialog, NbMessage,NbMenu, NbSelect, NbSmallSelect, NbSelectCom, NbInput, NbAccount, NbPassword} from "./components/"
+import {NbButton, NbDropdown, NbMenu, NbSelectCom, NbInput, NbAccount, NbPassword,NbSmallSelect} from "./components/"
 const {Option} = Select;
 function App() {
   const [modal, contextHolder] = Modal.useModal()
@@ -12,6 +12,11 @@ function App() {
   const [optionslist, setOptionslist] = useState([
     {label:'选项一', value:1},{label:2, value:2},{label:'3333333333333333333333333333333333333333333333333333333333333333333', value:3}
   ])
+  const test = (props)=>{
+    console.log(props);
+    const {index} = props.data
+    return (<div>{index}</div>)
+  }
   const [list, setList] = useState([{label:'选项一', value:1},{label:2, value:2},{label:3333333333333333333333333333333333333333333333333333333333333333333, value:3}])
   return (
     <div className="App">
@@ -30,8 +35,12 @@ function App() {
       <h2 onClick={()=>{
         setIsModalVisible(!isModalVisible)
       }}>点击出现弹窗</h2>
+      <h2>不同宽度下拉框</h2>
+      <NbSmallSelect optionslist={optionslist} ></NbSmallSelect>
       <h2>小下拉框</h2>
-      <NbSelectCom size="small" placeholder={'00000000000000000000000000000000000000000'} optionslist={optionslist} onSelect={(value)=>{
+      <NbSelectCom content={
+        test
+      } size="small" placeholder={'00000000000000000000000000000000000000000'} optionslist={optionslist} onSelect={(value)=>{
         console.log(value);
       }}>
       </NbSelectCom>

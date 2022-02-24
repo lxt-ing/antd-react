@@ -4,15 +4,15 @@ import 'antd/lib/select/style';
 import classnames from "classnames"
 import {CaretDownOutlined} from "@ant-design/icons"
 export default function NbSmallSelect(props){
-  const {lineHeight=63, check=true,placeholder, optionslist=[],content,mode, ...rest} = props;
+  const {lineHeight=63, check=true,placeholder, optionslist=[],content,mode,options, ...rest} = props;
   return (
-      <Select showArrow {...rest} dropdownMatchSelectWidth={true} listHeight={lineHeight * 5} className="nb-small" dropdownClassName={
+      <Select showArrow dropdownMatchSelectWidth={true} listHeight={lineHeight * 5} className="nb-small" suffixIcon={<CaretDownOutlined className="ant-select-suffix"/>} placeholder={placeholder ? placeholder : '请选择'} size={'small'} {...rest} dropdownClassName={
         classnames({
           "not-check":!check && !props.mode,
           "nb-small":true,
           "check-select":check
         })
-      } suffixIcon={<CaretDownOutlined className="ant-select-suffix"/>} placeholder={placeholder ? placeholder : '请选择'} size={'small'}>
+      } >
         {
           optionslist.map((option, index)=>(
           <Select.Option key={option.value}>
@@ -22,7 +22,7 @@ export default function NbSmallSelect(props){
                 "line-content":index !== props.optionslist.length - 1
               })
             }>
-              {content ? content({name:option.value}) : option.label}
+              {content ? content({data:{index,...option}}) : option.label}
             </div>
             { index !== props.optionslist.length - 1 ? <div className="line"></div> : null}
           </Select.Option>

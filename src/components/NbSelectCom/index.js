@@ -26,7 +26,7 @@ export default function NbSelectCom(props){
                 "line-content":index !== props.optionslist.length - 1
               })
             }>
-              {content ? content({name:option.value}) : option.label}
+               {content ? content({data:{index,...option}}) : option.label}
             </div>
             { index !== props.optionslist.length - 1 ? <div className="line"></div> : null}
           </Select.Option>
