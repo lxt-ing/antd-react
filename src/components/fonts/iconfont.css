@@ -1,8 +1,8 @@
 @font-face {
   font-family: "iconfont"; /* Project id 3196969 */
-  src: url('iconfont.woff2?t=1645499768958') format('woff2'),
-       url('iconfont.woff?t=1645499768958') format('woff'),
-       url('iconfont.ttf?t=1645499768958') format('truetype');
+  src: url('iconfont.woff2?t=1645839910235') format('woff2'),
+       url('iconfont.woff?t=1645839910235') format('woff'),
+       url('iconfont.ttf?t=1645839910235') format('truetype');
 }
 
 .iconfont {
@@ -11,6 +11,50 @@
   font-style: normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-fox:before {
+  content: "\e629";
+}
+
+.icon-tianjia:before {
+  content: "\e62c";
+}
+
+.icon-duoxuanxuanzhong:before {
+  content: "\e644";
+}
+
+.icon-renlianbangding:before {
+  content: "\e65c";
+}
+
+.icon-zhiwenguanli:before {
+  content: "\e65d";
+}
+
+.icon-xiugaimima:before {
+  content: "\e65e";
+}
+
+.icon-bangzhushuoming:before {
+  content: "\e65f";
+}
+
+.icon-lianxidianhua:before {
+  content: "\e661";
+}
+
+.icon-gerenzhongxin:before {
+  content: "\e687";
+}
+
+.icon-gongkabangding:before {
+  content: "\e6a4";
+}
+
+.icon-Right:before {
+  content: "\e6d0";
 }
 
 .icon-password:before {

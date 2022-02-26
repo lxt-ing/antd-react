@@ -102,7 +102,8 @@
     .line-content,.not-line-content{
     padding: 0 36px 0 21px;
   }
-  .ant-select-item.ant-select-item-option.ant-select-item-option-selected{
+  // .ant-select-item.ant-select-item-option.ant-select-item-option-selected{
+  &.ant-select-dropdown .ant-select-item{
     .ant-select-item-option-state{
       position: absolute;
       right: 36px;
@@ -135,9 +136,9 @@
     }
   }
 }
-// .nb-middle .ant-select-item.ant-select-item-option.ant-select-item-option-selected .line-content, .nb-middle .ant-select-item.ant-select-item-option.ant-select-item-option-selected .not-line-content{
-//   padding-right: 21px;
-// }
+.check-select.ant-select-dropdown .ant-select-item .ant-select-item-option-state{
+  display: none;
+}
 .not-check.ant-select-dropdown  .ant-select-item.ant-select-item-option.ant-select-item-option-selected,.not-check.ant-select-dropdown .ant-select-item.ant-select-item-option .ant-select-item-option-content{
   .line-content,.not-line-content{
     padding-right: 0;
@@ -295,10 +296,10 @@
 }
 // 多选
 .ant-select.ant-select-multiple{
-  .ant-select-selection-overflow{
-    overflow:hidden;
-    flex-wrap: nowrap;
-  }
+  // .ant-select-selection-overflow{
+  //   overflow:hidden;
+  //   flex-wrap: nowrap;
+  // }
   .ant-select-selection-overflow-item{
     margin-right: 7px;
     &:last-child{
@@ -358,7 +359,7 @@
 }
 .ant-select-multiple .ant-select-selection-overflow .ant-select-selection-item{
   margin: 0;
-  padding: 0 14px;
+  padding: 0 5px 0 14px;
   display: flex;
   align-items: center;
   .ant-select-selection-item-content{
@@ -446,4 +447,22 @@
   .ant-input-password-icon{
     font-size: 28px;
   }
+}
+
+// 确定弹窗
+.ant-modal.nb-confirm-dialog{
+  .ant-modal-content{
+      border-radius: 16px;
+      overflow: hidden;
+      .ant-modal-close{
+        right: 40px;
+        top: 40px;
+        .ant-modal-close-x{
+          font-size: 40px;
+          width: 40px;
+          height: 40px;
+        }
+      }
+      
+  } 
 }

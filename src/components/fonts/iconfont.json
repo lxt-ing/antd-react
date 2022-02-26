@@ -6,6 +6,83 @@
   "description": "",
   "glyphs": [
     {
+      "icon_id": "23514195",
+      "name": "fox",
+      "font_class": "fox",
+      "unicode": "e629",
+      "unicode_decimal": 58921
+    },
+    {
+      "icon_id": "23514198",
+      "name": "添加",
+      "font_class": "tianjia",
+      "unicode": "e62c",
+      "unicode_decimal": 58924
+    },
+    {
+      "icon_id": "23514788",
+      "name": "多选选中",
+      "font_class": "duoxuanxuanzhong",
+      "unicode": "e644",
+      "unicode_decimal": 58948
+    },
+    {
+      "icon_id": "23516902",
+      "name": "人脸绑定",
+      "font_class": "renlianbangding",
+      "unicode": "e65c",
+      "unicode_decimal": 58972
+    },
+    {
+      "icon_id": "23516947",
+      "name": "指纹管理",
+      "font_class": "zhiwenguanli",
+      "unicode": "e65d",
+      "unicode_decimal": 58973
+    },
+    {
+      "icon_id": "23516969",
+      "name": "修改密码",
+      "font_class": "xiugaimima",
+      "unicode": "e65e",
+      "unicode_decimal": 58974
+    },
+    {
+      "icon_id": "23517003",
+      "name": "帮助说明",
+      "font_class": "bangzhushuoming",
+      "unicode": "e65f",
+      "unicode_decimal": 58975
+    },
+    {
+      "icon_id": "23517005",
+      "name": "联系电话",
+      "font_class": "lianxidianhua",
+      "unicode": "e661",
+      "unicode_decimal": 58977
+    },
+    {
+      "icon_id": "23517656",
+      "name": "个人中心",
+      "font_class": "gerenzhongxin",
+      "unicode": "e687",
+      "unicode_decimal": 59015
+    },
+    {
+      "icon_id": "23518001",
+      "name": "工卡绑定",
+      "font_class": "gongkabangding",
+      "unicode": "e6a4",
+      "unicode_decimal": 59044
+    },
+    {
+      "icon_id": "27652318",
+      "name": "Right",
+      "font_class": "Right",
+      "unicode": "e6d0",
+      "unicode_decimal": 59088
+    },
+    {
       "icon_id": "23513802",
       "name": "password",
       "font_class": "password",
