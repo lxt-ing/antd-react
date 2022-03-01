@@ -7,8 +7,10 @@ export default function NbInput(props){
   return (
     <div className={
       classnames({
-        "nb-sm-input":size==='nb-small',
-        "nb-lg-input":size==='nb-large'
+        "nb-sm-input":size==='small',
+        "nb-lg-input":size==='large',
+        "nb-md-input":size==='middle',
+        "nb-input":true
       })
     }>
       <Input  placeholder={placeholder ? placeholder : '请输入'} {...props}>

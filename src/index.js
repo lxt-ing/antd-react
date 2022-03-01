@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import "./components/fonts/iconfont.css"
+// import "./components/fonts/iconfont.css"
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';

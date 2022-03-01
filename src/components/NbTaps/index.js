@@ -1,0 +1,32 @@
+import React from "react"
+import Style from './index.module.less'
+import classnames from "classnames"
+// TODO:页签部分
+export default function NbTaps(props){
+  const {options=['菜单一','菜单二','菜单三'], selectIndex=0, changeTab, type="list"} = props;
+  return (
+    <div className={
+      classnames({
+        [Style['tabs-wrapper']]:true,
+        [Style['list-tabs']]:type !== 'page'
+      })
+    }>
+      {
+        options.map((item, index)=>{
+          return (
+            <div onClick={
+                ()=>{changeTab(index)}
+            } key={'tab'+item+'-'+index} className={
+              classnames({
+                [Style['tab-item']]:true,
+                [Style['tab-selected']]:selectIndex === index
+              })
+            }>{item}
+             {type!=='page' ? <div className={Style['list-tab-line']}></div>:null}
+            </div>
+          )
+        })
+      }
+    </div>
+  )
+}
