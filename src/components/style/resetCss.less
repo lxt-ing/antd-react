@@ -3,11 +3,9 @@ button{
   border: none;
   padding:0;
 }
-// .iconfont{
-//   // position: relative;
-//   &::before{
-//     // position: relative;
-//     // top: 50%;
-//     // transform: translateY(-50%);
-//   }
-// }
+input{
+  caret-color: #0066e0;
+}
+@supports (-webkit-mask: none) and (not (caret-color: #0066e0)) {
+  input::first-line { color: #0066e0; }
+}

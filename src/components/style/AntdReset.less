@@ -1,5 +1,18 @@
 @import "./variable.less";
 // 下拉框、下拉select
+[class^="nb-"] .ant-input{
+  &:focus, &:hover{
+    border: 2px solid #0066e0;
+  }
+  font-family: OPPOSans-B, OPPOSans;
+  &::placeholder{
+    font-family: OPPOSans-M, OPPOSans;
+  }
+}
+[class^="nb-"] .ant-input:focus,[class^="nb-"] .ant-input-focused,[class^="nb-"] .ant-input-affix-wrapper:focus,[class^="nb-"] .ant-input-affix-wrapper-focused{
+  border-color: #0066E0;
+  box-shadow: none;
+}
 .not-line-content, .line-content{
   overflow: hidden;
   text-overflow: ellipsis;
@@ -326,19 +339,27 @@
     height: 100%;
     color: #181D41;
     padding:0 24px;
-    font-size: 28px;
+    font-size: 24px;
     border-radius: 8px;
+    &::placeholder{
+      font-size: 24px;
+    }
   }
 } 
 
 .nb-lg-input{
   width: 480px;
   height: 80px;
+  .ant-input{
+    font-size: 28px;
+    &::placeholder{
+      font-size: 28px;
+    }
+  }
 }
 .nb-md-input{
   width: 320px;
   height: 64px;
-  
 }
 .nb-sm-input{
   width: 240px;
@@ -467,4 +488,145 @@
       padding:0 8px;
     }
   }
+}
+
+// 级联选择器
+.nb-cascader{
+  display: inline-block;
+  .ant-cascader{
+    width: 320px;
+    height: 64px;
+    .ant-select-selector .ant-select-selection-item{
+      font-size: 24px;
+      font-family: OPPOSans-B, OPPOSans;
+      color: #181D41;
+      line-height: 2.5;
+    }
+    &.ant-select-single:not(.ant-select-customize-input) .ant-select-selector{
+      height: 100%;
+      border-radius: 8px;
+      padding: 0 20px 0 24px;
+    }
+    &.ant-select .ant-select-selection-placeholder{
+      font-size: 24px;
+      font-family: OPPOSans-M, OPPOSans;
+      line-height: 2.5;
+      color: rgba(24, 29, 65, 0.5);
+    }
+    .ant-select-arrow{
+      right: 16px;
+    }
+  }
+}
+.nb-cascader-dropdown{
+  .ant-cascader-menu{
+    height: auto;
+    max-height: 360px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    font-size: 24px;
+    padding:0;
+    font-family: OPPOSans-M, OPPOSans;
+    font-weight: normal;
+    color: rgba(24, 29, 65, 0.7);
+    &::-webkit-scrollbar{
+      width: 8px;
+      background: transparent;
+    }
+    &::-webkit-scrollbar-button{
+      display: block;
+      height: 2px;
+    }
+    &::-webkit-scrollbar-thumb{
+      background: #CAD0E0;
+      border-radius: 8px;
+    }
+  }
+  .ant-cascader-menu-item{
+    width: 240px;
+    height: 72px;
+    padding:0 24px;
+    .ant-cascader-menu-item-content{
+      flex: 1;
+      height: 100%;
+      line-height: 3;
+      border-bottom: 1px solid #E4E7EF;
+    }
+    .ant-cascader-menu-item-expand-icon{
+      display: none;
+    }
+    &:last-child{
+      .ant-cascader-menu-item-content{
+        border: none;
+      }
+    }
+  }
+  .ant-cascader-menu-item:hover, .ant-cascader-menu-item-active:not(.ant-cascader-menu-item-disabled), .ant-cascader-menu-item-active:not(.ant-cascader-menu-item-disabled):hover{
+    background: #F3F7FD;
+    color: #0066E0;
+    font-family: OPPOSans-M, OPPOSans;
+    font-weight: normal;
+  }
+}  
+
+
+// 搜索框
+.nb-search{
+  width: 360px;
+  height: 64px;
+  .ant-input-search,.ant-input-wrapper,.ant-input-affix-wrapper{
+    height: 100%;
+  }  
+  .ant-input-wrapper {
+    .ant-input{
+      border:none;
+    }
+    .ant-input-affix-wrapper:not(.ant-input-affix-wrapper-disabled):hover,.ant-input-affix-wrapper-focused{
+      border-width: 2px;
+    }
+  }
+  .ant-input-affix-wrapper{
+    padding:0;
+    border-radius: 8px;
+    border:1px solid #CAD0E0;
+    .ant-input-prefix{
+      margin:0 7px 0 16px;
+    }
+  }
+  .ant-input-search .ant-input-wrapper.ant-input-group .ant-input-affix-wrapper{
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  .ant-input{
+    height: 100%;
+    padding: 0 65px 0 55px;
+    font-size: 24px;
+    color: #181D41;
+  }
+  .ant-input-group-addon{
+    display: none;
+  }
+  .anticon.ant-input-clear-icon{
+    font-size: 32px;
+    display: flex;
+    height: 100%;
+    align-items: center;
+    padding:0 20px 0 12px;
+  }
+}
+
+// 日期组件
+.nb-date-picker{
+  width: 320px;
+  height: 64px;
+  &.ant-picker{
+    border-radius: 8px;
+    border: 1px solid #CAD0E0;
+  }
+  .ant-picker-input>input{
+    font-size: 24px;
+    font-family: OPPOSans-M, OPPOSans;
+    color: rgba(24, 29, 65, 0.5);
+  }
+  
 }

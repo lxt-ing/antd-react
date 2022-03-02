@@ -1,12 +1,14 @@
 import logo from './logo.svg';
 import React from "react"
 import './App.css';
-// import {Select} from "antd"
+import dayjs from 'dayjs';
+import 'dayjs/locale/zh-cn';
+import locale from 'antd/lib/locale/zh_CN';
 import classnames from "classnames"
 import {useState} from "react"
-import {Modal, Select} from "antd"
+import {Modal, Select } from "antd"
 import Icon from "./components/Icon"
-import {NbBadge,NbSteps,NbPages,NbTabs,NbPersonalLayout,NbButtons,NbSelectButton, NbDropdown, NbMenu, NbSelectCom, NbInput, NbAccount, NbPassword,NbSmallSelect, NbConfirm, NbDialog} from "./components/"
+import {NbConfigProvider,NbDatePicker,NbSearch,NbCascader, NbBadge,NbSteps,NbPages,NbTabs,NbPersonalLayout,NbButtons,NbSelectButton, NbDropdown, NbMenu, NbSelectCom, NbInput, NbAccount, NbPassword,NbSmallSelect, NbConfirm, NbDialog} from "./components/"
 import { options } from 'less';
 const {Option} = Select;
 function App() {
@@ -47,11 +49,55 @@ function App() {
   const [list, setList] = useState([{label:'选项一', value:1},{label:2, value:2},{label:3, value:3}])
   return (
     <div className="App">
+      <NbConfigProvider>
+        <NbDatePicker></NbDatePicker>
+      </NbConfigProvider>
+      <div style={{width:'400px', margin:'auto'}}>
+       <NbSearch></NbSearch>
+      </div>
+     
+      <NbInput></NbInput>
+      {/* <NbCascader options={
+        [
+          {
+            value: 'zhejiang',
+            label: 'Zhejiang',
+            children: [
+              {
+                value: 'hangzhou',
+                label: 'Hangzhou',
+                children: [
+                  {
+                    value: 'xihu',
+                    label: 'West Lake',
+                  },
+                ],
+              },
+            ],
+          },
+          {
+            value: 'jiangsu',
+            label: 'Jiangsu',
+            children: [
+              {
+                value: 'nanjing',
+                label: 'Nanjing',
+                children: [
+                  {
+                    value: 'zhonghuamen',
+                    label: 'Zhong Hua Men',
+                  },
+                ],
+              },
+            ],
+          }
+        ]
+      }></NbCascader> */}
       {/* <h2 onClick={()=>{
         setCurrent(2)
       }}>点击改变步骤条</h2>
       <NbSteps current={current}></NbSteps> */}
-      <NbBadge count={8}></NbBadge>
+      {/* <NbBadge count={8}></NbBadge> */}
       {/* <NbPages></NbPages> */}
       {/* <NbTabs selectIndex={index} changeTab={(i)=>{
         console.log(i);

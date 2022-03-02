@@ -3,7 +3,7 @@ import { Input } from "antd"
 import 'antd/lib/input/style';
 import classnames from "classnames"
 export default function NbInput(props){
-  const {size='', placeholder=''} = props;
+  const {size='middle', placeholder='', ...rest} = props;
   return (
     <div className={
       classnames({
@@ -13,7 +13,7 @@ export default function NbInput(props){
         "nb-input":true
       })
     }>
-      <Input  placeholder={placeholder ? placeholder : '请输入'} {...props}>
+      <Input  placeholder={placeholder ? placeholder : '请输入'} {...rest}>
       </Input>
     </div>
   )
