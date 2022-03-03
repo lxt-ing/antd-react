@@ -15,12 +15,6 @@ require("antd/lib/modal/style");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-console.log(_antd.Modal.info); // const NbModal = React.forwardRef((props,ref)=>(
-//   <Modal {...props}>
-//     { props.children }  
-//   </Modal>
-// ))
-
 function NbModal(props) {
   return /*#__PURE__*/_react.default.createElement(_antd.Modal, props, props.children);
 }

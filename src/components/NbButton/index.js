@@ -6,7 +6,7 @@ export default function NbButton(props){
   // 传参：场景类型-按钮类型
   // 场景类型字段：big main icon text icontext
   // 按钮类型: default primary danger minor(次要) disabled
-  const {type="main", icon=false, style={},sence, ...rest} = props;
+  const {type="main", icon=false, style={},...rest} = props;
   const [senceType, senceText='default'] = type.split('-')
   return (
     <button style={style} {...rest} className={

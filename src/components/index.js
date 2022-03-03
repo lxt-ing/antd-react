@@ -1,5 +1,4 @@
 import "./style/NbStyle.less";
-export {default as NbButton} from "./NbButton"
 export {default as NbButtons} from "./NbButtons"
 export {default as NbSelectButton} from "./NbSelectButton"
 export {default as NbSelect} from "./NbSelect"

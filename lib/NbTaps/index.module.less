@@ -1,0 +1,55 @@
+@import "../style/variable.less";
+.tabs-wrapper{
+  height: 64px;
+  display: inline-flex;
+  overflow: hidden;
+  font-size: 24px;
+  border: 1px solid #CAD0E0;
+  color: #181D41;
+  font-family: OPPOSans-M, OPPOSans;  
+  border-radius: @BorderRadius;
+  cursor: pointer;
+  .tab-item{
+    width: 160px;
+    background-color: #fff;
+    height: 100%;
+    line-height: 64px;
+    border-right: 1px solid #CAD0E0;
+    &:last-child{
+      border: none;
+    }
+  }
+  .tab-selected{
+    font-family: OPPOSans-B, OPPOSans;
+    color:#fff;
+    background-color: #0066E0;
+  }
+}
+.list-tabs{
+  .tab-item{
+    color:rgba(24, 29, 65, 0.7);
+    width: 200px;
+    background: #CAD0E0;
+    font-size: 28px;
+    position: relative;
+    .list-tab-line{
+      width: 1px;
+      height: 28px;
+      border: 1px solid #E4E7EF;
+      position: absolute;
+      right: -1px;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+    &:last-child{
+      .list-tab-line{
+        display: none;
+      }
+    }
+  }
+  .tab-selected{
+    font-family: OPPOSans-M, OPPOSans;
+    color: rgba(24, 29, 65, 0.7);
+    background: #ECF0F5;
+  }
+}

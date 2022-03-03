@@ -1,9 +1,8 @@
 import React from "react"
-import classnames from "classnames"
 import NbButton from "../NbButton"
 export default function NbButtons(props){
-  const {sence='big', ...rest} = props;
+  const {type='big', ...rest} = props;
   return (
-    <NbButton sence={sence} {...rest}>{props.children}</NbButton>
+    <NbButton type={type} {...rest}>{props.children}</NbButton>
   )
 }

@@ -1,9 +1,10 @@
 {
   "name": "check-com",
-  "version": "0.3.4",
+  "version": "0.3.5",
   "private": false,
   "homepage": ".",
   "main": "lib/index.js",
+  "module": "es/index.js",
   "files": [
     "lib",
     "esm",
@@ -30,7 +31,7 @@
     "build:esm": "babel src/components --out-dir esm/ --ignore **/__tests__,**/__mocks__",
     "copy-css:esm": "cpx \"src/components/*/*.less\" esm",
     "copy-css:lib": "cpx \"src/components/*/*.less\" lib",
-    "copy-font:lib": "cpx \"src/components/fonts/*\" lib/fonts",
+    "copy-font:lib": "cpx \"src/components/fonts/*/*\" lib/fonts",
     "pack": "npm run build:commonjs && npm run copy-css:lib && npm run copy-font:lib"
   },
   "eslintConfig": {
@@ -59,11 +60,12 @@
     "classnames": "^2.3.1",
     "cpx": "^1.5.0",
     "cross-env": "^7.0.3",
-    "customize-cra": "^1.0.0",
-    "customize-cra-less-loader": "^2.0.0",
     "less": "^4.1.2",
     "less-loader": "^7.3.0",
-    "prop-types": "^15.8.1",
-    "react-app-rewired": "^2.2.1"
+    "prop-types": "^15.8.1"
+  },
+  "peerDependencies": {
+    "react": "^16.9.0",
+    "react-dom": "^16.9.0"
   }
 }

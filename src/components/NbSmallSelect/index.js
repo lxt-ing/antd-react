@@ -5,7 +5,6 @@ import classnames from "classnames"
 import {CaretDownOutlined} from "@ant-design/icons"
 export default function NbSmallSelect(props){
   const {lineHeight=72, check=true,placeholder, optionslist=[],content,mode,options,dropdownStyle={minWidth: 320}, ...rest} = props;
-  console.log(dropdownStyle);
   return (
       <Select showArrow dropdownMatchSelectWidth={true} dropdownStyle={dropdownStyle} listHeight={lineHeight * 5} className="nb-small" suffixIcon={<CaretDownOutlined className="ant-select-suffix"/>} placeholder={placeholder ? placeholder : '请选择'} size={'small'} {...rest} dropdownClassName={
         classnames({
