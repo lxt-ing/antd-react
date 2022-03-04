@@ -17,6 +17,7 @@ function App() {
   const [optionslist, setOptionslist] = useState([
     {label:'选项一选项一选项一选项一选项一选项一选项一', value:1},{label:2, value:2},{label:'3', value:3}
   ])
+  const [value, setPassword] = useState('123456')
   const [curcom, setCurcom] = useState('zhiwenguanli')
   const [menuIndex, setMenuIndex] = useState(0)
   const [checked, setChecked] = useState([])
@@ -132,7 +133,7 @@ function App() {
       <h2>输入账号</h2>
       <div><NbAccount allowClear size="large" /></div>
       <br/>
-      <div><NbPassword size="large" /></div>
+      <div><NbPassword onChange={(e)=>{setPassword(e.target.value)}} value={value} size="large" /></div>
       <span className={
         classnames({
           "iconfont":true,

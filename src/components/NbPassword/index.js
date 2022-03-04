@@ -1,11 +1,25 @@
-import React,{useState} from 'react'
+import React,{useState, useRef, useEffect} from 'react'
 import { Input } from 'antd'
 import 'antd/lib/input/style'
 import classnames from 'classnames'
 import Icon from "../Icon"
-// import IconFont from "../CreateIcon"
 export default function NbPassword(props) {
-  const { size = 'large', placeholder, color='#CAD0E0' } = props
+  const inputRef = useRef(null)
+  const [input, setInput] = React.useState(true);
+  const { size = 'large',defaultValue="213", placeholder, color='#CAD0E0', ...rest } = props;
+  const [type, setType] = useState('text')
+  const [visible, setVisible] = useState(false)
+  useEffect(()=>{
+    // 图标切换后将光标聚焦在结尾
+    inputRef?.current?.focus({
+      cursor: 'end'
+    });
+  },[visible])
+  const toggleVisible = ()=>{
+    // 切换图标
+    setVisible(!visible)
+    setType(type==='password' ? 'text':'password')
+  }
   return (
     <div
       className={classnames({
@@ -14,13 +28,11 @@ export default function NbPassword(props) {
         'nb-lg-input': size === 'large',
       })}
     >
-      <Input.Password allowClear
-        prefix={<Icon color={color} type="password"></Icon>}
-        placeholder={placeholder ? placeholder : '请输入'}
-        iconRender={visible => (visible ? <Icon color={color} type="dakaiyanjing"/> : <Icon color={color} type="guanbiyanjing"/>)}
-        {...props}
-      >
-      </Input.Password>
+      <Input defaultValue={defaultValue} ref={inputRef} type={type} 
+      prefix={<Icon color={color} type="password"></Icon>} allowClear={true} {...rest}></Input>
+      <div className={"nb-password-icon"} onClick={()=>{toggleVisible()}}>
+        <Icon type={ visible ? 'dakaiyanjing' : "guanbiyanjing"}></Icon>
+      </div>
     </div>
   )
 }

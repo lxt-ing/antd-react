@@ -1,3 +1,9 @@
 {
-    "@input-hover-border-color":"red"  
+    "@primary-color":"#0066E0",
+    "@input-hover-border-color":"#0066E0",
+    "@input-placeholder-color":"rgba(24, 29, 65, 0.5)",
+    "@input-border-color":"#CAD0E0",
+    "@input-color":" #181D41",
+    "@border-radius-base":"8px",
+    "@picker-date-hover-range-border-color":"#0066E0"
 }

@@ -7,7 +7,7 @@ module.exports = override(
     lessLoaderOptions:{
       lessOptions: {
         javascriptEnabled: true,
-        modifyVars: colorData
+        // modifyVars: colorData
       }
     }
   })

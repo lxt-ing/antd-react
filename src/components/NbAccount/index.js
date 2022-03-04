@@ -4,7 +4,7 @@ import 'antd/lib/input/style'
 import classnames from 'classnames'
 import Icon from "../Icon"
 export default function NbInput(props) {
-  const { size = 'large', placeholder } = props
+  const { size = 'large', placeholder, allowClear="true", ...rest } = props
   return (
     <div
       className={classnames({
@@ -16,7 +16,8 @@ export default function NbInput(props) {
       <Input
         prefix={<Icon type="password"></Icon>}
         placeholder={placeholder ? placeholder : '请输入'}
-        {...props}
+        allowClear={allowClear}
+        {...rest}
       >
       </Input>
     </div>
