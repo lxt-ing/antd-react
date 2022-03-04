@@ -4,8 +4,8 @@ button{
   padding:0;
 }
 input{
-  caret-color: #0066e0;
+  caret-color: @primary-color;
 }
-@supports (-webkit-mask: none) and (not (caret-color: #0066e0)) {
-  input::first-line { color: #0066e0; }
+@supports (-webkit-mask: none) and (not (caret-color: @primary-color)) {
+  input::first-line { color: @primary-color; }
 }

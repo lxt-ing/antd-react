@@ -1,13 +1,14 @@
+@import "../style/variable.less";
 .nb-person-layout{
   display: flex;
   height: 100%;
   font-family: SourceHanSansCN-Regular, SourceHanSansCN;
   font-weight: 400;
-  color: #181D41;
+  color: @default-text-color;
   .nb-person-left{
     width: 360px;
-    background-color: #F4F6F9;
-    border-right: 1px solid #CAD0E0;
+    background-color: @F4F6F9;
+    border-right: 1px solid @CAD0E0;
     .nb-avatar{
         height: 276px;
         display: flex;
@@ -47,14 +48,14 @@
         }
         .nb-menu-content{
           padding-right: 16px;
-          border-bottom: 1px solid  #E4E7EF;
+          border-bottom: 1px solid  @E4E7EF;
         }
         .nb-menu-title{
           margin-left: 16px;
         }
       }
       .nb-menu-list-active{
-        background-color: #0066E0;
+        background-color: @primary-color;
         color:#fff;
         .nb-menu-content{
           border-bottom:0

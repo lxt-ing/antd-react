@@ -57,7 +57,7 @@ function App() {
       </div>
      
       <NbInput></NbInput>
-      {/* <NbCascader options={
+      <NbCascader options={
         [
           {
             value: 'zhejiang',
@@ -92,31 +92,31 @@ function App() {
             ],
           }
         ]
-      }></NbCascader> */}
-      {/* <h2 onClick={()=>{
+      }></NbCascader>
+      <h2 onClick={()=>{
         setCurrent(2)
       }}>点击改变步骤条</h2>
-      <NbSteps current={current}></NbSteps> */}
-      {/* <NbBadge count={8}></NbBadge> */}
-      {/* <NbPages></NbPages> */}
-      {/* <NbTabs selectIndex={index} changeTab={(i)=>{
+      <NbSteps current={current}></NbSteps>
+      <NbBadge count={8}></NbBadge>
+      <NbPages></NbPages>
+      <NbTabs selectIndex={index} changeTab={(i)=>{
         console.log(i);
         setIndex(i)
-      }}></NbTabs> */}
+      }}></NbTabs>
       
-      {/* <NbSelectButton options={options} multiple={true} onClick={(i)=>{
+      <NbSelectButton options={options} multiple={true} onClick={(i)=>{
         checked[i]=!checked[i];
         setChecked(checked)
-      }} checked={checked}>按钮</NbSelectButton> */}
-      {/* <NbPersonalLayout index={menuIndex} menuClick={(i)=>{
+      }} checked={checked}>按钮</NbSelectButton>
+      <NbPersonalLayout index={menuIndex} menuClick={(i)=>{
         let item = pMenu[i]
         setCurcom(item.com)
         setMenuIndex(i)
       }} menu={pMenu}>
         {curcom}
-      </NbPersonalLayout> */}
-      {/* <NbButtons type={'icon'} icon={'dakaiyanjing'}>123</NbButtons> */}
-      {/* <NbSelectCom size="small" mode={"multiple"} check={true} placeholder={'00000000000000000000000000000000000000000'} optionslist={optionslist} onSelect={(value)=>{
+      </NbPersonalLayout>
+      <NbButtons type={'icon'} icon={'dakaiyanjing'}>123</NbButtons>
+      <NbSelectCom size="small" mode={"multiple"} check={true} placeholder={'00000000000000000000000000000000000000000'} optionslist={optionslist} onSelect={(value)=>{
         console.log(value);
       }}>
       </NbSelectCom>
@@ -128,21 +128,21 @@ function App() {
       <h2>输入框</h2>
       <div><NbInput size={'large'} /></div>
       <br></br>
-      <div><NbInput placeholder="请输入" size={'nb-small'} /></div>
+      <div><NbInput placeholder="请输入" size={'small'} /></div>
       <h2>输入账号</h2>
-      <div><NbAccount allowClear size="nb-large" /></div>
+      <div><NbAccount allowClear size="large" /></div>
       <br/>
-      <div><NbPassword size="nb-large" /></div> */}
-      {/* <span className={
+      <div><NbPassword size="large" /></div>
+      <span className={
         classnames({
           "iconfont":true,
           "icon-gou":true
         })
       }></span>
       <h2>按钮</h2>
-      <NbButton onClick={()=>console.log('hello')} type="primary">
-        <i>123</i>
-      </NbButton>
+      {/* <NbButton onClick={()=>console.log('hello')} type="primary"> */}
+        {/* <i>123</i>
+      </NbButton> */}
       <h2 onClick={()=>{
         setIsModalVisible(!isModalVisible)
       }}>点击出现弹窗</h2>
@@ -171,7 +171,7 @@ function App() {
       <NbConfirm onCancel={()=>setIsModalVisible(!isModalVisible)} onOk={()=>setIsModalVisible(!isModalVisible)} twoline={true} visible={isModalVisible}>
         是否确定重启
       </NbConfirm>
-      <NbDialog onCancel={()=>setIsModalVisible(!isModalVisible)} visible={isModalVisible}></NbDialog> */}
+      <NbDialog onCancel={()=>setIsModalVisible(!isModalVisible)} visible={isModalVisible}></NbDialog>
     </div>
   );
 }

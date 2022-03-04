@@ -4,13 +4,13 @@ import 'antd/lib/input/style'
 import classnames from 'classnames'
 import Icon from "../Icon"
 export default function NbInput(props) {
-  const { size = '', placeholder } = props
+  const { size = 'large', placeholder } = props
   return (
     <div
       className={classnames({
         'nb-account-input':true,
-        'nb-sm-input': size === 'nb-small',
-        'nb-lg-input': size === 'nb-large',
+        'nb-sm-input': size === 'small',
+        'nb-lg-input': size === 'large',
       })}
     >
       <Input
