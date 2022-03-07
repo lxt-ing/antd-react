@@ -5,7 +5,6 @@ import classnames from 'classnames'
 import Icon from "../Icon"
 export default function NbPassword(props) {
   const inputRef = useRef(null)
-  const [input, setInput] = React.useState(true);
   const { size = 'large',defaultValue="213", placeholder, color='#CAD0E0', ...rest } = props;
   const [type, setType] = useState('text')
   const [visible, setVisible] = useState(false)

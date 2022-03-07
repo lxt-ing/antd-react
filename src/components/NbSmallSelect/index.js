@@ -16,12 +16,13 @@ export default function NbSmallSelect(props) {
     ...rest
   } = props
   return (
-    <Select
+    <div className="nb-small">
+      <Select
       showArrow
       dropdownMatchSelectWidth={true}
       dropdownStyle={dropdownStyle}
       listHeight={lineHeight * 5}
-      className="nb-small"
+      // className=""
       suffixIcon={<Icon type="xiangxia" size="32px"/>}
       placeholder={placeholder ? placeholder : '请选择'}
       size={'small'}
@@ -48,5 +49,6 @@ export default function NbSmallSelect(props) {
         </Select.Option>
       ))}
     </Select>
+    </div>
   )
 }

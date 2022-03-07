@@ -7,7 +7,7 @@ export default function NbSteps(props) {
     current = 1,
     stepOptions = ['步骤一步骤一', '步骤二步骤一', '步骤三步骤一'],
   } = props
-  console.log(stepOptions.length - 1)
+  
   return (
     <div className={Style['nb-steps']}>
       {stepOptions.map((step, i) => {

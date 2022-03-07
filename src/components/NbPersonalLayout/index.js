@@ -1,8 +1,7 @@
-import React,{useState} from 'react'
+import React from 'react'
 import classnames from 'classnames'
 import Icon from "../Icon"
 import style from "./index.module.less"
-import { options } from 'less';
 function NbPersonalLayout(props) {
   const {menu=[],user={avatar:'https://img.iplaysoft.com/wp-content/uploads/2019/free-images/free_stock_photo.jpg', userName:'用户名称'}, index=0, activeColor="#fff"} = props;
   const {avatar, userName} = user;

@@ -1,5 +1,5 @@
 import "./style/NbStyle.less";
-export {default as NbButtons} from "./NbButtons"
+export {default as NbButton} from "./NbButton"
 export {default as NbSelectButton} from "./NbSelectButton"
 export {default as NbSelect} from "./NbSelect"
 export {default as NbInput} from "./NbInput"
@@ -20,4 +20,5 @@ export {default as NbSteps} from "./NbSteps"
 export {default as NbBadge} from "./NbBadge"
 export {default as NbCascader} from "./NbCascader"
 export {default as NbDatePicker} from "./NbDatePicker"
+export {default as NbRangePicker} from "./NbRangePicker"
 export {default as NbConfigProvider} from "./NbConfigProvider"

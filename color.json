@@ -5,5 +5,10 @@
     "@input-border-color":"#CAD0E0",
     "@input-color":" #181D41",
     "@border-radius-base":"8px",
-    "@picker-date-hover-range-border-color":"#0066E0"
+    "@picker-date-hover-range-border-color":"#0066E0",
+    "@picker-date-hover-range-color":"#0066E0",
+    "@picker-basic-cell-hover-color": "#0066E0",
+    "@picker-panel-cell-height":"48px",
+    "@picker-panel-width":"560px",
+    "@picker-text-height":"96px"
 }

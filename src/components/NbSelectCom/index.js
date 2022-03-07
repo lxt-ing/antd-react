@@ -16,14 +16,14 @@ export default function NbSelectCom(props) {
     ...rest
   } = props
   return (
-    <Select
+    <div className={`nb-${size}`}>
+      <Select
       maxTagCount={maxTagCount}
       maxTagPlaceholder={'...'}
       showArrow
       {...rest}
       dropdownMatchSelectWidth={true}
       listHeight={lineHeight * 5}
-      className={`nb-${size}`}
       suffixIcon={<Icon type="xiangxia" size="32px"/>}
       placeholder={placeholder ? placeholder : '请选择'}
       size={size}
@@ -50,5 +50,6 @@ export default function NbSelectCom(props) {
         </Select.Option>
       ))}
     </Select>
+  </div>  
   )
 }

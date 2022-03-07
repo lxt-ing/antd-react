@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import classnames from 'classnames'
 import Style from './index.module.less'
 import { Checkbox } from 'antd'
 export default function NbSelectButton(props) {
   const { multiple = false, options = [], ...rest } = props
-  console.log(multiple);
+  
   const [checkedArr, setCheckedArr] = useState(props.checked.slice())
   return (
     <div className={Style['nb-select-button-wrapper']}>

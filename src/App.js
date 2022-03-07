@@ -1,14 +1,16 @@
-import logo from './logo.svg';
 import React from "react"
 import './App.css';
 import dayjs from 'dayjs';
 import 'dayjs/locale/zh-cn';
 import locale from 'antd/lib/locale/zh_CN';
+import { Routes, Route, Outlet, Link } from "react-router-dom";
 import classnames from "classnames"
 import {useState} from "react"
 import {Modal, Select } from "antd"
 import Icon from "./components/Icon"
-import {NbConfigProvider,NbDatePicker,NbSearch,NbCascader, NbBadge,NbSteps,NbPages,NbTabs,NbPersonalLayout,NbButtons,NbSelectButton, NbDropdown, NbMenu, NbSelectCom, NbInput, NbAccount, NbPassword,NbSmallSelect, NbConfirm, NbDialog} from "./components/"
+import Home from "./Home"
+import IndexHome from "./IndexHome"
+import {NbMessage,NbConfigProvider,NbDatePicker, NbRangePicker,NbSearch,NbCascader, NbBadge,NbSteps,NbPages,NbTabs,NbPersonalLayout,NbButton,NbSelectButton, NbDropdown, NbMenu, NbSelectCom, NbInput, NbAccount, NbPassword,NbSmallSelect, NbConfirm, NbDialog} from "./components/"
 import { options } from 'less';
 const {Option} = Select;
 function App() {
@@ -23,7 +25,7 @@ function App() {
   const [checked, setChecked] = useState([])
   const [options, setOptions] = useState([1, 2, 3])
   const test = (props)=>{
-    console.log(props);
+    
     const {index} = props.data
     return (<div>{index}</div>)
   }
@@ -47,11 +49,31 @@ function App() {
   }]
   const [current, setCurrent] = useState(1)
   const [index, setIndex] = useState(0)
+  const [range, setRange] = useState([])
   const [list, setList] = useState([{label:'选项一', value:1},{label:2, value:2},{label:3, value:3}])
   return (
     <div className="App">
+      <Routes>
+        <Route path="/">
+          <Route index element={<Home/>}></Route>
+          <Route path="home" element={<IndexHome/>}></Route>
+        </Route>
+      </Routes>
+      <Outlet />
+      <div onClick={()=>{
+        NbMessage.error(
+          {}
+        //   {
+        //   duration:0,
+        //   content:'123'
+        // }
+        )
+      }}>點擊 信息</div>
       <NbConfigProvider>
         <NbDatePicker></NbDatePicker>
+        <NbRangePicker value={range} onChange={(value)=>{
+          setRange(value)
+        }} clearRanges={()=>setRange([])}></NbRangePicker>
       </NbConfigProvider>
       <div style={{width:'400px', margin:'auto'}}>
        <NbSearch></NbSearch>
@@ -101,7 +123,6 @@ function App() {
       <NbBadge count={8}></NbBadge>
       <NbPages></NbPages>
       <NbTabs selectIndex={index} changeTab={(i)=>{
-        console.log(i);
         setIndex(i)
       }}></NbTabs>
       
@@ -116,9 +137,9 @@ function App() {
       }} menu={pMenu}>
         {curcom}
       </NbPersonalLayout>
-      <NbButtons type={'icon'} icon={'dakaiyanjing'}>123</NbButtons>
-      <NbSelectCom size="small" mode={"multiple"} check={true} placeholder={'00000000000000000000000000000000000000000'} optionslist={optionslist} onSelect={(value)=>{
-        console.log(value);
+      <NbButton>123</NbButton>
+      <NbSelectCom size="small" check={true} placeholder={'00000000000000000000000000000000000000000'} optionslist={optionslist} onSelect={(value)=>{
+        
       }}>
       </NbSelectCom>
       
@@ -151,17 +172,17 @@ function App() {
       <NbSelectCom content={
         test
       } size="small" placeholder={'00000000000000000000000000000000000000000'} optionslist={optionslist} onSelect={(value)=>{
-        console.log(value);
+        
       }}>
       </NbSelectCom>
       <h2>中下拉框</h2>
       <NbSelectCom size="middle" placeholder={'00000000000000000000000000000000000000000'} optionslist={optionslist} onSelect={(value)=>{
-        console.log(value);
+        
       }}>
       </NbSelectCom>
       <h2>大下拉框</h2>
       <NbSelectCom size="large" placeholder={'00000000000000000000000000000000000000000'} optionslist={optionslist} onSelect={(value)=>{
-        console.log(value);
+        
       }}>
       </NbSelectCom>
       

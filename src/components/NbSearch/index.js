@@ -2,7 +2,6 @@ import React from "react"
 import { Input } from "antd"
 import Icon from "../Icon"
 import 'antd/lib/input/style';
-import classnames from "classnames"
 export default function NbInput(props){
   const {placeholder='',prefix=(<Icon type="password" size={'32px'}></Icon>), ...rest} = props;
   return (
