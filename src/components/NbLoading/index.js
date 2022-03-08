@@ -6,15 +6,9 @@ import warn from '../images/warn.png'
 import success from '../images/success.png'
 import error from '../images/error.png'
 import alarm from '../images/alarm.png'
-import loading from "../images/loading.gif"
 import style from './index.module.less'
 const ResultImg = (props) => {
   return <img style={props.IconStyle} src={require(`../images/${props.type}.png`)} />
-}
-const LoadingText = (props) => {
-  return (
-    <div className={'loading-text'}>加载中...</div>
-  )
 }
 // const SuccessImg = () => {
 //   return <img src={success} />
@@ -78,20 +72,4 @@ types.forEach(type=>{
     }
   }
 })
-NbResult['loading'] = (props={}) => {
-  NbResult.timeId = null;
-  const { maskClosable=false,mask=false, ...rest} = props;
-  const modal = Modal.error({
-    mask, 
-    maskClosable, 
-    ...NbResult.defaultProps,
-    content: rest.content || <LoadingText />,
-    className:'nb-loading-dialog',
-    width:props.width || '320px',
-    bodyStyle:{height:'360px'},
-    icon:props.icon ? props.icon : <img style={props.IconStyle} src={loading} />,
-    ...rest
-  })
-  return modal
-}
 export default NbResult

@@ -475,6 +475,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      font-size: 32px;
     }
   }
 }
@@ -509,6 +510,9 @@
 
 // 确定弹窗
 .nb-confirm-dialog.ant-modal {
+  .ant-modal-body{
+    padding:0;
+  }
   .ant-modal-content {
     border-radius: 16px;
     overflow: hidden;
@@ -519,13 +523,14 @@
         font-size: 40px;
         width: 40px;
         height: 40px;
+        line-height: 40px;
       }
     }
   }
 }
  
 // 提醒弹窗
-.nb-result-dialog{
+.nb-result-dialog, .nb-loading-dialog{
   .ant-modal-body{
     padding: 0;
   }
@@ -549,6 +554,19 @@
     }
   }
 }
+// 加载弹窗
+.nb-loading-dialog{
+  img{
+    width: 200px;
+  }
+  .loading-text{
+    height: 54px;
+    font-size: 36px;
+    font-family: OPPOSans-M, OPPOSans;
+    color: #181D41;
+  }
+}
+
 
 // 分页器
 .nb-pages {
