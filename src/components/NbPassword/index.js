@@ -6,7 +6,7 @@ import Icon from "../Icon"
 export default function NbPassword(props) {
   const inputRef = useRef(null)
   const { size = 'large',defaultValue="213", placeholder, color='#CAD0E0', ...rest } = props;
-  const [type, setType] = useState('text')
+  const [type, setType] = useState('password')
   const [visible, setVisible] = useState(false)
   useEffect(()=>{
     // 图标切换后将光标聚焦在结尾
@@ -30,7 +30,7 @@ export default function NbPassword(props) {
       <Input defaultValue={defaultValue} ref={inputRef} type={type} 
       prefix={<Icon color={color} type="password"></Icon>} allowClear={true} {...rest}></Input>
       <div className={"nb-password-icon"} onClick={()=>{toggleVisible()}}>
-        <Icon type={ visible ? 'dakaiyanjing' : "guanbiyanjing"}></Icon>
+        <Icon type={ visible ? 'dakaiyanjing' : 'guanbiyanjing'}></Icon>
       </div>
     </div>
   )

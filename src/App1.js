@@ -9,7 +9,7 @@ import classnames from "classnames"
 import {useState} from "react"
 import {Modal, Select } from "antd"
 import Icon from "./components/Icon"
-import Home from "./App1"
+import Home from "./Home"
 import IndexHome from "./IndexHome"
 import {NbResult,NbMessage,NbConfigProvider,NbDatePicker, NbRangePicker,NbSearch,NbCascader, NbBadge,NbSteps,NbPages,NbTabs,NbPersonalLayout,NbButton,NbSelectButton, NbDropdown, NbMenu, NbSelectCom, NbInput, NbAccount, NbPassword,NbSmallSelect, NbConfirm, NbDialog} from "./components/"
 import { options } from 'less';
@@ -54,14 +54,7 @@ function App() {
   const [list, setList] = useState([{label:'选项一', value:1},{label:2, value:2},{label:3, value:3}])
   return (
     <div className="App">
-      <Routes>
-        <Route path="/">
-          <Route index element={<Home/>}></Route>
-          <Route path="home" element={<IndexHome/>}></Route>
-        </Route>
-      </Routes>
-      <Outlet />
-      {/* <div onClick={()=>{
+      <div onClick={()=>{
         NbMessage.error(
           {
             content:'123'
@@ -164,7 +157,7 @@ function App() {
       {/* <NbButton onClick={()=>console.log('hello')} type="primary"> */}
         {/* <i>123</i>
       </NbButton> */}
-      {/* <h2 onClick={()=>{
+      <h2 onClick={()=>{
         setIsModalVisible(!isModalVisible)
       }}>点击出现弹窗</h2>
       <h2>小下拉框</h2>
@@ -188,14 +181,11 @@ function App() {
       
       <h2 onClick={()=>{
         // setIsModalVisible(!isModalVisible)
-        NbResult.success({
-          delayClosed:20000,
-          content:'操作成功'
+        NbResult.warn({
+          delayClosed:2000,
+          content:'操作警告'
         })
-        setTimeout(()=>{
-          navigate('/')
-        }, 0)
-      }}>提醒-确定弹窗</h2> */} 
+      }}>提醒-确定弹窗</h2>
       {/* <NbResult visible={isModalVisible}>
         操作成功
       </NbResult> */}

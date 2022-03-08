@@ -1,25 +1,34 @@
-import React from 'react'
 import { message } from 'antd'
 import Icon from '../Icon'
 import 'antd/lib/message/style'
-const IconConfigs = [
-  { state: 'success', type: 'gouxuan', color: '#00A572' },
-  { state: 'warning', type: 'gouxuan', color: '#F98900' },
-  { state: 'error', type: 'fox', color: '#E52D3E' },
-]
-const NbMessage = {}
-const types = ['success', 'warning', 'error']
-types.forEach((type) => {
-  console.log('生成111');
-  NbMessage[type] = (config={}) => {
-    const IconConfig = IconConfigs.find((item) => item.state === type)
-    if(types.includes(type)){
-      console.log(type, '---类型');
-      config.className = `nb-${type}-message`;
-      config.icon = <Icon type={IconConfig.type || 'gouxuan'} color={IconConfig.color} size="56px"></Icon> 
-    }
-    console.log('調用', config);
-    message[type](config)
+const Content = (props)=>{
+  return (<span>{props.text}</span>)
+}
+const NbMessage = {
+  success: props => {
+    message.success({
+      ...props,
+      className:'nb-success-message',
+      content: <Content text={props.content}/>,
+      icon: <Icon type="gouxuan" color={"#00A572"} size="56px" />
+    })
+  },
+  error: props => {
+    message.error({
+      ...props,
+      className:'nb-error-message',
+      content: <Content text={props.content}/>,
+      icon: <Icon type="fox" color={"#E52D3E"} size="56px" />
+    })
+  },
+  warn: props => {
+    message.warning({
+      ...props,
+      className:'nb-warning-message',
+      content: <Content text={props.content}/>,
+      icon: <Icon type="gouxuan" color={"#F98900"} size="56px" />
+    })
   }
-})
+}
+
 export default NbMessage

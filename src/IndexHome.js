@@ -3,7 +3,9 @@ console.log(NbMessage);
 export default function IndexHome(){
   return (
       <div onClick={()=>{
-        NbMessage.success()
+        NbMessage.success({
+          content:'45'
+        })
       }}>index - home</div>
   )
 }
