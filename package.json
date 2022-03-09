@@ -1,14 +1,13 @@
 {
-  "name": "check-com",
-  "version": "0.3.7",
+  "name": "nb-ui-components",
+  "version": "1.1.0",
   "private": false,
   "homepage": ".",
   "main": "lib/index.js",
   "module": "es/index.js",
   "files": [
     "lib",
-    "esm",
-    "build"
+    "es"
   ],
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.2",
@@ -29,15 +28,15 @@
     "test": "react-app-rewireds test",
     "eject": "react-app-rewired eject",
     "build:commonjs": "cross-env BABEL_OUTPUT=commonjs babel src/components --out-dir lib/ --ignore **/__tests__,**/__mocks__",
-    "build:esm": "babel src/components --out-dir esm/ --ignore **/__tests__,**/__mocks__",
-    "copy-css:esm": "cpx \"src/components/*/*.less\" esm",
+    "build:es": "babel src/components --out-dir es/ --ignore **/__tests__,**/__mocks__",
+    "copy-css:es": "cpx \"src/components/*/*.less\" es",
     "copy-css:lib": "cpx \"src/components/*/*.less\" lib",
     "copy-font:lib": "cpx \"src/components/fonts/*/*\" lib/fonts",
-    "copy-font:esm": "cpx \"src/components/fonts/*/*\" esm/fonts",
+    "copy-font:es": "cpx \"src/components/fonts/*/*\" es/fonts",
     "copy-images:lib":"cpx \"src/components/images/*\" lib/images", 
-    "copy-images:esm":"cpx \"src/components/images/*\" esm/images", 
+    "copy-images:es":"cpx \"src/components/images/*\" es/images", 
     "pack": "npm run build:commonjs && npm run copy-css:lib && npm run copy-font:lib && npm run copy-images:lib",
-    "pack:esm": "npm run build:esm && npm run copy-css:esm && npm run copy-font:esm && npm run copy-images:esm"
+    "pack:es": "npm run build:es && npm run copy-css:es && npm run copy-font:es && npm run copy-images:es"
   },
   "eslintConfig": {
     "extends": [

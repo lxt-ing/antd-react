@@ -1,0 +1,83 @@
+@import "../style/variable.less";
+.tabs-wrapper{
+  user-select: none;
+  height: 64px;
+  display: inline-flex;
+  text-align: center;
+  overflow: hidden;
+  font-size: 24px;
+  border: 1px solid @CAD0E0;
+  color: @default-text-color;
+  font-family: OPPOSans-M, OPPOSans;  
+  border-radius: @BorderRadius;
+  cursor: pointer;
+  .tab-item{
+    width: 160px;
+    background-color: #fff;
+    height: 100%;
+    line-height: 64px;
+    border-right: 1px solid @CAD0E0;
+    &:last-child{
+      border: none;
+    }
+  }
+  .tab-selected{
+    font-family: OPPOSans-B, OPPOSans;
+    color:#fff;
+    background-color: @primary-color;
+  }
+}
+.page-tabs{
+  border: none;
+  border-radius: 8px 8px 0 0;
+  background: @CAD0E0;
+  &.first-tab,&.last-tab{
+    background: none;
+    .tab-selected{
+      .tab-content{
+        left: 0;
+      }
+    }
+  }
+  &.last-tab{
+    .tab-selected{
+      .tab-content{
+        left: -20px;
+      }
+    }
+  }
+  .tab-item{
+    color:@default-text-color-70;
+    width: 200px;
+    background: @CAD0E0;
+    font-size: 28px;
+    position: relative;
+    border: none;
+    .page-tab-line{
+      width: 1px;
+      height: 28px;
+      border: 1px solid @E4E7EF;
+      position: absolute;
+      right: -1px;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+    &:last-child{
+      .page-tab-line{
+        display: none;
+      }
+    }
+  }
+  .tab-selected{
+    font-family: OPPOSans-M, OPPOSans;
+    color: @default-text-color-70;
+    background: none;
+    .tab-content{
+      position: absolute;
+      left: -10px;
+      width: 220px;
+      background: url("../images/page-tab.png") no-repeat 0 0 / 220px 100%;
+      z-index: 1;
+    } 
+  }
+}
