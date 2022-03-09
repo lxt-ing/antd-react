@@ -33,7 +33,11 @@
     "copy-css:esm": "cpx \"src/components/*/*.less\" esm",
     "copy-css:lib": "cpx \"src/components/*/*.less\" lib",
     "copy-font:lib": "cpx \"src/components/fonts/*/*\" lib/fonts",
-    "pack": "npm run build:commonjs && npm run copy-css:lib && npm run copy-font:lib"
+    "copy-font:esm": "cpx \"src/components/fonts/*/*\" esm/fonts",
+    "copy-images:lib":"cpx \"src/components/images/*\" lib/images", 
+    "copy-images:esm":"cpx \"src/components/images/*\" esm/images", 
+    "pack": "npm run build:commonjs && npm run copy-css:lib && npm run copy-font:lib && npm run copy-images:lib",
+    "pack:esm": "npm run build:esm && npm run copy-css:esm && npm run copy-font:esm && npm run copy-images:esm"
   },
   "eslintConfig": {
     "extends": [

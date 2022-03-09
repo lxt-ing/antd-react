@@ -99,10 +99,6 @@
     top: 50%;
     transform: translateY(-50%);
   }
-  .rc-virtual-list-scrollbar-thumb {
-    background: @CAD0E0!important;
-    border-radius: 3px !important;
-  }
   .line {
     width: 100%;
     height: 1px;
@@ -176,6 +172,7 @@
 .nb-large,
 .nb-middle,
 .nb-small {
+  user-select: none;
   .not-line-content,
   .line-content {
     overflow: hidden;
@@ -212,6 +209,11 @@
   .ant-select-item.ant-select-item-option.ant-select-item-option-selected {
     background-color: @F3F7FD;
     color: @primary-color;
+  }
+  .rc-virtual-list-scrollbar-thumb {
+    margin-top: 3px;
+    background: @CAD0E0!important;
+    border-radius: 3px !important;
   }
 }
 .nb-large,
@@ -264,7 +266,7 @@
     height: 80px;
   }
   .ant-select-item-option-content > div {
-    line-height: 79px;
+    line-height: 80px;
   }
 }
 .nb-middle {
@@ -510,6 +512,7 @@
 
 // 确定弹窗
 .nb-confirm-dialog.ant-modal {
+  user-select: none;
   .ant-modal-body{
     padding:0;
   }
@@ -531,7 +534,8 @@
  
 // 提醒弹窗
 .nb-result-dialog, .nb-loading-dialog{
-  .ant-modal-body{
+  user-select: none;
+  .ant-modal-content .ant-modal-body{
     padding: 0;
   }
   .ant-modal-content{
@@ -556,8 +560,10 @@
 }
 // 加载弹窗
 .nb-loading-dialog{
+  user-select: none;
   img{
     width: 200px;
+    margin-top: 30px;
   }
   .loading-text{
     height: 54px;
@@ -570,6 +576,7 @@
 
 // 分页器
 .nb-pages {
+  user-select: none;
   .ant-pagination-item,
   .ant-pagination-next,
   .ant-pagination-prev {
@@ -617,6 +624,7 @@
 
 // 徽标
 .nb-badge {
+  user-select: none;
   .ant-badge {
     height: 32px;
     line-height: 36px;
@@ -634,6 +642,7 @@
 
 // 级联选择器
 .nb-cascader {
+  user-select: none;
   display: inline-block;
   .ant-cascader {
     width: 320px;
@@ -661,6 +670,7 @@
   }
 }
 .nb-cascader-dropdown {
+  user-select: none;
   .ant-cascader-menu {
     height: auto;
     max-height: 360px;
@@ -715,6 +725,7 @@
 
 // 搜索框
 .nb-search {
+  user-select: none;
   width: 360px;
   height: 64px;
   .ant-input-search,
@@ -765,6 +776,7 @@
 
 // 日期组件
 .nb-date-picker {
+  user-select: none;
   width: 320px;
   height: 64px;
   &.ant-picker {
@@ -791,6 +803,7 @@
 }
 // 日期组件下拉框
 .nb-date-picker-dropdown {
+  user-select: none;
   font-family: OPPOSans-M, OPPOSans;
    .ant-picker-cell-in-view.ant-picker-cell-today .ant-picker-cell-inner::before{
     border-width: 2px;
@@ -905,6 +918,7 @@
 }
 // 日期范围组件
 .nb-range-picker {
+  user-select: none;
   width: 400px;
   height: 64px;
   &.ant-picker-range .ant-picker-clear {
@@ -939,6 +953,7 @@
 }
 // 日期范围下拉框
 .nb-range-picker-dropdown {
+  user-select: none;
   font-family: OPPOSans-M, OPPOSans;
    // 日期
    .ant-picker-cell-in-view.ant-picker-cell-today .ant-picker-cell-inner::before{
@@ -1134,6 +1149,7 @@
 
 // 信息提醒
 .ant-message .ant-message-notice-content{
+  user-select: none;
   border-radius: 8px;
   border:2px solid;
   padding: 29px 40px 29px 48px;
@@ -1160,4 +1176,28 @@
 .nb-error-message .ant-message-notice-content{
   border-color:   #F2969E;
   background: #FDF4F5;
+}
+
+// 进度条
+.nb-circle-progress,.nb-line-progress{
+  user-select: none;
+  .ant-progress-inner .ant-progress-text{
+    font-size: 50px;
+    font-family: OPPOSans-B, OPPOSans;
+    color: #0066E0;
+  }
+}
+.nb-line-progress{
+  user-select: none;
+  .ant-progress-outer{
+    width: 400px;
+  }
+  .ant-progress-text{
+    height: 42px;
+    font-size: 28px;
+    font-family: OPPOSans-B, OPPOSans;
+    font-weight: normal;
+    color: #181D41;
+    line-height: 42px;
+  }
 }

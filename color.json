@@ -10,5 +10,7 @@
     "@picker-basic-cell-hover-color": "#0066E0",
     "@picker-panel-cell-height":"48px",
     "@picker-panel-width":"560px",
-    "@picker-text-height":"96px"
+    "@picker-text-height":"96px",
+    "@tooltip-arrow-color":"rgba(24, 29, 65, 0.5)",
+    "@tooltip-arrow-width":"40px"
 }
