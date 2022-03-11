@@ -2,10 +2,6 @@ import React,{useEffect} from 'react'
 import { Modal } from 'antd'
 import 'antd/lib/modal/style'
 import classnames from 'classnames'
-import warn from '../images/warn.png'
-import success from '../images/success.png'
-import error from '../images/error.png'
-import alarm from '../images/alarm.png'
 import loading from "../images/loading.gif"
 import style from './index.module.less'
 const ResultImg = (props) => {
@@ -16,18 +12,6 @@ const LoadingText = (props) => {
     <div className={'loading-text'}>加载中...</div>
   )
 }
-// const SuccessImg = () => {
-//   return <img src={success} />
-// }
-// const WarnImg = () => {
-//   return <img src={warn} />
-// }
-// const ErrorImg = () => {
-//   return <img src={error} />
-// }
-// const AlarmImg = () => {
-//   return <img src={alarm} />
-// }
 const NbResult = (props)=>{
   useEffect(() => {
     return () => {

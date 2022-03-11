@@ -38,7 +38,7 @@ export default function NbSelectCom(props) {
       removeIcon={<Icon size="21px" type="fox" color="#8B8EA0"></Icon>}
     >
       {optionslist.map((option, index) => (
-        <Select.Option key={option.value}>
+        <Select.Option key={option.value} value={option.value}>
           <div
             className={classnames({
               'not-line-content': index === props.optionslist.length - 1,

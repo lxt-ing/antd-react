@@ -645,6 +645,7 @@
   user-select: none;
   display: inline-block;
   .ant-cascader {
+    text-align: left;
     width: 320px;
     height: 64px;
     .ant-select-selector .ant-select-selection-item {
@@ -765,7 +766,8 @@
   .ant-input-group-addon {
     display: none;
   }
-  .anticon.ant-input-clear-icon {
+  // .anticon
+  .ant-input-clear-icon {
     font-size: 32px;
     display: flex;
     height: 100%;
@@ -817,6 +819,11 @@
   }
   .ant-picker-cell {
     color: rgba(24, 29, 65, 0.2);
+    // .ant-picker-cell-inner{
+    //   width: 48px;
+    //   height: 48px;
+    //   line-height: 48px;
+    // }
   }
   .ant-picker-cell-in-view {
     color: rgba(24, 29, 65, 0.7);
@@ -1111,6 +1118,7 @@
     background: #F3F7FD;
   }
   .ant-picker-footer{
+    position: relative;
     .ant-picker-preset .ant-tag{
       width: 104px;
       height: 48px;
@@ -1128,6 +1136,7 @@
       position: absolute;
       right: 24px;
       bottom: 24px;
+      padding: 0;
       border: none;
       .footer-clear-ranges{
         width: 80px;

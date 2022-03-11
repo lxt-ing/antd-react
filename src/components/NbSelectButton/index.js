@@ -3,9 +3,13 @@ import classnames from 'classnames'
 import Style from './index.module.less'
 import { Checkbox } from 'antd'
 export default function NbSelectButton(props) {
-  const { multiple = false, options = [], ...rest } = props
-  
-  const [checkedArr, setCheckedArr] = useState(props.checked.slice())
+  let { multiple = false, options = ['选项一'],checked=false, onChange=()=>{}, ...rest } = props
+  // console.log(checked);
+  // const isArray = Object.prototype.toString.call(checked) === '[object Array]';
+  // if(isArray){
+  //   multiple = true;
+  // }
+  const [checkedArr, setCheckedArr] = useState(checked.slice())
   return (
     <div className={Style['nb-select-button-wrapper']}>
       {multiple ? (
@@ -20,15 +24,14 @@ export default function NbSelectButton(props) {
                   <Checkbox
                     {...rest}
                     onClick={() => {
-                      props.onClick(i)
                       const state = checkedArr.slice()
                       state[i] = !checkedArr[i]
                       setCheckedArr(state)
+                      onChange(i, state)
                     }}
                     className={Style['single-checkbox']}
                     value={option.value ? option.value : option}
                   >
-                    {option.label ? option.label : option}
                   </Checkbox>
                   <div
                     className={classnames({
@@ -37,7 +40,7 @@ export default function NbSelectButton(props) {
                       [Style[`nb-multi-button`]]: multiple,
                     })}
                   >
-                    {props.children}
+                    {option.label ? option.label : option}
                   </div>
                 </div>
               )
@@ -49,7 +52,7 @@ export default function NbSelectButton(props) {
           <div
             className={classnames({
               [Style[`nb-select-button`]]: true,
-              [Style[`nb-checked-button`]]: props.checked,
+              [Style[`nb-checked-button`]]: checked,
               [Style[`nb-multi-button`]]: multiple,
             })}
           >
