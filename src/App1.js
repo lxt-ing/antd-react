@@ -3,9 +3,9 @@ import { useState } from 'react'
 import dayjs from "dayjs"
 import "./App.css"
 import yaoping from './components/images/yaoping.gif'
-import {NbDatePicker, NbRangePicker, NbDropdown, NbMenu} from "./components/"
+import {NbDatePicker,NbMessage, NbRangePicker, NbDropdown, NbMenu,NbSearch} from "./components/"
 // import { NbTabs, NbProgress, NbSelectCom, NbCascader,NbConfirm,
-//    NbDatePicker, NbSearch, NbSelectButton, NbMenu,NbDropdown,NbMessage, NbResult, NbSteps,NbRangePicker, NbAccount, NbBadge, NbPages, NbButton, NbInput,NbDialog } from './components/'
+//    NbDatePicker, , NbSelectButton, NbMenu,NbDropdown,NbMessage, NbResult, NbSteps,NbRangePicker, NbAccount, NbBadge, NbPages, NbButton, NbInput,NbDialog } from './components/'
 function App() {
   console.log(dayjs)
   const [visible, setVisible] = useState(false)
@@ -48,9 +48,8 @@ function App() {
       <h2 onClick={()=>setVisible(!visible)}>点击</h2>
       <NbConfirm visible={visible} onCancel={()=>setVisible(false)}></NbConfirm>
       */}
-      <NbDropdown trigger={['click']} arrow={true} DropdownMenu={<NbMenu onSelect={(data)=>{
-        console.log(data);
-      }} selectable={true} menuList={[1,2,3,4,5,6]}><a>123s</a></NbMenu>} DropdownTitle={<a>hello</a>}></NbDropdown>
+      <NbDropdown trigger={['click']} arrow={true} DropdownMenu={<NbMenu selectable={true} menuList={[1,2,3,4,5,6]}><a>123s</a></NbMenu>} DropdownTitle={<a>hello</a>}></NbDropdown>
+
       <NbDatePicker onChange={(date, dateString)=>{
         console.log(date, dateString)
         setDate(date)
@@ -59,7 +58,15 @@ function App() {
         setDate1(date)
         console.log(date);
       }} defaultValue={date1}></NbRangePicker>
-      {/* <NbSearch onSearch={(val)=>search(val)}></NbSearch> */}
+      <h2 onClick={()=>{
+        // NbMessage.success({
+        //   content:'123'
+        // })
+        NbMessage.success({
+          content:'123'
+        })
+      }}>信息</h2>
+      <NbSearch onSearch={(val)=>search(val)}></NbSearch>
       {/* <NbSelectButton checked={checked} onChange={()=>{
         setChecked(!checked)
       }}>
@@ -77,14 +84,7 @@ function App() {
       <NbDropdown trigger={['click']} arrow={true} DropdownMenu={<NbMenu onSelect={(data)=>{
         console.log(data);
       }} selectable={true} menuList={[1,2,3,4,5,6]}><a>123s</a></NbMenu>} DropdownTitle={<a>hello</a>}></NbDropdown>
-      <h2 onClick={()=>{
-        // NbMessage.success({
-        //   content:'123'
-        // })
-        NbResult.success({
-          content:'123'
-        })
-      }}>信息</h2>
+      
       <NbSteps></NbSteps>
       <NbRangePicker></NbRangePicker>
       <NbAccount></NbAccount>

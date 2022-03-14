@@ -13,12 +13,14 @@ const LoadingText = (props) => {
   )
 }
 const NbResult = (props)=>{
+  const {type="success",maskClosable=true,mask=false, bodyStyle={height:'520px'},width="720px",...rest} = props;
+  
   useEffect(() => {
+    console.log('result --- 123')
     return () => {
       clearTimeout(NbResult.timeId)
     }
   },[])
-  const {type="success",maskClosable=true,mask=false, bodyStyle={height:'520px'},width="720px", ...rest} = props;
   return (
     <Modal closable={false} mask={mask} maskClosable={maskClosable} width={width} bodyStyle={bodyStyle} footer={null} {...rest} className={"nb-result-dialog"}>
       <div className={

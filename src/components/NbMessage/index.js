@@ -1,3 +1,4 @@
+import React from "react"
 import { message } from 'antd'
 import Icon from '../Icon'
 import 'antd/lib/message/style'
