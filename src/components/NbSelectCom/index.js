@@ -4,9 +4,9 @@ import 'antd/lib/select/style'
 import classnames from 'classnames'
 import Icon from '../Icon'
 export default function NbSelectCom(props) {
-  console.log(props.size)
   // TODO:超过一行的选项没有处理
   const {
+    maxShowDropdonwCount=5,
     lineHeight = props.size === 'large' ? 80 : (props.size === 'middle' ? 64 : 54),
     maxTagCount = 1,
     check = true,
@@ -26,7 +26,7 @@ export default function NbSelectCom(props) {
       {...rest}
       dropdownMatchSelectWidth={true}
       dropdownStyle={dropdownStyle}
-      listHeight={lineHeight * 5}
+      listHeight={lineHeight * maxShowDropdonwCount}
       suffixIcon={<Icon type="xiangxia" size="32px"/>}
       placeholder={placeholder ? placeholder : '请选择'}
       size={size}

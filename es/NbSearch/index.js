@@ -38,7 +38,8 @@ function NbInput(props) {
       placeholder = _props$placeholder === void 0 ? '' : _props$placeholder,
       _props$prefix = props.prefix,
       prefix = _props$prefix === void 0 ? /*#__PURE__*/_react.default.createElement(_Icon.default, {
-    type: "password",
+    color: '#8B8EA0',
+    type: "sousuo",
     size: '32px'
   }) : _props$prefix,
       rest = _objectWithoutProperties(props, _excluded);

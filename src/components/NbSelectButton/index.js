@@ -1,15 +1,15 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import classnames from 'classnames'
 import Style from './index.module.less'
 import { Checkbox } from 'antd'
 export default function NbSelectButton(props) {
-  let { multiple = false, options = ['选项一'],checked=false, onChange=()=>{}, ...rest } = props
-  // console.log(checked);
-  // const isArray = Object.prototype.toString.call(checked) === '[object Array]';
-  // if(isArray){
-  //   multiple = true;
-  // }
-  const [checkedArr, setCheckedArr] = useState(checked.slice())
+  const {options = [],onChange=()=>{},checked=[], ...rest } = props
+  let  multiple = false;
+  const isArray = Object.prototype.toString.call(checked) === '[object Array]';
+  const [checkedArr, setCheckedArr] = useState(isArray ? checked.slice() : checked)
+  if(isArray){
+    multiple = true;
+  }
   return (
     <div className={Style['nb-select-button-wrapper']}>
       {multiple ? (
@@ -18,7 +18,7 @@ export default function NbSelectButton(props) {
             {options.map((option, i) => {
               return (
                 <div
-                  key={`nb-${multiple}-button-${i}`}
+                  key={`nb-multiple-button-${i}`}
                   className={Style['nb-multi-button-wrapper']}
                 >
                   <Checkbox
@@ -27,11 +27,12 @@ export default function NbSelectButton(props) {
                       const state = checkedArr.slice()
                       state[i] = !checkedArr[i]
                       setCheckedArr(state)
-                      onChange(i, state)
+                      onChange(state)
                     }}
                     className={Style['single-checkbox']}
                     value={option.value ? option.value : option}
                   >
+                    {option.label ? option.label : option}
                   </Checkbox>
                   <div
                     className={classnames({
@@ -58,7 +59,9 @@ export default function NbSelectButton(props) {
           >
             {props.children}
           </div>
-          <Checkbox className={Style['single-checkbox']} {...props}></Checkbox>
+          <Checkbox onClick={
+            ()=>onChange()
+          } className={Style['single-checkbox']} {...props}></Checkbox>
         </>
       )}
     </div>

@@ -4,6 +4,7 @@ import 'antd/lib/progress/style'
 import classnames from 'classnames'
 import Style from "./index.module.less"
 export default function NbProgress(props){
+  const {strokeWidth=props.type === 'circle' ? 10 : 20, width=271, trailColor='#D6E7FB',strokeColor='#0066E0',...rest }=props
   return (
     <div className={
       classnames({
@@ -11,7 +12,7 @@ export default function NbProgress(props){
         [`nb-${props.type}-progress`]:true
       })
     }>
-      <Progress {...props} strokeWidth={props.type === 'circle' ? 10 : 20} width={271} trailColor={'#D6E7FB'} strokeColor={'#0066E0'}></Progress>
+      <Progress {...rest} strokeWidth={strokeWidth} width={width} trailColor={trailColor} strokeColor={strokeColor}></Progress>
     </div>
   )
 }

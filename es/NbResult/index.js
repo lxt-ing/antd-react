@@ -49,14 +49,6 @@ require("antd/lib/modal/style");
 
 var _classnames2 = _interopRequireDefault(require("classnames"));
 
-var _warn = _interopRequireDefault(require("../images/warn.png"));
-
-var _success = _interopRequireDefault(require("../images/success.png"));
-
-var _error = _interopRequireDefault(require("../images/error.png"));
-
-var _alarm = _interopRequireDefault(require("../images/alarm.png"));
-
 var _loading = _interopRequireDefault(require("../images/loading.gif"));
 
 var _indexModule = _interopRequireDefault(require("./index.module.less"));
@@ -94,19 +86,7 @@ var LoadingText = function LoadingText(props) {
   return /*#__PURE__*/_react.default.createElement("div", {
     className: 'loading-text'
   }, "\u52A0\u8F7D\u4E2D...");
-}; // const SuccessImg = () => {
-//   return <img src={success} />
-// }
-// const WarnImg = () => {
-//   return <img src={warn} />
-// }
-// const ErrorImg = () => {
-//   return <img src={error} />
-// }
-// const AlarmImg = () => {
-//   return <img src={alarm} />
-// }
-
+};
 
 var NbResult = function NbResult(props) {
   (0, _react.useEffect)(function () {

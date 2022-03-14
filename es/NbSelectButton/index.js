@@ -10,8 +10,6 @@ require("core-js/modules/es.symbol.js");
 
 require("core-js/modules/es.symbol.description.js");
 
-require("core-js/modules/es.object.to-string.js");
-
 require("core-js/modules/es.symbol.iterator.js");
 
 require("core-js/modules/es.array.iterator.js");
@@ -39,11 +37,11 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = NbSelectButton;
 
+require("core-js/modules/es.object.to-string.js");
+
 require("core-js/modules/es.array.slice.js");
 
 require("core-js/modules/es.array.map.js");
-
-require("core-js/modules/es.array.concat.js");
 
 var _react = _interopRequireWildcard(require("react"));
 
@@ -53,7 +51,7 @@ var _indexModule = _interopRequireDefault(require("./index.module.less"));
 
 var _antd = require("antd");
 
-var _excluded = ["multiple", "options"];
+var _excluded = ["options", "onChange", "checked"];
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -84,16 +82,25 @@ function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) r
 function NbSelectButton(props) {
   var _classnames2;
 
-  var _props$multiple = props.multiple,
-      multiple = _props$multiple === void 0 ? false : _props$multiple,
-      _props$options = props.options,
+  var _props$options = props.options,
       options = _props$options === void 0 ? [] : _props$options,
+      _props$onChange = props.onChange,
+      onChange = _props$onChange === void 0 ? function () {} : _props$onChange,
+      _props$checked = props.checked,
+      checked = _props$checked === void 0 ? [] : _props$checked,
       rest = _objectWithoutProperties(props, _excluded);
 
-  var _useState = (0, _react.useState)(props.checked.slice()),
+  var multiple = false;
+  var isArray = Object.prototype.toString.call(checked) === '[object Array]';
+
+  var _useState = (0, _react.useState)(isArray ? checked.slice() : checked),
       _useState2 = _slicedToArray(_useState, 2),
       checkedArr = _useState2[0],
       setCheckedArr = _useState2[1];
+
+  if (isArray) {
+    multiple = true;
+  }
 
   return /*#__PURE__*/_react.default.createElement("div", {
     className: _indexModule.default['nb-select-button-wrapper']
@@ -103,23 +110,26 @@ function NbSelectButton(props) {
     var _classnames;
 
     return /*#__PURE__*/_react.default.createElement("div", {
-      key: "nb-".concat(multiple, "-button-").concat(i),
+      key: "nb-multiple-button-".concat(i),
       className: _indexModule.default['nb-multi-button-wrapper']
     }, /*#__PURE__*/_react.default.createElement(_antd.Checkbox, _extends({}, rest, {
       onClick: function onClick() {
-        props.onClick(i);
         var state = checkedArr.slice();
         state[i] = !checkedArr[i];
         setCheckedArr(state);
+        onChange(state);
       },
       className: _indexModule.default['single-checkbox'],
       value: option.value ? option.value : option
     }), option.label ? option.label : option), /*#__PURE__*/_react.default.createElement("div", {
       className: (0, _classnames3.default)((_classnames = {}, _defineProperty(_classnames, _indexModule.default["nb-select-button"], true), _defineProperty(_classnames, _indexModule.default["nb-checked-button"], checkedArr[i]), _defineProperty(_classnames, _indexModule.default["nb-multi-button"], multiple), _classnames))
-    }, props.children));
+    }, option.label ? option.label : option));
   }))) : /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement("div", {
-    className: (0, _classnames3.default)((_classnames2 = {}, _defineProperty(_classnames2, _indexModule.default["nb-select-button"], true), _defineProperty(_classnames2, _indexModule.default["nb-checked-button"], props.checked), _defineProperty(_classnames2, _indexModule.default["nb-multi-button"], multiple), _classnames2))
+    className: (0, _classnames3.default)((_classnames2 = {}, _defineProperty(_classnames2, _indexModule.default["nb-select-button"], true), _defineProperty(_classnames2, _indexModule.default["nb-checked-button"], checked), _defineProperty(_classnames2, _indexModule.default["nb-multi-button"], multiple), _classnames2))
   }, props.children), /*#__PURE__*/_react.default.createElement(_antd.Checkbox, _extends({
+    onClick: function onClick() {
+      return onChange();
+    },
     className: _indexModule.default['single-checkbox']
   }, props))));
 }

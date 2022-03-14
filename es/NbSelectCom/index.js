@@ -58,8 +58,6 @@ function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) r
 function NbSelectCom(props) {
   var _classnames;
 
-  console.log(props.size); // TODO:超过一行的选项没有处理
-
   var _props$lineHeight = props.lineHeight,
       lineHeight = _props$lineHeight === void 0 ? props.size === 'large' ? 80 : props.size === 'middle' ? 64 : 54 : _props$lineHeight,
       _props$maxTagCount = props.maxTagCount,
@@ -104,7 +102,8 @@ function NbSelectCom(props) {
     })
   }), optionslist.map(function (option, index) {
     return /*#__PURE__*/_react.default.createElement(_antd.Select.Option, {
-      key: option.value
+      key: option.value,
+      value: option.value
     }, /*#__PURE__*/_react.default.createElement("div", {
       className: (0, _classnames2.default)({
         'not-line-content': index === props.optionslist.length - 1,

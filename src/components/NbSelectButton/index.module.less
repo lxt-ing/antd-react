@@ -17,15 +17,9 @@
     cursor: pointer;
     }
     .nb-multi-button.nb-checked-button{
-      &::after{
-        font-family: "iconfont";
-        content:'\e644';
-        position: absolute;
-        bottom: -11px;
-        right: -1px;
-        font-size: 32px;
-        color:@primary-color;
-      }
+      background: transparent url("../images/multi-select.png") no-repeat;
+      background-position: 36px 28px;
+      background-size: 34px;
     }
     .nb-checked-button{
       background: @F2F7FD;
@@ -39,6 +33,10 @@
       bottom: 0;
       left: 0;
       opacity: 0;
+      .ant-checkbox{
+        display: block;
+        height: 100%;
+      }
     }
     .multi-checkboxes{
       display: flex;

@@ -113,12 +113,6 @@ Object.defineProperty(exports, "NbSearch", {
     return _NbSearch.default;
   }
 });
-Object.defineProperty(exports, "NbSelect", {
-  enumerable: true,
-  get: function get() {
-    return _NbSelect.default;
-  }
-});
 Object.defineProperty(exports, "NbSelectButton", {
   enumerable: true,
   get: function get() {
@@ -149,8 +143,6 @@ require("./style/NbStyle.less");
 var _NbButton = _interopRequireDefault(require("./NbButton"));
 
 var _NbSelectButton = _interopRequireDefault(require("./NbSelectButton"));
-
-var _NbSelect = _interopRequireDefault(require("./NbSelect"));
 
 var _NbInput = _interopRequireDefault(require("./NbInput"));
 
