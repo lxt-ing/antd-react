@@ -53,10 +53,10 @@ function App() {
           hello2
         </Select.Option>
       </Select> */}
-      <NbSelectCom optionslist={[{label:1, value:1}]} onChange={()=>{
+      <NbDropdown trigger={['click']} arrow={true} DropdownMenu={<NbMenu selectable={true} content={menuContent} menuList={[1,2,3,4,5,6]}><a>123s</a></NbMenu>} DropdownTitle={<a>hello</a>}></NbDropdown>
+      <NbSelectCom  mode={'multiple'} size={'large'} optionslist={[{label:1, value:1}, {label:1, value:2}, {label:1, value:3}]} onChange={()=>{
       }}></NbSelectCom>
       <NbTabs selectIndex={index} onChange={(index)=>{setIndex(index)}}></NbTabs>
-      <button onClick={()=>{console.log('带年纪');}}>daij</button>
        {/* <NbSelectCom optionslist={[{label:1, value:1}]} onChange={()=>{
       }}></NbSelectCom> */}
       {/* <NbSelectButton checked={checked1} options={[12,23,34]} onChange={(data)=>{
@@ -69,7 +69,6 @@ function App() {
       <h2 onClick={()=>setVisible(!visible)}>点击</h2>
       <NbConfirm visible={visible} onCancel={()=>setVisible(false)}></NbConfirm>
       */}
-      {/* <NbDropdown trigger={['click']} arrow={true} DropdownMenu={<NbMenu selectable={true} content={menuContent} menuList={[1,2,3,4,5,6]}><a>123s</a></NbMenu>} DropdownTitle={<a>hello</a>}></NbDropdown> */}
 
       {/* <NbDatePicker onChange={(date, dateString)=>{
         console.log(date, dateString)

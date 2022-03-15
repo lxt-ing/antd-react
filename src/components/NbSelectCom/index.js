@@ -5,7 +5,7 @@ import classnames from 'classnames'
 import Icon from '../Icon'
 export default function NbSelectCom(props) {
   const {
-    maxShowDropdonwCount=5,
+    maxShowDropdonwCount = 5,
     lineHeight = props.size === 'large' ? 80 : (props.size === 'middle' ? 64 : 54),
     maxTagCount = 1,
     check = true,
@@ -34,26 +34,11 @@ export default function NbSelectCom(props) {
         [`nb-${size}`]: true,
         'check-select': check,
       })}
-      removeIcon={<Icon size="21px" type="fox" color="#8B8EA0"></Icon>}
+      removeIcon={<Icon size="24px" type="fox" color="#8B8EA0"></Icon>}
     >
       {optionslist.map((option, index) => (
         <Select.Option className={'nb-select-option'} key={option.value} value={option.value}>
           {option.label}
-          {/* <div
-            className={classnames({
-              'not-line-content': index === props.optionslist.length - 1,
-              'line-content': index !== props.optionslist.length - 1,
-            })}
-          > */}
-          {/* <div>
-            {option.label} */}
-          {/* {content ? content({ data: { index, ...option } }) : option.label} */}
-          {/* </div> */}
-
-          {/* </div> */}
-          {/* {index !== props.optionslist.length - 1 ? (
-            <div className="line"></div>
-          ) : null} */}
         </Select.Option>
       ))}
     </Select>

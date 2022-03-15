@@ -8,18 +8,6 @@ require("core-js/modules/es.symbol.js");
 
 require("core-js/modules/es.object.define-property.js");
 
-require("core-js/modules/es.array.filter.js");
-
-require("core-js/modules/es.object.to-string.js");
-
-require("core-js/modules/es.object.get-own-property-descriptor.js");
-
-require("core-js/modules/web.dom-collections.for-each.js");
-
-require("core-js/modules/es.object.get-own-property-descriptors.js");
-
-require("core-js/modules/es.object.define-properties.js");
-
 require("core-js/modules/es.object.assign.js");
 
 Object.defineProperty(exports, "__esModule", {
@@ -44,10 +32,6 @@ var _excluded = ["maxShowDropdonwCount", "lineHeight", "maxTagCount", "check", "
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
-
-function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
-
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
@@ -98,25 +82,15 @@ function NbSelectCom(props) {
       'not-check': !check && !props.mode
     }, _defineProperty(_classnames, "nb-".concat(size), true), _defineProperty(_classnames, 'check-select', check), _classnames)),
     removeIcon: /*#__PURE__*/_react.default.createElement(_Icon.default, {
-      size: "21px",
+      size: "24px",
       type: "fox",
       color: "#8B8EA0"
     })
   }), optionslist.map(function (option, index) {
     return /*#__PURE__*/_react.default.createElement(_antd.Select.Option, {
+      className: 'nb-select-option',
       key: option.value,
       value: option.value
-    }, /*#__PURE__*/_react.default.createElement("div", {
-      className: (0, _classnames2.default)({
-        'not-line-content': index === props.optionslist.length - 1,
-        'line-content': index !== props.optionslist.length - 1
-      })
-    }, content ? content({
-      data: _objectSpread({
-        index: index
-      }, option)
-    }) : option.label), index !== props.optionslist.length - 1 ? /*#__PURE__*/_react.default.createElement("div", {
-      className: "line"
-    }) : null);
+    }, option.label);
   })));
 }
