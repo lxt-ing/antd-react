@@ -117,7 +117,7 @@ import components and use it like antd.
 占用的antd部分字段:
 |参数|值|
 |:-:|:-:|
-|prefix|Icon组件|
+|enterButton|Icon组件|
 
 
 #### NbSelectButton

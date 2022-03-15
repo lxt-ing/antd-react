@@ -89,12 +89,6 @@ var LoadingText = function LoadingText(props) {
 };
 
 var NbResult = function NbResult(props) {
-  (0, _react.useEffect)(function () {
-    return function () {
-      clearTimeout(NbResult.timeId);
-    };
-  }, []);
-
   var _props$type = props.type,
       type = _props$type === void 0 ? "success" : _props$type,
       _props$maskClosable = props.maskClosable,
@@ -109,6 +103,12 @@ var NbResult = function NbResult(props) {
       width = _props$width === void 0 ? "720px" : _props$width,
       rest = _objectWithoutProperties(props, _excluded);
 
+  (0, _react.useEffect)(function () {
+    console.log('result --- 123');
+    return function () {
+      clearTimeout(NbResult.timeId);
+    };
+  }, []);
   return /*#__PURE__*/_react.default.createElement(_antd.Modal, _extends({
     closable: false,
     mask: mask,

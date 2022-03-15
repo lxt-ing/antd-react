@@ -35,7 +35,7 @@ function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) r
 
 function NbInput(props) {
   var _props$placeholder = props.placeholder,
-      placeholder = _props$placeholder === void 0 ? '' : _props$placeholder,
+      placeholder = _props$placeholder === void 0 ? '请输入' : _props$placeholder,
       _props$prefix = props.prefix,
       prefix = _props$prefix === void 0 ? /*#__PURE__*/_react.default.createElement(_Icon.default, {
     color: '#8B8EA0',
@@ -47,8 +47,12 @@ function NbInput(props) {
   return /*#__PURE__*/_react.default.createElement("div", {
     className: "nb-search"
   }, /*#__PURE__*/_react.default.createElement(_antd.Input.Search, _extends({
-    prefix: prefix,
+    enterButton: /*#__PURE__*/_react.default.createElement(_Icon.default, {
+      color: '#8B8EA0',
+      type: "sousuo",
+      size: '32px'
+    }),
     allowClear: true,
-    placeholder: placeholder ? placeholder : '请输入'
+    placeholder: placeholder
   }, rest)));
 }

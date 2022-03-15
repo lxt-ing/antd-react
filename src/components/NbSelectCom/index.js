@@ -4,7 +4,6 @@ import 'antd/lib/select/style'
 import classnames from 'classnames'
 import Icon from '../Icon'
 export default function NbSelectCom(props) {
-  // TODO:超过一行的选项没有处理
   const {
     maxShowDropdonwCount=5,
     lineHeight = props.size === 'large' ? 80 : (props.size === 'middle' ? 64 : 54),
@@ -38,18 +37,23 @@ export default function NbSelectCom(props) {
       removeIcon={<Icon size="21px" type="fox" color="#8B8EA0"></Icon>}
     >
       {optionslist.map((option, index) => (
-        <Select.Option key={option.value} value={option.value}>
-          <div
+        <Select.Option className={'nb-select-option'} key={option.value} value={option.value}>
+          {option.label}
+          {/* <div
             className={classnames({
               'not-line-content': index === props.optionslist.length - 1,
               'line-content': index !== props.optionslist.length - 1,
             })}
-          >
-            {content ? content({ data: { index, ...option } }) : option.label}
-          </div>
-          {index !== props.optionslist.length - 1 ? (
+          > */}
+          {/* <div>
+            {option.label} */}
+          {/* {content ? content({ data: { index, ...option } }) : option.label} */}
+          {/* </div> */}
+
+          {/* </div> */}
+          {/* {index !== props.optionslist.length - 1 ? (
             <div className="line"></div>
-          ) : null}
+          ) : null} */}
         </Select.Option>
       ))}
     </Select>

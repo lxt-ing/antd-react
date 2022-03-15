@@ -1,7 +1,6 @@
 import React from "react"
 import Style from './index.module.less'
 import classnames from "classnames"
-// TODO:页签部分
 export default function NbTaps(props){
   const {options=['菜单一','菜单二','菜单三'], selectIndex=0, onChange, type="page"} = props;
   return (

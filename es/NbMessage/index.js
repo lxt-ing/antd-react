@@ -23,6 +23,8 @@ exports.default = void 0;
 
 require("core-js/modules/es.object.define-property.js");
 
+var _react = _interopRequireDefault(require("react"));
+
 var _antd = require("antd");
 
 var _Icon = _interopRequireDefault(require("../Icon"));
@@ -38,17 +40,17 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 var Content = function Content(props) {
-  return /*#__PURE__*/React.createElement("span", null, props.text);
+  return /*#__PURE__*/_react.default.createElement("span", null, props.text);
 };
 
 var NbMessage = {
   success: function success(props) {
     _antd.message.success(_objectSpread(_objectSpread({}, props), {}, {
       className: 'nb-success-message',
-      content: /*#__PURE__*/React.createElement(Content, {
+      content: /*#__PURE__*/_react.default.createElement(Content, {
         text: props.content
       }),
-      icon: /*#__PURE__*/React.createElement(_Icon.default, {
+      icon: /*#__PURE__*/_react.default.createElement(_Icon.default, {
         type: "gouxuan",
         color: "#00A572",
         size: "56px"
@@ -58,10 +60,10 @@ var NbMessage = {
   error: function error(props) {
     _antd.message.error(_objectSpread(_objectSpread({}, props), {}, {
       className: 'nb-error-message',
-      content: /*#__PURE__*/React.createElement(Content, {
+      content: /*#__PURE__*/_react.default.createElement(Content, {
         text: props.content
       }),
-      icon: /*#__PURE__*/React.createElement(_Icon.default, {
+      icon: /*#__PURE__*/_react.default.createElement(_Icon.default, {
         type: "fox",
         color: "#E52D3E",
         size: "56px"
@@ -71,10 +73,10 @@ var NbMessage = {
   warn: function warn(props) {
     _antd.message.warning(_objectSpread(_objectSpread({}, props), {}, {
       className: 'nb-warning-message',
-      content: /*#__PURE__*/React.createElement(Content, {
+      content: /*#__PURE__*/_react.default.createElement(Content, {
         text: props.content
       }),
-      icon: /*#__PURE__*/React.createElement(_Icon.default, {
+      icon: /*#__PURE__*/_react.default.createElement(_Icon.default, {
         type: "gouxuan",
         color: "#F98900",
         size: "56px"
