@@ -60,7 +60,7 @@ import components and use it like antd.
 |参数|说明|类型|默认值|可取值|
 |:-:|:-:|:-:|:-:|:-:|
 |selectIndex|选中tab索引|Number|--|--|
-|type|tab类型|String|'page'|'page' 或者 其他字符串|
+|type|tab类型|String|'page'|'page'、"title"、 或者 其他字符串|
 |options|tab列表|Array|['菜单一','菜单二','菜单三']|--|
 |onChange|切换tab方法|Function|--|
 
@@ -88,7 +88,6 @@ import components and use it like antd.
 |参数|说明|类型|默认值|可取值|
 |:-:|:-:|:-:|:-:|:-:|
 |check|是否显示下拉框列表后的自定义√,如果多选，设置true会替换antd自带的√|Boolean|true|ture、false|
-|content|下拉框内容|Function|null|函数 ({data={index, ...option}})=>{return <><div></div></>}|
 |optionslist|下拉列表|Array|[]|[{label:'', value:''}]|
 |maxShowDropdonwCount|默认下拉框展示的最大条数，超出滚动显示|Number|5|--|
 
@@ -381,6 +380,62 @@ className
 参数Api (antd-Modal组件)
 无，使用antd的Api
 
+#### NbNumberCounter
+使用方式
+```
+<NbNumberCounter type="danger" value={value} onChange={(value)=>{
+  setValue(value)
+}}></NbNumberCounter>
+```
+参数Api (非antd)
+|参数|说明|类型|默认值|可取值|备注|
+|:-:|:-:|:-:|:-:|:-:|:-:|
+|type|数字框类型|String|'default'|'default'、'danger'、'normal'|蓝色、红色、黑色|
+|value|数字框值|Number|0|数字|输入非数字，显示0|
+|onChange|数字改变事件|Function|(value)=>{}|(value)=>{}||
 
+#### NbSwitch
+使用方式
+```
+<NbSwitch></NbSwitch>
+```
+参数Api (antd-Switch组件)
+无，使用antd的Api
+
+#### NbArrow
+使用方式
+```
+<NbArrow open={checked}></NbArrow>
+```
+参数Api (非antd)
+|参数|说明|类型|默认值|可取值|备注|
+|:-:|:-:|:-:|:-:|:-:|:-:|
+|open|是否展开|Boolean|false|||
+
+#### NbRadio NbRadioGroup
+使用方式
+```
+<NbRadioGroup defaultValue={1}>
+  <NbRadio value={1}></NbRadio>
+  <NbRadio value={2}></NbRadio>
+  <NbRadio value={3}></NbRadio>
+</NbRadioGroup>
+```
+参数Api (antd-radio、radio.Group组件)
+无，使用antd的Api
+
+#### NbCheckbox NbCheckboxGroup
+使用方式
+```
+<NbCheckboxGroup defaultValue={['A']} onChange={(value)=>{
+  console.log(value, '---致');
+}}>
+  <NbCheckbox value={'A'} disabled />
+  <NbCheckbox value={'B'} indeterminate={false} />
+  <span>hello</span>
+</NbCheckboxGroup>
+```
+参数Api (antd-checkbox、checkbox.Group组件)
+无，使用antd的Api
 
 

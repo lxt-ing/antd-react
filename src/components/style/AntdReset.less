@@ -664,6 +664,7 @@
     }
     .ant-select-arrow {
       right: 16px;
+      margin-top: -16px;
     }
   }
 }
@@ -1242,4 +1243,85 @@
     color: #181D41;
     line-height: 42px;
   }
+}
+
+// 复选框
+.nb-checkbox,.nb-radio{
+  display: inline-block;
+  width: 80px;
+  height: 80px;
+  // background: #ffffff ;
+  position: relative;
+  .ant-checkbox-input, .ant-radio-input{
+    display: block;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    &::before{
+      font-family: "iconfont";
+      content: '\e64c';
+      position: absolute;
+      top:0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      font-size: 32px;
+      line-height: 80px;
+      color:#0066ee;
+      background-color: #fff;
+    }
+    &:checked::before{
+      content: '\e64a';
+    }
+  }
+  .ant-checkbox-indeterminate{
+    .ant-checkbox-input::before{
+      content: '\e64d';
+    }
+  }
+  .ant-checkbox-disabled{
+    .ant-checkbox-input::before{
+      color: #CAD0E0;
+    }
+  }
+}
+// 单选框
+.nb-radio{
+  .ant-radio-input{
+    &::before{
+      content: '\e647';
+    }
+    &:checked::before{
+      content: '\e648';
+    }
+  }
+}
+// 开关
+.nb-switch{
+  .ant-switch{
+    width: 96px;
+    height: 48px;
+    background-color: #CAD0E0;
+    .ant-switch-handle{
+      width: 44px;
+      height: 44px;
+      top:0;
+      left: 0;
+      &::before{
+        top:4px;
+        left: 4px;
+        border-radius: 50%;
+      }
+    }
+  }
+  .ant-switch-disabled{
+    background-color: #ECF0F5;
+  }
+  .ant-switch-checked {
+    background-color: #00A572;
+    .ant-switch-handle{
+      left: calc(100% - 44px - 4px);  
+    }
+  }
+
 }

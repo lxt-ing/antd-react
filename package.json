@@ -1,6 +1,6 @@
 {
   "name": "nb-ui-components",
-  "version": "1.3.2",
+  "version": "1.3.3",
   "private": false,
   "homepage": ".",
   "main": "lib/index.js",

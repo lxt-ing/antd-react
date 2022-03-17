@@ -38,7 +38,10 @@
   }
   .ant-select.ant-select-single:not(.ant-select-customize-input)
     .ant-select-selector
-    .ant-select-selection-search-input {
+    .ant-select-selection-search-input, .ant-select-multiple.ant-select .ant-select-selection-search {
+      .ant-select-selection-search-input{
+        height: 100%;
+      }
     height: 100%;
   }
   .ant-select-sm,
@@ -92,21 +95,12 @@
   .ant-select-show-arrow .ant-select-selection-placeholder {
     padding-right: 40px;
   }
-  // 下拉选项部分
-  .ant-select-item-option-state {
-    position: absolute;
-    right: 24px;
-    top: 50%;
-    transform: translateY(-50%);
-  }
-  .line {
-    width: 100%;
-    height: 1px;
-    background: @E4E7EF;
-  }
 
   // 多选
   .ant-select.ant-select-multiple {
+    .ant-select-selection-overflow, .ant-select-selection-overflow-item, .ant-select-selection-item{
+      height: 100%;
+    }
     .ant-select-selection-overflow-item {
       margin-right: @BorderRadius;
       &:last-child {
@@ -150,9 +144,6 @@
     .ant-select-selection-item-content {
       font-size: 24px;
       color: @default-text-color;
-      .line {
-        height: 0;
-      }
     }
   }
   // 输入框
@@ -173,12 +164,6 @@
 .nb-middle,
 .nb-small {
   user-select: none;
-  .not-line-content,
-  .line-content {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-  }
   &.ant-select-dropdown {
     padding: 0 !important;
     border-radius: @BorderRadius!important;
@@ -195,14 +180,9 @@
     font-size: 24px;
     color: @default-text-color-70;
     .ant-select-item-option-content {
+      height: 100%;
       display: flex;
-      flex-direction: column;
-      .line-content {
-        height: calc(100% - 1px);
-      }
-      .not-line-content {
-        height: 100%;
-      }
+      align-items: center;
     }
   }
   .ant-select-item-option-active:not(.ant-select-item-option-disabled),
@@ -246,17 +226,11 @@
     .ant-select-selector {
     height: 100%;
   }
-  .ant-select-dropdown .ant-select-item {
+  .nb-select-option{
     height: 56px;
   }
   .ant-select-item-option-content > div {
     line-height: 54px;
-  }
-  .ant-select-item-option-selected {
-    .line-content,
-    .not-line-content {
-      padding-right: 30px;
-    }
   }
 }
 .nb-large {
@@ -265,32 +239,23 @@
     .ant-select-selector {
     height: 80px;
   }
+  .nb-select-option{
+    height: 80px;
+  }
   .ant-select-item-option-content > div {
     line-height: 80px;
   }
 }
-.nb-middle {
-  .ant-select-item-option-selected {
-    .line-content,
-    .not-line-content {
-      padding-right: 27px;
-    }
-  }
-}
-.check-select .ant-select-item-option-state {
+.check-select .nb-select-option .ant-select-item-option-state {
   display: none;
-}
-.not-check.ant-select-dropdown .ant-select-item-option-selected,
-.not-check.ant-select-dropdown .ant-select-item-option-content {
-  .line-content,
-  .not-line-content {
-    padding-right: 0;
-  }
 }
 .nb-middle .ant-select-item.ant-select-item-option {
   .ant-select-item-option-content > div {
     line-height: 64px;
   }
+}
+.nb-select-option{
+  height: 64px;
 }
 .nb-dropdown.ant-dropdown.ant-dropdown-show-arrow {
   padding-top: 20px;
@@ -403,12 +368,26 @@
   line-height: 78px;
   padding-right: 14px;
 }
-.nb-large .ant-select-item-option-selected {
-  .line-content,
-  .not-line-content {
-    padding: 0 32px 0 0;
+.nb-select-option{
+  position: relative;
+  .ant-select-item-option-state{
+    display: flex;
+    align-items: center;
+  }
+  &:last-child::before{
+      opacity: 0;
+  }
+  &::before{
+    content: '';
+    width: calc(100% - 48px);
+    position: absolute;
+    left: 24px;
+    height: 1px;
+    background: @E4E7EF;
+    bottom: 0;
   }
 }
+
 .check-select.ant-select-dropdown
   .ant-select-item.ant-select-item-option.ant-select-item-option-selected::after {
   font-family: 'iconfont';
@@ -424,19 +403,19 @@
   right: 24px;
 }
 // 多选
-.nb-large.ant-select-multiple.ant-select-lg .ant-select-selection-item {
-  height: 64px;
-  line-height: 64px;
+.nb-large .ant-select-multiple.ant-select-lg .ant-select-selection-item {
+  height: 62px;
+  line-height: 60px;
   padding: 0 6px 0 16px;
 }
-.nb-small.ant-select-multiple.ant-select-sm .ant-select-selection-item {
-  height: 40px;
-  line-height: 39px;
+.nb-small .ant-select-multiple.ant-select-sm .ant-select-selection-item {
+  height: 38px;
+  line-height: 36px;
 }
-.nb-middle.ant-select-multiple.ant-select {
+.nb-middle .ant-select-multiple.ant-select {
   .ant-select-selection-item {
-    height: 48px;
-    line-height: 42px;
+    height: 46px;
+    line-height: 40px;
   }
 }
 // 输入框
@@ -685,6 +664,7 @@
     }
     .ant-select-arrow {
       right: 16px;
+      margin-top: -16px;
     }
   }
 }
@@ -1263,4 +1243,85 @@
     color: #181D41;
     line-height: 42px;
   }
+}
+
+// 复选框
+.nb-checkbox,.nb-radio{
+  display: inline-block;
+  width: 80px;
+  height: 80px;
+  // background: #ffffff ;
+  position: relative;
+  .ant-checkbox-input, .ant-radio-input{
+    display: block;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    &::before{
+      font-family: "iconfont";
+      content: '\e64c';
+      position: absolute;
+      top:0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      font-size: 32px;
+      line-height: 80px;
+      color:#0066ee;
+      background-color: #fff;
+    }
+    &:checked::before{
+      content: '\e64a';
+    }
+  }
+  .ant-checkbox-indeterminate{
+    .ant-checkbox-input::before{
+      content: '\e64d';
+    }
+  }
+  .ant-checkbox-disabled{
+    .ant-checkbox-input::before{
+      color: #CAD0E0;
+    }
+  }
+}
+// 单选框
+.nb-radio{
+  .ant-radio-input{
+    &::before{
+      content: '\e647';
+    }
+    &:checked::before{
+      content: '\e648';
+    }
+  }
+}
+// 开关
+.nb-switch{
+  .ant-switch{
+    width: 96px;
+    height: 48px;
+    background-color: #CAD0E0;
+    .ant-switch-handle{
+      width: 44px;
+      height: 44px;
+      top:0;
+      left: 0;
+      &::before{
+        top:4px;
+        left: 4px;
+        border-radius: 50%;
+      }
+    }
+  }
+  .ant-switch-disabled{
+    background-color: #ECF0F5;
+  }
+  .ant-switch-checked {
+    background-color: #00A572;
+    .ant-switch-handle{
+      left: calc(100% - 44px - 4px);  
+    }
+  }
+
 }

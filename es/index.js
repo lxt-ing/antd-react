@@ -11,6 +11,12 @@ Object.defineProperty(exports, "NbAccount", {
     return _NbAccount.default;
   }
 });
+Object.defineProperty(exports, "NbArrow", {
+  enumerable: true,
+  get: function get() {
+    return _NbArrow.default;
+  }
+});
 Object.defineProperty(exports, "NbBadge", {
   enumerable: true,
   get: function get() {
@@ -27,6 +33,18 @@ Object.defineProperty(exports, "NbCascader", {
   enumerable: true,
   get: function get() {
     return _NbCascader.default;
+  }
+});
+Object.defineProperty(exports, "NbCheckbox", {
+  enumerable: true,
+  get: function get() {
+    return _NbCheckbox.default;
+  }
+});
+Object.defineProperty(exports, "NbCheckboxGroup", {
+  enumerable: true,
+  get: function get() {
+    return _NbCheckboxGroup.default;
   }
 });
 Object.defineProperty(exports, "NbConfigProvider", {
@@ -77,6 +95,12 @@ Object.defineProperty(exports, "NbMessage", {
     return _NbMessage.default;
   }
 });
+Object.defineProperty(exports, "NbNumberCounter", {
+  enumerable: true,
+  get: function get() {
+    return _NbNumberCounter.default;
+  }
+});
 Object.defineProperty(exports, "NbPages", {
   enumerable: true,
   get: function get() {
@@ -93,6 +117,18 @@ Object.defineProperty(exports, "NbProgress", {
   enumerable: true,
   get: function get() {
     return _NbProgress.default;
+  }
+});
+Object.defineProperty(exports, "NbRadio", {
+  enumerable: true,
+  get: function get() {
+    return _NbRadio.default;
+  }
+});
+Object.defineProperty(exports, "NbRadioGroup", {
+  enumerable: true,
+  get: function get() {
+    return _NbRadioGroup.default;
   }
 });
 Object.defineProperty(exports, "NbRangePicker", {
@@ -131,6 +167,12 @@ Object.defineProperty(exports, "NbSteps", {
     return _NbSteps.default;
   }
 });
+Object.defineProperty(exports, "NbSwitch", {
+  enumerable: true,
+  get: function get() {
+    return _NbSwitch.default;
+  }
+});
 Object.defineProperty(exports, "NbTabs", {
   enumerable: true,
   get: function get() {
@@ -145,6 +187,14 @@ var _NbButton = _interopRequireDefault(require("./NbButton"));
 var _NbSelectButton = _interopRequireDefault(require("./NbSelectButton"));
 
 var _NbInput = _interopRequireDefault(require("./NbInput"));
+
+var _NbCheckbox = _interopRequireDefault(require("./NbCheckbox"));
+
+var _NbRadio = _interopRequireDefault(require("./NbRadio"));
+
+var _NbCheckboxGroup = _interopRequireDefault(require("./NbCheckboxGroup"));
+
+var _NbRadioGroup = _interopRequireDefault(require("./NbRadioGroup"));
 
 var _NbSearch = _interopRequireDefault(require("./NbSearch"));
 
@@ -183,5 +233,11 @@ var _NbRangePicker = _interopRequireDefault(require("./NbRangePicker"));
 var _NbProgress = _interopRequireDefault(require("./NbProgress"));
 
 var _NbConfigProvider = _interopRequireDefault(require("./NbConfigProvider"));
+
+var _NbArrow = _interopRequireDefault(require("./NbArrow"));
+
+var _NbSwitch = _interopRequireDefault(require("./NbSwitch"));
+
+var _NbNumberCounter = _interopRequireDefault(require("./NbNumberCounter"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }

@@ -30,7 +30,7 @@ function NbTaps(props) {
       _props$type = props.type,
       type = _props$type === void 0 ? "page" : _props$type;
   return /*#__PURE__*/_react.default.createElement("div", {
-    className: (0, _classnames4.default)((_classnames = {}, _defineProperty(_classnames, _indexModule.default['tabs-wrapper'], true), _defineProperty(_classnames, _indexModule.default['page-tabs'], type === 'page'), _defineProperty(_classnames, _indexModule.default['first-tab'], selectIndex === 0), _defineProperty(_classnames, _indexModule.default['last-tab'], selectIndex === options.length - 1), _classnames))
+    className: (0, _classnames4.default)((_classnames = {}, _defineProperty(_classnames, _indexModule.default['tabs-wrapper'], true), _defineProperty(_classnames, _indexModule.default['page-tabs'], type === 'page'), _defineProperty(_classnames, _indexModule.default['title-tabs'], type === 'title'), _defineProperty(_classnames, _indexModule.default['first-tab'], selectIndex === 0), _defineProperty(_classnames, _indexModule.default['last-tab'], selectIndex === options.length - 1), _classnames))
   }, options.map(function (item, index) {
     var _classnames2, _classnames3;
 

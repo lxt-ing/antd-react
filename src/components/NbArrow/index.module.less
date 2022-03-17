@@ -1,0 +1,26 @@
+.nb-arrow{
+  width: 80px;
+  height: 80px;
+  position: relative;
+  background: none;
+  border: none;
+  padding: 0;
+  &::before{
+    font-family: iconfont;
+    content: '\e636';
+    color: #8B8EA0;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top:0;
+    left: 0;
+    font-size: 32px;
+    text-align: center;
+    line-height: 80px;
+    transition: all 0.3s;
+    transform: rotate(0deg);
+  }
+  &.nb-arrow-opened::before{
+    transform: rotate(-90deg);
+  }
+}

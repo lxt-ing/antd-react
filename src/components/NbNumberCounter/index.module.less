@@ -1,0 +1,56 @@
+.nb-number-counter{
+  display: flex;
+  width: 184px;
+  height: 48px;
+  border: 1px solid #CAD0E0;
+  border-radius: 8px;
+  background-color: #fff;
+  button{
+    flex:0 0 48px;
+    height: 100%;
+    border-radius: 8px;
+    color: #181D41;
+    background-color: transparent;
+    cursor: pointer;
+    position: relative;
+    span{
+      width: 25px;
+      height: 1px;
+      background: #181D41;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%,-50%);
+    }
+    .add-line{
+      transform: rotate(90deg) translate(0, 14px);
+    }
+  } 
+  input{
+    height: 100%;
+    width: 88px;
+    border: 1px solid #CAD0E0;
+    border-bottom: 0;
+    border-top: 0;
+    text-align: center;
+    font-size: 36px;
+    font-family: OPPOSans-B, OPPOSans;
+    outline: none;
+  }
+  .nb-default-input{
+    color: #0066ee;
+  }
+  .nb-danger-input{
+    color: #E52D3E;
+  }
+  .nb-normal-input{
+    color: #181D41;
+  }
+  button:disabled{
+    color: #CAD0E0;
+    cursor: not-allowed;
+    span{
+      background-color: #CAD0E0;
+    }
+  }
+}

@@ -8,6 +8,7 @@ export default function NbTaps(props){
       classnames({
         [Style['tabs-wrapper']]:true,
         [Style['page-tabs']]:type === 'page',
+        [Style['title-tabs']]:type === 'title',
         [Style['first-tab']]:selectIndex === 0,
         [Style['last-tab']]:selectIndex === options.length - 1,
       })
