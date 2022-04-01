@@ -2,9 +2,9 @@ import React from "react"
 import Style from './index.module.less'
 import classnames from "classnames"
 export default function NbTaps(props){
-  const {options=['菜单一','菜单二','菜单三'], selectIndex=0, onChange, type="page"} = props;
+  const {style={background:'#fff'},options=['菜单一','菜单二','菜单三'], selectIndex=0, onChange, type="page"} = props;
   return (
-    <div className={
+    <div style={style} className={
       classnames({
         [Style['tabs-wrapper']]:true,
         [Style['page-tabs']]:type === 'page',

@@ -1,0 +1,111 @@
+@import "../style/variable.less";
+.nb-table{
+  width: 100%;
+  max-width: 1920px;
+  background-color: @ECF0F5;
+  .table{
+    font-size: 24px;
+    .tr{
+      height: 80px;
+      line-height: 80px;
+      display: flex;
+      align-items: center;
+    }
+  }
+  .th,.td{
+    padding:0;
+    text-align: left;
+  }
+  .tableHeader{
+    padding:0 32px;
+  }
+  .checkBodyHeader{
+    background-color: @white-text-color;
+  }
+  .bodyHeader{
+    padding: 0 32px;
+    background-color: @white-text-color;
+    .tr{
+      .fold-icon{
+        text-align: right;
+        // position: relative;
+        // left: 14px;
+        // margin-right: -14px;
+        flex:1;
+        >button{
+          display: inline-flex;
+          &::before{
+            left: 14px;
+          }
+        }
+      }
+    }
+    .td{
+      height: 100%;
+      border-bottom: 1px solid #E4E7EF;
+    }
+  }
+  .thead{
+    height: 80px;
+    color:@default-text-color-50;
+  }
+  .checkRow{
+    position: relative;
+    padding-left: 88px;
+    .checkbox{
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 88px;
+      &::before{
+        content:'';
+        position: absolute;
+        bottom: -1px;
+        left:0;
+        height: 1px;
+        width: 20px;
+        background-color: #fff;
+      }
+    }
+  }
+  
+  .tbody{
+    font-family: OPPOSans-M, OPPOSans;
+    color: @default-text-color-70;
+  }
+  .strong-part{
+    font-size: 28px;
+    font-family: OPPOSans-B, OPPOSans;
+    color: @default-text-color;
+  }
+  .row-number{
+    font-size: 36px;
+  }
+  .checkOccupied{
+    width: 56px;
+    height: 80px;
+  }
+  .innerRow{
+    text-align: right;
+    .innerTable{
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      height: auto;
+    }
+    .hideChildren{
+      height: 0;
+      overflow: hidden;
+    }
+    .tr{
+      background-color:  #ECF0F5;
+    }
+    .tbody .tr{
+      color: #181D41;
+    }
+  }
+  .bold{
+    font-family: OPPOSans-B, OPPOSans;
+  }
+}

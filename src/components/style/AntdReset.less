@@ -1,6 +1,9 @@
 @import './variable.less';
 // 下拉框、下拉select
 [class^='nb-'] {
+  input[type="checkbox"], input[type="radio"]{
+    appearance: none;
+  }
   input {
     font-size: 24px;
     font-family: OPPOSans-B, OPPOSans;
@@ -1272,7 +1275,7 @@
       font-size: 32px;
       line-height: 80px;
       color:#0066ee;
-      background-color: #fff;
+      background-color: transparent;
     }
     &:checked::before{
       content: '\e64a';
@@ -1328,4 +1331,13 @@
     }
   }
 
+}
+
+// 表格
+.nb-table{
+  .nb-checkbox{
+    .ant-checkbox-input::before{
+      font-size: 36px;
+    }
+  }
 }
