@@ -51,12 +51,9 @@ function App() {
       specification: '0000…0000',
       zh: '中文内容',
       num: '00000000',
-      number: '000000',
+      number: '12',
       unit: '盒',
-      addNum: <NbNumberCounter value={value} onChange={(value)=>{
-        console.log(value);
-        setValue(value)
-      }}></NbNumberCounter>,
+      operator:<OptGroup id={'1'}></OptGroup>,
       children: [
         {
           columns: [
@@ -195,7 +192,7 @@ function App() {
     {
       title: '数量',
       dataIndex: 'number',
-      width: 152,
+      width: 186,
       strong: true,
       align: 'center',
     },
@@ -206,19 +203,57 @@ function App() {
       align: 'center',
     },
     {
-      title: '',
-      dataIndex: 'addNum',
-      style:{
-        paddingTop:'15px'
-      }
+      title:'',
+      dataIndex: "operator",
     }
+    // {
+    //   title: '',
+    //   dataIndex: 'addNum',
+    //   style:{
+    //     paddingTop:'15px'
+    //   }
+    // }
   ]
-  function OptGroup() {
+  function OptGroup(props) {
+    const {id} = props;
+    let editRowIndex = dataSource.findIndex(item=>item.key===id)
+    const data = dataSource.slice()
     return (
       <div style={{ display: 'flex' }}>
-        <NbButton type="text-minor">编辑</NbButton>
+        <NbButton type="text-minor" onClick={()=>{
+          const item = data[editRowIndex];
+          item.changedNumber = item['number'];
+          item.showNumberCounter = true;
+          item['operator'] = <OptGroup1 rowIndex={editRowIndex}></OptGroup1> ;
+          setDataSource(data)
+        }}>编辑</NbButton>
         <div style={{ opacity: 0, width: '20px' }}></div>
-        <NbButton type="text-primary">确定</NbButton>
+        <NbButton type="text-primary" onClick={()=>{
+          data.splice(editRowIndex, 1)
+          setDataSource(data)
+        }}>删除</NbButton>
+      </div>
+    )
+  }
+  function OptGroup1(props) {
+    const data = dataSource.slice();
+    const item = data[props.rowIndex];
+    return (
+      <div style={{ display: 'flex' }}>
+        <NbButton type="text-minor" onClick={()=>{
+          item['showNumberCounter'] = false;
+          item['number'] = item.changedNumber;
+          item['operator'] = <OptGroup id={item['key']}></OptGroup> ;
+          // 调接口
+          setDataSource(data)
+        }}>保存</NbButton>
+        <div style={{ opacity: 0, width: '20px' }}></div>
+        <NbButton type="text-primary" onClick={()=>{
+          const data = dataSource.slice();
+          item['operator'] = <OptGroup id={item['key']}></OptGroup> ;
+          item['showNumberCounter'] = false;
+          setDataSource(data)
+        }}>取消</NbButton>
       </div>
     )
   }

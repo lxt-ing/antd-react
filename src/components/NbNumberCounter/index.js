@@ -3,7 +3,9 @@ import Style from "./index.module.less"
 import classnames from "classnames"
 export default function NbSwitch(props){
   const {type='default',onChange=(value)=>{}, value=0,...rest} = props;
+  console.log(value);
   useEffect(()=>{
+    console.log(value);
     if(isNaN(value)){
       onChange(0)
     }

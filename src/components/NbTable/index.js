@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{useEffect} from 'react'
 import NbCheckBox from '../NbCheckbox'
 import Style from './index.module.less'
 import NbSelectCom from '../NbSelectCom'
@@ -9,10 +9,14 @@ import NbButton from '../NbButton'
 import NbNumberCounter from '../NbNumberCounter'
 export default function NbTable(props) {
   const {fold=false, rowSelection = false, dataSource=[],columns=[], foldRow=(data)=>{console.log(data);} } = props;
-  const changeData = (i)=>{
+  const changeData = (fold, rowIndex, colKey, value)=>{
     const data = dataSource.slice()
-    data[i].open = !data[i].open
-    foldRow(data)
+    if(fold){
+      data[rowIndex].open = !data[rowIndex].open
+    }else{
+      data[rowIndex][colKey] = value;
+    }
+    foldRow(data) 
   }
   if (fold) {
     columns.push({
@@ -21,7 +25,7 @@ export default function NbTable(props) {
     })
     dataSource.forEach((row, i)=>{
       row['arrow'] = <NbArrow open={!row.open} onClick={()=>{
-        changeData(i);
+        changeData('ture', i);
       }}></NbArrow>
     })
   }
@@ -73,6 +77,7 @@ export default function NbTable(props) {
         </div>
         <div className={Style.tbody}>
           {dataSource.map((row, rowIndex) => {
+            console.log(row);
             return (
               <div key={`row-${rowIndex}-wrrapper`}>
                 <div
@@ -111,12 +116,16 @@ export default function NbTable(props) {
                           })}
                           style={{
                             width: `${column.width}px`,
-                            textAlign: column['align'],
+                            justifyContent: column['align'],
                             ...column['style']
                           }}
                           key={`row-${rowIndex}-${colIndex}`}
                         >
-                          {row[column['dataIndex']]}
+                          {row['showNumberCounter'] && column['dataIndex'] === 'number' ? (
+                            <NbNumberCounter value={row['changedNumber']} onChange={(value)=>{
+                              changeData(false,rowIndex,'changedNumber', value);
+                            }}></NbNumberCounter>
+                          ) : row[column['dataIndex']]}
                         </div>
                       )
                     })}
@@ -140,7 +149,7 @@ export default function NbTable(props) {
                                     className={Style.th}
                                     style={{
                                       width: `${column.width}px`,
-                                      textAlign: column['align'],
+                                      justifyContent: column['align'],
                                       ...column['style']
                                     }}
                                     key={`row-${rowIndex}-children-${i}-${column.dataIndex}`}
@@ -164,7 +173,7 @@ export default function NbTable(props) {
                                         })}
                                         style={{
                                           width: `${column.width}px`,
-                                          textAlign: column['align'],
+                                          justifyContent: column['align'],
                                           ...column['style']
                                         }}
                                         key={`row-${rowIndex}-children-row-${rowChildIndex}-col-${colIndex}`}
