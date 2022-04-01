@@ -53,8 +53,10 @@ function App() {
       num: '00000000',
       number: '000000',
       unit: '盒',
-      addNum: <NbNumberCounter></NbNumberCounter>,
-      // operator: <OptGroup></OptGroup>,
+      addNum: <NbNumberCounter value={value} onChange={(value)=>{
+        console.log(value);
+        setValue(value)
+      }}></NbNumberCounter>,
       children: [
         {
           columns: [
@@ -229,10 +231,10 @@ function App() {
       <NbTable dataSource={dataSource} columns={columns} fold={true} foldRow={(data)=>{
         setDataSource(data);
       }}></NbTable>
-      <NbNumberCounter type="danger" value={value} onChange={(value)=>{
+      {/* <NbNumberCounter type="danger" value={value} onChange={(value)=>{
         console.log(value);
         setValue(value)
-      }}></NbNumberCounter>
+      }}></NbNumberCounter> */}
       <NbSwitch></NbSwitch>
       <button onClick={()=>{
         setChecked(!checked)

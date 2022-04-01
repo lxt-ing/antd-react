@@ -438,4 +438,18 @@ className
 参数Api (antd-checkbox、checkbox.Group组件)
 无，使用antd的Api
 
+#### NbTable 基础表格
+使用方式
+```
+<NbTable dataSource={dataSource} columns={columns} fold={true} foldRow={(data)=>{
+  setDataSource(data);
+}}></NbTable>
+```
+参数Api (非antd)
 
+|参数|说明|类型|默认值|可取值|备注|
+|:-:|:-:|:-:|:-:|:-:|:-:|
+|fold|是否显示折叠箭头|Boolean|false|||
+|dataSource|表格内容|Array|[]|[{key:'', ['columns对应的dataIndex']:'',children:[{}]}]|children下有columns、dataSource属性|
+|columns|表头|Array|[{title: '日期',dataIndex: 'date',width: 156, align:'center', strong:true}]|[]|align:文字居中方式， strong: 加粗效果|
+|foldRow|切换行内表格|Function|(data)=>{}|(value)=>{}||
