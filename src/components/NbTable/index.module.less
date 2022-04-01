@@ -15,6 +15,8 @@
   .th,.td{
     padding:0;
     text-align: left;
+    display: flex;
+    align-items: center;
   }
   .tableHeader{
     padding:0 32px;
@@ -27,7 +29,7 @@
     background-color: @white-text-color;
     .tr{
       .fold-icon{
-        text-align: right;
+        justify-content: flex-end;
         flex:1;
         >button{
           display: inline-flex;
@@ -40,8 +42,6 @@
     .td{
       height: 100%;
       border-bottom: 1px solid #E4E7EF;
-      display: flex;
-      align-items: center;
     }
   }
   .thead{
@@ -92,6 +92,7 @@
       flex-direction: column;
       align-items: flex-end;
       height: auto;
+      padding:0 32px;
     }
     .hideChildren{
       height: 0;

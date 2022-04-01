@@ -90,7 +90,7 @@ function App() {
             {
               key: '1',
               date: '29292912',
-              batchNo: '20201021',
+              batchNo: '2020102134521',
               expiredDate: '202',
               kuangkuang: <NbSelectCom size="small"></NbSelectCom>,
               shuziqi: <NbNumberCounter></NbNumberCounter>,
@@ -116,6 +116,7 @@ function App() {
       num: '00000000',
       number: '000',
       unit: '盒',
+      operator:<OptGroup id={'1'}></OptGroup>,
       children: [
         {
           columns: [
@@ -263,13 +264,13 @@ function App() {
   return (
     <div className="App1" style={{margin:'auto'}}>
        {/* <NbButton type="text-minor">123</NbButton> */}
-      <NbTable dataSource={dataSource} columns={columns} fold={true} foldRow={(data)=>{
+      <NbTable dataSource={dataSource} columns={columns} fold={true} changeRow={(data)=>{
         setDataSource(data);
       }}></NbTable>
-      {/* <NbNumberCounter type="danger" value={value} onChange={(value)=>{
+      <NbNumberCounter type="danger" value={value} onChange={(value)=>{
         console.log(value);
         setValue(value)
-      }}></NbNumberCounter> */}
+      }}></NbNumberCounter>
       <NbSwitch></NbSwitch>
       <button onClick={()=>{
         setChecked(!checked)

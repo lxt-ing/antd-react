@@ -451,5 +451,5 @@ className
 |:-:|:-:|:-:|:-:|:-:|:-:|
 |fold|是否显示折叠箭头|Boolean|false|||
 |dataSource|表格内容|Array|[]|[{key:'', ['columns对应的dataIndex']:'',children:[{}]}]|children下有columns、dataSource属性|
-|columns|表头|Array|[{title: '日期',dataIndex: 'date',width: 156, align:'center', strong:true}]|[]|align:文字居中方式， strong: 加粗效果|
-|foldRow|切换行内表格|Function|(data)=>{}|(value)=>{}||
+|columns|表头|Array|[{showNumberCounter:true, title: '数字',dataIndex: 'number',width: 156, align:'center', strong:true}]|[]|align:文字居中方式， strong: 加粗效果, showNumberCounter: 是否显示数字计数器，用于编辑数字|
+|changeRow|切换行内表格|Function|(data)=>{}|(value)=>{}||

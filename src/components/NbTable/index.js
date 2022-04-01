@@ -8,7 +8,7 @@ import NbArrow from '../NbArrow'
 import NbButton from '../NbButton'
 import NbNumberCounter from '../NbNumberCounter'
 export default function NbTable(props) {
-  const {fold=false, rowSelection = false, dataSource=[],columns=[], foldRow=(data)=>{console.log(data);} } = props;
+  const {fold=false, rowSelection = false, dataSource=[],columns=[], changeRow=(data)=>{console.log(data);} } = props;
   const changeData = (fold, rowIndex, colKey, value)=>{
     const data = dataSource.slice()
     if(fold){
@@ -16,7 +16,7 @@ export default function NbTable(props) {
     }else{
       data[rowIndex][colKey] = value;
     }
-    foldRow(data) 
+    changeRow(data) 
   }
   if (fold) {
     columns.push({
