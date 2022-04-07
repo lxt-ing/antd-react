@@ -9,7 +9,10 @@ export default function NbSteps(props) {
   } = props
   
   return (
-    <div className={Style['nb-steps']}>
+    <div className={classnames({
+      [Style['nb-steps']]:true,
+      [Style['hide-step']]:!stepOptions.length
+    })}>
       {stepOptions.map((step, i) => {
         return (
           <div key={`steps-item-${i}`} className={

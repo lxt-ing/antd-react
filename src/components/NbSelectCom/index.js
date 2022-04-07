@@ -11,7 +11,6 @@ export default function NbSelectCom(props) {
     check = true,
     placeholder,
     optionslist = [],
-    content,
     size = 'middle',
     dropdownStyle = props.size === 'small' ? { minWidth: 320 } : null,
     ...rest

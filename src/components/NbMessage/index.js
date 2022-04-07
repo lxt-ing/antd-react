@@ -27,7 +27,7 @@ const NbMessage = {
       ...props,
       className:'nb-warning-message',
       content: <Content text={props.content}/>,
-      icon: <Icon type="gouxuan" color={"#F98900"} size="56px" />
+      icon: <Icon type="jingshi" color={"#F98900"} size="56px" />
     })
   }
 }

@@ -1,11 +1,8 @@
 import React,{useEffect} from 'react'
 import NbCheckBox from '../NbCheckbox'
 import Style from './index.module.less'
-import NbSelectCom from '../NbSelectCom'
 import classnames from 'classnames'
-import Icon from '../Icon'
 import NbArrow from '../NbArrow'
-import NbButton from '../NbButton'
 import NbNumberCounter from '../NbNumberCounter'
 export default function NbTable(props) {
   const {fold=false, rowSelection = false, dataSource=[],columns=[], changeRow=(data)=>{console.log(data);} } = props;

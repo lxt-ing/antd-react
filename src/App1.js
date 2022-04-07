@@ -3,7 +3,7 @@ import {Select} from "antd"
 import dayjs from "dayjs"
 import "./App.css"
 import yaoping from './components/images/yaoping.gif'
-import {NbButton, NbTable,NbNumberCounter, NbSwitch, NbArrow, NbRadio, NbRadioGroup, NbCheckbox,NbCheckboxGroup, NbDatePicker,NbTabs,NbMessage, NbRangePicker, NbDropdown, NbMenu,NbSearch,NbSelectButton, NbSelectCom} from "./components/"
+import {NbResult, NbPassword,NbProgress,  NbCascader, NbButton, NbTable,NbNumberCounter, NbSwitch, NbArrow, NbRadio, NbRadioGroup, NbCheckbox,NbCheckboxGroup, NbDatePicker,NbTabs,NbMessage, NbRangePicker, NbDropdown, NbMenu,NbSearch,NbSelectButton, NbSelectCom} from "./components/"
 // import { NbTabs, NbProgress, NbSelectCom, NbCascader,NbConfirm,
 //    NbDatePicker, , NbSelectButton, NbMenu,NbDropdown,NbMessage, NbResult, NbSteps,NbRangePicker, NbAccount, NbBadge, NbPages, NbButton, NbInput,NbDialog } from './components/'
 function App() {
@@ -41,7 +41,7 @@ function App() {
     )
   }
   const search = (val)=>{
-    console.log('searching', val);
+    // console.log('searching', val);
   }
   const [dataSource, setDataSource] = useState([
     {
@@ -53,7 +53,7 @@ function App() {
       num: '00000000',
       number: '12',
       unit: '盒',
-      operator:<OptGroup id={'1'}></OptGroup>,
+      // operator:<OptGroup id={'1'}></OptGroup>,
       children: [
         {
           columns: [
@@ -92,7 +92,7 @@ function App() {
               date: '29292912',
               batchNo: '2020102134521',
               expiredDate: '202',
-              kuangkuang: <NbSelectCom size="small"></NbSelectCom>,
+              kuangkuang: <NbSelectCom optionslist={[{label:'测试', value:'text'}]} size="large"></NbSelectCom>,
               shuziqi: <NbNumberCounter></NbNumberCounter>,
             },
             {
@@ -100,7 +100,7 @@ function App() {
               date: '29292912',
               batchNo: '20201021',
               expiredDate: '202',
-              kuangkuang: <NbSelectCom size="small"></NbSelectCom>,
+              kuangkuang: <NbSelectCom optionslist={[{label:'测试', value:'text'}]} mode="multiple" size="small"></NbSelectCom>,
               shuziqi: <NbNumberCounter></NbNumberCounter>,
             },
           ],
@@ -116,7 +116,7 @@ function App() {
       num: '00000000',
       number: '000',
       unit: '盒',
-      operator:<OptGroup id={'1'}></OptGroup>,
+      // operator:<OptGroup id={'1'}></OptGroup>,
       children: [
         {
           columns: [
@@ -259,16 +259,22 @@ function App() {
     )
   }
   useEffect(()=>{
-    console.log(dataSource,'=数据');
+    // console.log(dataSource,'=数据');
   }, [dataSource])
   return (
     <div className="App1" style={{margin:'auto'}}>
+      <NbProgress type="circle" percent="50"></NbProgress>
+      <NbSelectButton checked={checked1} options={['选购相依',23,'嘻嘻嘻嘻嘻嘻嘻嘻嘻嘻嘻嘻嘻']} onChange={(data)=>{
+        setChecked1(data.slice())
+      }}></NbSelectButton>
+      <NbPassword></NbPassword>
        {/* <NbButton type="text-minor">123</NbButton> */}
+       <NbCascader options={options}></NbCascader>
       <NbTable dataSource={dataSource} columns={columns} fold={true} changeRow={(data)=>{
         setDataSource(data);
       }}></NbTable>
       <NbNumberCounter type="danger" value={value} onChange={(value)=>{
-        console.log(value);
+        // console.log(value);
         setValue(value)
       }}></NbNumberCounter>
       <NbSwitch></NbSwitch>
@@ -282,11 +288,10 @@ function App() {
         <NbRadio value={3}></NbRadio>
       </NbRadioGroup>
       <NbCheckboxGroup defaultValue={['A']} onChange={(value)=>{
-        console.log(value, '---致');
+        // console.log(value, '---致');
       }}>
-        <NbCheckbox value={'A'} disabled />
-        <NbCheckbox value={'B'} indeterminate={false} />
-        <span>hello</span>
+        <NbCheckbox value={'A'} disabled><span>hello</span></NbCheckbox>
+        <NbCheckbox value={'B'} indeterminate={false}><span>hello</span></NbCheckbox>
       </NbCheckboxGroup>
       <NbDropdown trigger={['click']} arrow={true} DropdownMenu={<NbMenu selectable={true} content={menuContent} menuList={[1,2,3,4,5,6]}><a>123s</a></NbMenu>} DropdownTitle={<a>hello</a>}></NbDropdown>
       <NbSelectCom size={'large'} optionslist={[{label:1, value:1}, {label:1, value:2}, {label:1, value:3}]} onChange={()=>{
@@ -294,9 +299,7 @@ function App() {
       <NbTabs selectIndex={index} onChange={(index)=>{setIndex(index)}} type="title"></NbTabs>
        {/* <NbSelectCom optionslist={[{label:1, value:1}]} onChange={()=>{
       }}></NbSelectCom> */}
-      {/* <NbSelectButton checked={checked1} options={[12,23,34]} onChange={(data)=>{
-        setChecked1(data.slice())
-      }}></NbSelectButton> */}
+      
       {/* <NbLeftMenu></NbLeftMenu> */}
       {/* 
       <NbProgress type="line" percent="50"></NbProgress>
@@ -313,7 +316,7 @@ function App() {
         setDate1(date)
         console.log(date);
       }} defaultValue={date1}></NbRangePicker> */}
-      {/* <h2 onClick={()=>{
+      <h2 onClick={()=>{
         // NbMessage.success({
         //   content:'123'
         // })
@@ -321,7 +324,7 @@ function App() {
           content:'123'
         })
       }}>信息</h2>
-      <NbSearch onSearch={(val)=>search(val)}></NbSearch> */}
+      <NbSearch onSearch={(val)=>search(val)}></NbSearch>
       {/* <NbSelectButton checked={checked} onChange={()=>{
         setChecked(!checked)
       }}>
