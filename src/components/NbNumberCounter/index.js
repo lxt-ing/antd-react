@@ -4,6 +4,7 @@ import classnames from "classnames"
 export default function NbSwitch(props){
   const {type='default',onChange=(value)=>{}, value=0,...rest} = props;
   useEffect(()=>{
+    console.log(value,'===内部值');
     if(isNaN(value)){
       onChange(0)
     }

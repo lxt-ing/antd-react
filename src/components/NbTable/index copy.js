@@ -5,13 +5,7 @@ import classnames from 'classnames'
 import NbArrow from '../NbArrow'
 import NbNumberCounter from '../NbNumberCounter'
 export default function NbTable(props) {
-  const {isControl=true, fold=false, rowSelection = false, dataSource=[],columns=[], changeRow=(data)=>{console.log(data);} } = props;
-  // isControl 是否父级控制
-  // true  如父级有编辑选项， 其子数据编辑状态随父操作
-  // false 父数据操作与子数据操作分开控制， 各自控制各自内容
-  console.log('更新数据-----------');
-  const dataSourceCopy = dataSource.slice();
-  const columnsCopy = columns.slice();
+  const {fold=false, rowSelection = false, dataSource=[],columns=[], changeRow=(data)=>{console.log(data);} } = props;
   const changeData = (fold, rowIndex, colKey, value)=>{
     const data = dataSource.slice()
     if(fold){
@@ -19,23 +13,21 @@ export default function NbTable(props) {
     }else{
       data[rowIndex][colKey] = value;
     }
-    console.log(data);
     changeRow(data) 
   }
   if (fold) {
-    columnsCopy.push({
+    columns.push({
       title: '',
       dataIndex: 'arrow',
     })
-    dataSourceCopy.forEach((row, i)=>{
+    dataSource.forEach((row, i)=>{
       row['arrow'] = <NbArrow open={!row.open} onClick={()=>{
-        console.log('点击');
         changeData('ture', i);
       }}></NbArrow>
     })
   }
    // 处理品名
-   dataSourceCopy.forEach((item) => {
+  dataSource.forEach((item) => {
     if (item.name && item.name.length && item.name.length > 12) {
       item.name = item.name
         .slice(0, 6)
@@ -62,7 +54,7 @@ export default function NbTable(props) {
                   })}
                 ></div>
               ) : null}
-              {columnsCopy.map((column) => {
+              {columns.map((column) => {
                 return (
                   <div
                     className={Style.th}
@@ -81,7 +73,8 @@ export default function NbTable(props) {
           </div>
         </div>
         <div className={Style.tbody}>
-          {dataSourceCopy.map((row, rowIndex) => {
+          {dataSource.map((row, rowIndex) => {
+            console.log(row);
             return (
               <div key={`row-${rowIndex}-wrrapper`}>
                 <div
@@ -107,7 +100,7 @@ export default function NbTable(props) {
                         <NbCheckBox></NbCheckBox>
                       </div>
                     ) : null}
-                    {columnsCopy.map((column, colIndex) => {
+                    {columns.map((column, colIndex) => {
                       return (
                         <div
                           className={classnames({
@@ -116,7 +109,7 @@ export default function NbTable(props) {
                             [Style['row-number']]:
                               column['dataIndex'] === 'number',
                             [Style['fold-icon']]:
-                              fold && colIndex === columnsCopy.length - 1,
+                              fold && colIndex === columns.length - 1,
                           })}
                           style={{
                             width: `${column.width}px`,
@@ -125,23 +118,21 @@ export default function NbTable(props) {
                           }}
                           key={`row-${rowIndex}-${colIndex}`}
                         >
-                          {
-                            column['dataIndex']==='operator' ?  
-                            row['operator']({rowIndex:`${rowIndex}`,colKey:column['dataIndex'], editing:row['editing']}):
-                            (column['operate'] && row['editing'] ? 
-                            row[`${column['dataIndex']}-opt`]({rowIndex:`${rowIndex}`,colKey:column['dataIndex'], editing:row['editing']},  row[column['dataIndex']]) : 
-                            row[column['dataIndex']])
-                          }
+                          {row[''] && column['dataIndex'] === 'number' ? (
+                            <NbNumberCounter value={row['changedNumber']} onChange={(value)=>{
+                              changeData(false,rowIndex,'changedNumber', value);
+                            }}></NbNumberCounter>
+                          ) : row[column['dataIndex']]}
                         </div>
                       )
                     })}
                   </div>
                 </div>
-                {row?.children?.dataSource?.length ? (
+                {row?.children?.length ? (
                   <div className={Style.innerRow}>
-                    {/* {row.children.map((innerRow, i) => { */}
-                      {/* return ( */}
-                        <div key={`row-${rowIndex}-children`} className={
+                    {row.children.map((innerRow, i) => {
+                      return (
+                        <div key={`row-${rowIndex}-children-${i}`} className={
                           classnames({
                             [Style.innerTable]:true,
                             [Style.hideChildren]:!row.open
@@ -149,7 +140,7 @@ export default function NbTable(props) {
                         }>
                           <div className={Style.thead}>
                             <div className={Style.tr}>
-                              {row.children.columns.map((column) => {
+                              {innerRow.columns.map((column) => {
                                 return (
                                   <div
                                     className={Style.th}
@@ -158,7 +149,7 @@ export default function NbTable(props) {
                                       justifyContent: column['align'],
                                       ...column['style']
                                     }}
-                                    key={`row-${rowIndex}-children-${column.dataIndex}`}
+                                    key={`row-${rowIndex}-children-${i}-${column.dataIndex}`}
                                   >
                                     {column.title}
                                   </div>
@@ -167,11 +158,10 @@ export default function NbTable(props) {
                             </div>
                           </div>
                           <div className={Style.tbody}>
-                            {row.children.dataSource.map((rowChild, rowChildIndex) => {
-                              console.log(rowChild['operator']);
+                            {innerRow.dataSource.map((row, rowChildIndex) => {
                               return (
                                 <div className={Style.tr} key={`row-${rowIndex}-children-row-${rowChildIndex}-header`}>
-                                  {row.children.columns.map((column, colIndex) => {
+                                  {innerRow.columns.map((column, colIndex) => {
                                     return (
                                       <div
                                         className={classnames({
@@ -185,14 +175,7 @@ export default function NbTable(props) {
                                         }}
                                         key={`row-${rowIndex}-children-row-${rowChildIndex}-col-${colIndex}`}
                                       >
-                                        {/* 父级一条控制所有子数据 */}
-                                        {
-                                          column['dataIndex']==='operator' ?  
-                                          rowChild['operator']({rowIndex:`${rowIndex}-${rowChildIndex}`,colKey:column['dataIndex'], editing:isControl ? row['editing']:rowChild['editing']}):
-                                          (column['operate'] && (isControl ? row['editing']:rowChild['editing']) ? 
-                                          rowChild[`${column['dataIndex']}-opt`]({rowIndex:`${rowIndex}-${rowChildIndex}`,colKey:column['dataIndex'], editing:isControl ? row['editing']: rowChild['editing']},  rowChild[column['dataIndex']]) : 
-                                          rowChild[column['dataIndex']])
-                                        }
+                                        {row[column['dataIndex']]}
                                       </div>
                                     )
                                   })}
@@ -201,8 +184,8 @@ export default function NbTable(props) {
                             })}
                           </div>
                         </div>
-                      {/* ) */}
-                    {/* })} */}
+                      )
+                    })}
                   </div>
                 ) : null}
               </div>
