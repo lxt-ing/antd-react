@@ -37,7 +37,7 @@ function App() {
   const [visible, setVisible] = useState(false)
   const [index, setIndex] = useState(0)
   const [value, setValue] = useState(0)
-  const [date, setDate] = useState('2008-03-12')
+  const [date, setDate] = useState('2024-03-12')
   const [date1, setDate1] = useState([])
   const [checked1, setChecked1] = useState([])
   const [checked, setChecked] = useState(true)
@@ -121,7 +121,7 @@ function App() {
         {
           key: '1',
           pos: '柜子的名称-0000',
-          name: '品名超过十二个的中间省略, 超过用省略号表示',
+          name: "品名超过十二个的中间省略, 超过用省略号表示",
           specification: '0000…0000',
           zh: '中文内容',
           num: '00000000',
@@ -154,6 +154,7 @@ function App() {
                 align:'center',
                 operate:true
               },
+              // 默认子级无法操作子级，只能父级操作
               // {
               //   title: '',
               //   dataIndex: 'operator',
@@ -167,12 +168,28 @@ function App() {
                 batchNo:"AH00010002",
                 expiredDate:"2020-02-02",
                 number:123
+              },
+              {
+                name: "盐酸滴液2",
+                batchNo:"AH00010003",
+                expiredDate:"2024-02-02",
+                number:13
               }
             ]
           }
         }
       ]
       data.forEach(item=>{
+        let value = item.name;
+        item.name = (opt)=>{
+          if (value && value.length && value.length > 12) {
+          return <div style={{color:'red'}}>{value
+            .slice(0, 6)
+            .concat('...')
+            .concat(value.slice(-6))}</div>
+          }
+          return value
+        }
         // item['number-opt'] = (scopeData) => {
         //   const { rowIndex} = scopeData
         //   const [fIdx, lIdx] = rowIndex.split('-')
@@ -190,7 +207,6 @@ function App() {
         // }
         item['operator'] = (scopeData) => {
           const { rowIndex, editing } = scopeData
-          console.log(scopeData);
           // 行索引 、行子表格索引
           const [fIdx, lIdx] = rowIndex.split('-')
           let newData = data
@@ -288,83 +304,78 @@ function App() {
         const childData = item.children.dataSource
         if(childData?.length){
           childData.forEach(child=>{
-            // child['operator'] = (scopeData) => {
-            //   const { rowIndex, editing } = scopeData
-            //   // 行索引 、行子表格索引
-            //   const [fIdx, lIdx] = rowIndex.split('-')
-            //   let newData = data
-            //   let item = newData[fIdx];
-            //   if(lIdx !== undefined){
-            //     // 操作的是children行
-            //     item = item.children.dataSource[lIdx]
-            //   }
-            //   return !editing ?
-            //     <div style={{ display: 'flex' }}>
-            //       <NbButton
-            //         type="text-minor"
-            //         onClick={() => {
-            //           // item.changedNumber = item['number'];
-            //           const list = []
-            //           const childrenList = ['number']
-            //           list.forEach(key=>{
-            //             item[`changed${key.slice(0,1).toUpperCase()+key.slice(1)}`] = item[key]
-            //           })
-            //           childrenList.forEach(key=>{
-            //             item[`changed${key.slice(0,1).toUpperCase()+key.slice(1)}`] = item[key] 
-            //           })
-            //           item.editing = true;
-            //           // data 赋值给newData 
-            //           // data 赋值给dataSource
-            //           // 操作newData 赋值给setDataSource 无法更新
-            //           // 不能用newData无法更新 需要使用newData.slice()
-            //           setDataSource(newData.slice())
-            //         }}
-            //       >
-            //         编辑
-            //       </NbButton>
-            //       <div style={{ opacity: 0, width: '20px' }}></div>
-            //       <NbButton
-            //         type="text-primary"
-            //         onClick={() => {
-            //           newData.splice(rowIndex, 1)
-            //           setDataSource(newData.slice())
-            //         }}
-            //       >
-            //         删除
-            //       </NbButton>
-            //     </div>
-            //   : <div style={{ display: 'flex' }}>
-            //       <NbButton
-            //         type="text-minor"
-            //         onClick={() => {
-            //           const list = []
-            //           const childrenList = ['number']
-            //           item['editing'] = false;
-            //           list.forEach(key=>{
-            //             item[key] = item[`changed${key.slice(0,1).toUpperCase()+key.slice(1)}`]
-            //           })
-            //           childrenList.forEach(key=>{
-            //             console.log(`changed${key.slice(0,1).toUpperCase()+key.slice(1)}`);
-            //             item[key] = item[`changed${key.slice(0,1).toUpperCase()+key.slice(1)}`]
-            //           })
-            //           setDataSource(newData.slice())
-            //         }}
-            //       >
-            //         保存
-            //       </NbButton>
-            //       <div style={{ opacity: 0, width: '20px' }}></div>
-            //       <NbButton
-            //         type="text-primary"
-            //         onClick={() => {
-            //           item['editing'] = false;
-            //           setDataSource(newData.slice())
-            //         }}
-            //       >
-            //         取消
-            //       </NbButton>
-            //     </div>
+            child['operator'] = (scopeData) => {
+              const { rowIndex, editing } = scopeData
+              // 行索引 、行子表格索引
+              const [fIdx, lIdx] = rowIndex.split('-')
+              let newData = data
+              let item = newData[fIdx];
+              if(lIdx !== undefined){
+                // 操作的是children行
+                item = item.children.dataSource[lIdx]
+              }
+              return !editing ?
+                <div style={{ display: 'flex' }}>
+                  <NbButton
+                    type="text-minor"
+                    onClick={() => {
+                      const list = []
+                      const childrenList = ['number']
+                      list.forEach(key=>{
+                        item[`changed${key.slice(0,1).toUpperCase()+key.slice(1)}`] = item[key]
+                      })
+                      childrenList.forEach(key=>{
+                        item[`changed${key.slice(0,1).toUpperCase()+key.slice(1)}`] = item[key] 
+                      })
+                      item.editing = true;
+                      setDataSource(newData.slice())
+                    }}
+                  >
+                    编辑
+                  </NbButton>
+                  <div style={{ opacity: 0, width: '20px' }}></div>
+                  <NbButton
+                    type="text-primary"
+                    onClick={() => {
+                      newData[fIdx].children.dataSource.splice(rowIndex, 1)
+                      setDataSource(newData.slice())
+                    }}
+                  >
+                    删除
+                  </NbButton>
+                </div>
+              : <div style={{ display: 'flex' }}>
+                  <NbButton
+                    type="text-minor"
+                    onClick={() => {
+                      const list = []
+                      const childrenList = ['number']
+                      item['editing'] = false;
+                      list.forEach(key=>{
+                        item[key] = item[`changed${key.slice(0,1).toUpperCase()+key.slice(1)}`]
+                      })
+                      childrenList.forEach(key=>{
+                        console.log(`changed${key.slice(0,1).toUpperCase()+key.slice(1)}`);
+                        item[key] = item[`changed${key.slice(0,1).toUpperCase()+key.slice(1)}`]
+                      })
+                      setDataSource(newData.slice())
+                    }}
+                  >
+                    保存
+                  </NbButton>
+                  <div style={{ opacity: 0, width: '20px' }}></div>
+                  <NbButton
+                    type="text-primary"
+                    onClick={() => {
+                      item['editing'] = false;
+                      setDataSource(newData.slice())
+                    }}
+                  >
+                    取消
+                  </NbButton>
+                </div>
               
-            // }
+            }
             // 数字器
             child['number-opt'] = (scopeData) => {
               const { rowIndex} = scopeData
@@ -390,10 +401,10 @@ function App() {
                 // 操作的是children行
                 item = item.children.dataSource[lIdx]
               }
-              return <NbDatePicker onChange={(date, dateString)=>{
+              return <NbExpireDate date={dayjs(item.expiredDate)} onChange={(date)=>{
                 item.changedExpiredDate = dayjs(date).format('YYYY-MM-DD');
                 setDataSource(newData.slice())
-              }} defaultValue={dayjs(item.expiredDate)}></NbDatePicker>
+              }}></NbExpireDate>
             }
           })
         } 
@@ -406,12 +417,6 @@ function App() {
   },[dataSource])
   return (
     <div className="App1" style={{ margin: 'auto' }}>
-      <NbExpireDate date={date} onChange={(value)=>{
-        console.log(value);
-      }}></NbExpireDate>
-      <NbExpireDate date={date} onChange={(value)=>{
-        console.log(value);
-      }}></NbExpireDate>
       <NbProgress type="circle" percent="50"></NbProgress>
       <NbSelectButton
         checked={checked1}
@@ -427,7 +432,7 @@ function App() {
         dataSource={dataSource}
         columns={columns}
         fold={true}
-        changeRow={(data) => {
+        foldRow={(data) => {
           setDataSource(data)
         }}
       ></NbTable>

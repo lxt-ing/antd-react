@@ -62,14 +62,21 @@
           }
         }
       }
-      ul{
+      .header-ul{
         padding:0;
         margin:0 16px;
-        display: flex;
-        align-items: center;
+        max-width: 512px;
+        overflow: hidden;
+        ul{
+          padding:0;
+          margin:0;
+          transform: translateX(0);
+          transition: all .3s;
+        }
       }
       li{
         list-style: none;
+        display: inline-block;
         width: 96px;
         height: 52px;
         margin-right: 8px;

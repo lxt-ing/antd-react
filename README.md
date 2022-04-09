@@ -450,6 +450,195 @@ className
 |参数|说明|类型|默认值|可取值|备注|
 |:-:|:-:|:-:|:-:|:-:|:-:|
 |fold|是否显示折叠箭头|Boolean|false|||
-|dataSource|表格内容|Array|[]|[{key:'', ['columns对应的dataIndex']:'',children:[{}]}]|children下有columns、dataSource属性|
-|columns|表头|Array|[{showNumberCounter:true, title: '数字',dataIndex: 'number',width: 156, align:'center', strong:true}]|[]|align:文字居中方式， strong: 加粗效果, showNumberCounter: 是否显示数字计数器，用于编辑数字|
-|changeRow|切换行内表格|Function|(data)=>{}|(value)=>{}||
+|columns|表头|Array||操作列的dataIndex请使用"operator"|
+|dataSource|表格内容|Array|[]|[{key:'', ['columns对应的dataIndex']:'',children:{columns:[], dataSource:[]}}]|[{editing:true, title: '数字',dataIndex: 'number',width: 156, align:'center', strong:true, operate:true}]。 其中：align:文字居中方式， strong: 加粗效果, editing: 是否处于编辑中状态, 编辑状态对应的数据切换成相应的操作, operate: 表示当前列数据需要切换编辑， 如数字切换成数字器， 效期切换成效期组件操作|
+|foldRow|切换行内表格|Function|(data)=>{}|(value)=>{}||
+|isControl|是否父行表格控制子数据全部编辑|Boolean|true||设置true后，子元素无法控制是否可编辑， 设置false， 父级无法控制子级编辑， 子级自己控制自己|
+
+实例一：
+```
+<NbTable
+  dataSource={dataSource}
+  columns={columns}
+  fold={true}
+  foldRow={(data) => {
+    setDataSource(data)
+  }}
+></NbTable>
+
+// 对应的表格列表：
+const columns = [
+    {
+      title: '位置',
+      dataIndex: 'pos',
+      width: 226,
+    },
+    {
+      title: '品名',
+      dataIndex: 'name',
+      strong: true,
+      width: 404,
+    },
+    {
+      title: '规格',
+      dataIndex: 'specification',
+      width: 192,
+    },
+    {
+      title: '中文',
+      dataIndex: 'zh',
+      width: 156,
+    },
+    {
+      title: '英文数字',
+      dataIndex: 'num',
+      width: 148,
+    },
+    {
+      title: '数量', // 标题
+      dataIndex: 'number', // dataSource中对应的key
+      width: 186, // 列宽
+      strong: true, // 加粗
+      align: 'center', // 文本方向
+      operate:true // 可动态切换编辑
+    },
+    {
+      title: '单位',
+      dataIndex: 'unit',
+      width: 168,
+      align: 'center',
+    },
+    {
+      title: '',
+      dataIndex: 'operator',
+      operate:true
+    }
+  ]
+// 初始数据：
+// 1. 默认展示数据， 无需做处理
+// 2. name属性数据需要展示省略号，但不改变原始值 
+const data = [
+  {
+    key: '1',
+    pos: '柜子的名称-0000',
+    name: "品名超过十二个的中间省略, 超过用省略号表示",
+    specification: '0000…0000',
+    zh: '中文内容',
+    num: '00000000',
+    number: 123,
+    unit: '盒',
+    children:{
+      columns:[],
+      dataSource:[]
+    }
+  }
+]
+data.forEach(item=>{
+  let value = item.name;
+  item.name = (opt)=>{
+    // opt中可访问 rowIndex colKey属性
+    if (value && value.length && value.length > 12) {
+    return <div style={{color:'red'}}>{value
+      .slice(0, 6)
+      .concat('...')
+      .concat(value.slice(-6))}</div>
+    }
+    return value
+  }
+}
+// 3. 父级表格数据点击操作 编辑父级列的数据，同理，子级表格使用相同的处理
+item['operator'] = (scopeData) => {
+  // scopedDate 返回 {rowIndex: 父级行索引和子级table行索引用-拼接 , editing: 是否编辑状态，用于在不同状态显示不同的按钮 , colKey: 表格列}
+  const { rowIndex, editing } = scopeData
+  // 行索引 、行子表格索引
+  const [fIdx, lIdx] = rowIndex.split('-')
+  let newData = data
+  let item = newData[fIdx];
+  if(lIdx !== undefined){
+    // 操作的是children行
+    item = item.children.dataSource[lIdx]
+  }
+  return !editing ?
+    <div style={{ display: 'flex' }}>
+      <NbButton
+        type="text-minor"
+        onClick={() => {
+          // list 父级中需要变成操作器的属性， 如需要从数字变成数字器
+          const list = []
+          // list 子级中需要变成操作器的属性， 如需要从数字变成数字器
+          const childrenList = ['number', 'expiredDate']
+          if(!lIdx){
+            // 编辑父行及其子行 如number属性 添加一个changedNumber属性用于保存初始值， 便于后面取消编辑时还原数据
+            list.forEach(key=>{
+              item[`changed${key.slice(0,1).toUpperCase()+key.slice(1)}`] = item[key]
+            })
+            // 当前行子表格全部添加对应属性
+            item.children.dataSource.forEach(list=>{
+              childrenList.forEach(childKey=>{
+                list[`changed${childKey.slice(0,1).toUpperCase()+childKey.slice(1)}`] = list[childKey]
+              })
+            })
+          }else{
+            childrenList.forEach(key=>{
+              item[`changed${key.slice(0,1).toUpperCase()+key.slice(1)}`] = item[key] 
+            })
+          }
+          item.editing = true;
+          // data 赋值给newData 
+          // data 赋值给dataSource
+          // 操作newData 赋值给setDataSource 无法更新
+          // 不能用newData无法更新 需要使用newData.slice()
+          setDataSource(newData.slice())
+        }}
+      >
+        编辑
+      </NbButton>
+      <div style={{ opacity: 0, width: '20px' }}></div>
+      <NbButton
+        type="text-primary"
+        onClick={() => {
+          newData.splice(rowIndex, 1)
+          setDataSource(newData.slice())
+        }}
+      >
+        删除
+      </NbButton>
+    </div>
+  : <div style={{ display: 'flex' }}>
+      <NbButton
+        type="text-minor"
+        onClick={() => {
+          const list = []
+          const childrenList = ['number', 'expiredDate']
+          item['editing'] = false;
+          if(!lIdx){
+            // 保存时与编辑相反， 将changedNumber属性赋值number属性
+            list.forEach(key=>{
+              item[key] = item[`changed${key.slice(0,1).toUpperCase()+key.slice(1)}`]
+            })
+            // 当前行子表格全部添加对应属性
+            item.children.dataSource.forEach(list=>{
+              childrenList.forEach(childKey=>{
+                list[childKey] = list[`changed${childKey.slice(0,1).toUpperCase()+childKey.slice(1)}`]
+                console.log(list,`changed${childKey.slice(0,1).toUpperCase()+childKey.slice(1)}`);
+              })
+            })
+          }else{
+            childrenList.forEach(key=>{
+              item[key]  = item[`changed${key.slice(0,1).toUpperCase()+key.slice(1)}`]
+            })
+          }
+          setDataSource(newData.slice())
+        }}
+      >保存</NbButton>
+      <div style={{ opacity: 0, width: '20px' }}></div>
+      <NbButton type="text-primary"
+        onClick={() => {
+          item['editing'] = false;
+          setDataSource(newData.slice())
+        }}
+      >取消</NbButton>
+    </div>
+  
+}
+```

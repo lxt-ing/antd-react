@@ -3,24 +3,14 @@ import NbCheckBox from '../NbCheckbox'
 import Style from './index.module.less'
 import classnames from 'classnames'
 import NbArrow from '../NbArrow'
-import NbNumberCounter from '../NbNumberCounter'
 export default function NbTable(props) {
-  const {isControl=true, fold=false, rowSelection = false, dataSource=[],columns=[], changeRow=(data)=>{console.log(data);} } = props;
-  // isControl 是否父级控制
-  // true  如父级有编辑选项， 其子数据编辑状态随父操作
-  // false 父数据操作与子数据操作分开控制， 各自控制各自内容
-  console.log('更新数据-----------');
+  const {isControl=true, fold=false, rowSelection = false, dataSource=[],columns=[], foldRow=(data)=>{console.log(data);} } = props;
   const dataSourceCopy = dataSource.slice();
   const columnsCopy = columns.slice();
-  const changeData = (fold, rowIndex, colKey, value)=>{
+  const changeData = (rowIndex)=>{
     const data = dataSource.slice()
-    if(fold){
-      data[rowIndex].open = !data[rowIndex].open
-    }else{
-      data[rowIndex][colKey] = value;
-    }
-    console.log(data);
-    changeRow(data) 
+    data[rowIndex].open = !data[rowIndex].open
+    foldRow(data) 
   }
   if (fold) {
     columnsCopy.push({
@@ -29,20 +19,10 @@ export default function NbTable(props) {
     })
     dataSourceCopy.forEach((row, i)=>{
       row['arrow'] = <NbArrow open={!row.open} onClick={()=>{
-        console.log('点击');
-        changeData('ture', i);
+        changeData(i);
       }}></NbArrow>
     })
   }
-   // 处理品名
-   dataSourceCopy.forEach((item) => {
-    if (item.name && item.name.length && item.name.length > 12) {
-      item.name = item.name
-        .slice(0, 6)
-        .concat('...')
-        .concat(item.name.slice(-6))
-    }
-  })
   return (
     <div
       className={classnames({
@@ -68,12 +48,12 @@ export default function NbTable(props) {
                     className={Style.th}
                     style={{
                       width: `${column.width}px`,
-                      textAlign: column['align'],
+                      justifyContent: column['align'],
                       ...column['style']
                     }}
                     key={column.dataIndex}
                   >
-                    {column.title}
+                    {typeof column.title === 'function' ? column['title']() : column.title}
                   </div>
                 )
               })}
@@ -130,7 +110,7 @@ export default function NbTable(props) {
                             row['operator']({rowIndex:`${rowIndex}`,colKey:column['dataIndex'], editing:row['editing']}):
                             (column['operate'] && row['editing'] ? 
                             row[`${column['dataIndex']}-opt`]({rowIndex:`${rowIndex}`,colKey:column['dataIndex'], editing:row['editing']},  row[column['dataIndex']]) : 
-                            row[column['dataIndex']])
+                            typeof row[column['dataIndex']] === 'function' ? row[column['dataIndex']]({rowIndex:`${rowIndex}`,colKey:column['dataIndex']}) : row[column['dataIndex']])
                           }
                         </div>
                       )
@@ -139,8 +119,6 @@ export default function NbTable(props) {
                 </div>
                 {row?.children?.dataSource?.length ? (
                   <div className={Style.innerRow}>
-                    {/* {row.children.map((innerRow, i) => { */}
-                      {/* return ( */}
                         <div key={`row-${rowIndex}-children`} className={
                           classnames({
                             [Style.innerTable]:true,
@@ -191,7 +169,7 @@ export default function NbTable(props) {
                                           rowChild['operator']({rowIndex:`${rowIndex}-${rowChildIndex}`,colKey:column['dataIndex'], editing:isControl ? row['editing']:rowChild['editing']}):
                                           (column['operate'] && (isControl ? row['editing']:rowChild['editing']) ? 
                                           rowChild[`${column['dataIndex']}-opt`]({rowIndex:`${rowIndex}-${rowChildIndex}`,colKey:column['dataIndex'], editing:isControl ? row['editing']: rowChild['editing']},  rowChild[column['dataIndex']]) : 
-                                          rowChild[column['dataIndex']])
+                                          (typeof rowChild[column['dataIndex']] === 'function' ? rowChild[column['dataIndex']]({rowIndex:`${rowIndex}-${rowChildIndex}`,colKey:column['dataIndex']}) : rowChild[column['dataIndex']]))
                                         }
                                       </div>
                                     )

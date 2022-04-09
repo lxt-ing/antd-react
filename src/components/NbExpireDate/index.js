@@ -4,14 +4,9 @@ import {Popover, Input} from "antd"
 import "antd/lib/popover/style"
 import dayjs from "dayjs"
 import classnames from "classnames"
-import { func } from 'prop-types'
-// 1. 默认日期 
-// 2. 切换年份 自动选中一月一日
-// 3. 切换月份 自动选中一日
-// 4. 点击确定了才赋值
 export default function NbExpireDate(props) {
-  const {date,joinStr="-", onChange=(value)=>{console.log(value);}} = props;
-  let selectYear,selectMonth,selectDay, curYear, years;
+  const {date,joinStr="-",yearCount=7, onChange=(value)=>{console.log(value);}} = props;
+  let selectYear,selectMonth,selectDay, curYear, years, slideDom, realYear = dayjs(new Date()).year();
   let selectDate = dayjs.isDayjs(date) ? dayjs(date) : dayjs(new Date());
   selectYear = selectDate.year();
   selectMonth = selectDate.month()+1;
@@ -24,10 +19,11 @@ export default function NbExpireDate(props) {
   const [newDate, setNewDate] = useState('')
   const [visible, setVisible] = useState(false)
   const [coverDate, setCoverDate] = useState(false)
+  const [translateNum, setTranslateNum] = useState(0)
   curYear = dayjs().year();
   years = [];
   const months = ['1月','2月','3月','4月','5月','6月','7月', '8月','9月','10月','11月','12月']
-  for(let i = 0; i<5; i++){
+  for(let i = 0; i<yearCount; i++){
     years.push(curYear+i)
   }
   // 日期点击
@@ -43,6 +39,17 @@ export default function NbExpireDate(props) {
   }
   // 年份点击
   function clickYear(year){
+    // 选中的年份往前滚动
+    console.log(realYear, '当前年份');
+    let diff = year - realYear
+    if(diff>0){
+      if(diff < yearCount-5){
+        setTranslateNum(diff)
+      }else{
+        setTranslateNum(yearCount-5)
+      }
+    }
+    // 更新年月日
     let dateStr = `${year}${joinStr}01${joinStr}01`
     setCurDays(dayjs(dateStr).daysInMonth());
     setCurYear(year)
@@ -59,13 +66,39 @@ export default function NbExpireDate(props) {
     setCoverDate(true)
     setVisible(false)
   }
+  // 显示切换
   function handleVisibleChange(value){
     setVisible(value)
   }
+  // 上一个
+  function prev(){
+    if(translateNum === 0)return;
+    setTranslateNum(translateNum-1)
+  }
+  // 下一个
+  function next(){
+    if(translateNum >= (yearCount - 5))return;
+    setTranslateNum(translateNum+1)
+  }
+  // 滚动
+  useEffect(()=>{
+    if(slideDom){
+      slideDom.style.transform = `translateX(-${translateNum * 104}px)`
+    }
+  }, [translateNum])
   // 显示隐藏，隐藏判断是否更新日期
   useEffect(()=>{
     if(visible){
+      // 每次打开滚动到最前面，知道不能再滚动为止
       setCoverDate(false)
+      let diff = curSelectYear - realYear
+      if(diff>0){
+        if(diff < yearCount-5){
+          setTranslateNum(diff)
+        }else{
+          setTranslateNum(yearCount-5)
+        }
+      }
     }else{
       // 关闭弹窗
       if(!coverDate){
@@ -116,19 +149,23 @@ export default function NbExpireDate(props) {
   // 标题
   const title = (<div>
     <div className={"header"}>
-      <span onClick={()=>{}} className={"prev-btn"}></span>
-      <ul>
-        {
-          years.map(year=>{
+      <span onClick={()=>{prev()}} className={"prev-btn"}></span>
+      <div className={"header-ul"}>
+        <ul style={{
+          width: `${(yearCount-1)*104+96}px`
+        }} ref={(ref)=>slideDom = ref}>
+          {
+            years.map(year=>{
           return <li onClick={()=>clickYear(year)} className={
             classnames({
               ['selected']: curSelectYear === year
             })
           } key={year}>{year}</li>
-          })
-        }
-      </ul>
-      <span className={"next-btn"}></span>
+            })
+          }
+        </ul>
+      </div>
+      <span onClick={()=>next()} className={"next-btn"}></span>
       <div className={'header-btn'} onClick={()=>makeSure()}>确定</div>
     </div>
   </div>)
