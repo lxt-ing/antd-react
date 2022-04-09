@@ -26,6 +26,7 @@ import {
   NbSearch,
   NbSelectButton,
   NbSelectCom,
+  NbExpireDate
 } from './components/'
 // import { NbTabs, NbProgress, NbSelectCom, NbCascader,NbConfirm,
 //    NbDatePicker, , NbSelectButton, NbMenu,NbDropdown,NbMessage, NbResult, NbSteps,NbRangePicker, NbAccount, NbBadge, NbPages, NbButton, NbInput,NbDialog } from './components/'
@@ -36,7 +37,7 @@ function App() {
   const [visible, setVisible] = useState(false)
   const [index, setIndex] = useState(0)
   const [value, setValue] = useState(0)
-  const [date, setDate] = useState(dayjs())
+  const [date, setDate] = useState('2008-03-12')
   const [date1, setDate1] = useState([])
   const [checked1, setChecked1] = useState([])
   const [checked, setChecked] = useState(true)
@@ -393,10 +394,6 @@ function App() {
                 item.changedExpiredDate = dayjs(date).format('YYYY-MM-DD');
                 setDataSource(newData.slice())
               }} defaultValue={dayjs(item.expiredDate)}></NbDatePicker>
-              // <NbNumberCounter value={item.changedNumber} onChange={(value)=>{
-              //       item.changedNumber = value;
-              //       setDataSource(newData.slice())
-              // }}></NbNumberCounter>
             }
           })
         } 
@@ -409,6 +406,12 @@ function App() {
   },[dataSource])
   return (
     <div className="App1" style={{ margin: 'auto' }}>
+      <NbExpireDate date={date} onChange={(value)=>{
+        console.log(value);
+      }}></NbExpireDate>
+      <NbExpireDate date={date} onChange={(value)=>{
+        console.log(value);
+      }}></NbExpireDate>
       <NbProgress type="circle" percent="50"></NbProgress>
       <NbSelectButton
         checked={checked1}

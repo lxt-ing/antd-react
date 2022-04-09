@@ -29,6 +29,7 @@ import  NbConfigProvider from "./NbConfigProvider"
 import  NbArrow from "./NbArrow"
 import  NbSwitch from "./NbSwitch"
 import  NbNumberCounter from "./NbNumberCounter"
+import NbExpireDate from "./NbExpireDate"
 import "./style/NbStyle.less";
 
 export {NbButton}
@@ -61,3 +62,4 @@ export {NbConfigProvider}
 export {NbArrow} 
 export {NbSwitch}
 export {NbNumberCounter}
+export {NbExpireDate}

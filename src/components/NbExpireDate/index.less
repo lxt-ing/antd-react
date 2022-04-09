@@ -1,0 +1,157 @@
+// 效期日期组件
+.nb-expire-date{
+  display: inline-block;
+  &.ant-popover{
+    font-size: 24px;
+    font-family: OPPOSans-M, OPPOSans;
+    text-align: center;
+    color: rgba(24, 29, 65, 0.7);
+    .ant-popover-content, .ant-popover-arrow{
+      box-shadow: 0px 6px 18px 0px rgba(24, 29, 65, 0.18);
+    }
+    .selected{
+      color:#fff;
+      background: #0066E0!important;
+    }
+  }
+    input{
+        width: 240px;
+        height: 56px;
+        cursor: pointer;
+      }
+    .ant-popover-title{
+      padding:0;
+      border-color:  #CAD0E0;
+      .header{
+        display: flex;
+        height: 96px;
+        align-items: center;
+        padding:0 20px 0 18px;
+        >span{
+          width: 48px;
+          height: 48px;
+          position: relative;
+          cursor: pointer;
+          &::before{
+            content:'';
+            background-color: #CAD0E0;;
+            position: absolute;
+            width: calc(100% - 8px);
+            height: calc(100% - 8px);
+            left: 6px;
+            top:6px;
+          }
+          &::after{
+            content:'';
+            position: absolute;
+            width:0;
+            height: 0;
+            top: 14px;
+            left:8px;
+            border: 12px solid #fff;
+            border-left-color: transparent;
+            border-bottom-color: transparent;
+            border-top-color: transparent;
+          }
+        }
+        .next-btn{
+          margin-right: 36px;
+          &::after{
+            transform: rotate(180deg);
+            left: 20px;
+          }
+        }
+      }
+      ul{
+        padding:0;
+        margin:0 16px;
+        display: flex;
+        align-items: center;
+      }
+      li{
+        list-style: none;
+        width: 96px;
+        height: 52px;
+        margin-right: 8px;
+        line-height: 52px;
+        text-align: center;
+        background: linear-gradient(180deg, #FFFFFF 0%, #F4F6F9 100%);
+        box-shadow: 0px 1px 6px 0px rgba(24, 29, 65, 0.12);
+        border-radius: 8px;
+        border: 1px solid #CAD0E0;
+        cursor: pointer;
+        .selected{
+          background-color: #0066E0;
+          color: #fff;
+        }
+        &:last-child{
+          margin:0
+        }
+      }
+      .header-btn{
+        width: 96px;
+        height: 52px;
+        line-height: 52px;
+        text-align: center;
+        font-size: 24px;
+        font-family: OPPOSans-B, OPPOSans;
+        color: #0066E0;
+        background: linear-gradient(180deg, #FFFFFF 0%, #F4F6F9 100%);
+        box-shadow: 0px 1px 6px 0px rgba(24, 29, 65, 0.12);
+        border-radius: 8px;
+        border: 1px solid #CAD0E0;
+        cursor: pointer;
+      }
+    } 
+    .ant-popover-inner-content{
+      padding:0;
+    }
+    .date-content{
+      display: flex;
+      .month-content{
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        padding: 32px 28px;
+        height: 456px;
+        width: 234px;
+        border-right: 1px solid  #CAD0E0;
+        .month-every{
+          width: 80px;
+          height: 52px;
+          line-height: 52px;
+          margin-top: 16px;
+          background: linear-gradient(180deg, #FFFFFF 0%, #F4F6F9 100%);
+          box-shadow: 0px 1px 6px 0px rgba(24, 29, 65, 0.12);
+          border-radius: 8px;
+          border: 1px solid #CAD0E0;
+          text-align: center;
+          cursor: pointer;
+          &:nth-child(6n+1){
+            margin:0;
+          }
+        }
+      }
+      .day-content{
+        padding:50px 31px;
+        .day-inner-content{
+          width: 508px;
+          height: 356px;
+          display: flex;
+          flex-wrap: wrap;
+          .day-every{
+            width: 52px;
+            height: 52px;
+            line-height: 52px;
+            margin-right: 24px;
+            border-radius: 8px;
+            cursor: pointer;
+            &:nth-child(7n){
+              margin-right: 0;
+            }
+          }
+        }
+        
+      }
+    }
+  }
