@@ -450,12 +450,18 @@ className
 |参数|说明|类型|默认值|可取值|备注|
 |:-:|:-:|:-:|:-:|:-:|:-:|
 |fold|是否显示折叠箭头|Boolean|false|||
-|columns|表头|Array||操作列的dataIndex请使用"operator"|
-|dataSource|表格内容|Array|[]|[{key:'', ['columns对应的dataIndex']:'',children:{columns:[], dataSource:[]}}]|[{editing:true, title: '数字',dataIndex: 'number',width: 156, align:'center', strong:true, operate:true}]。 其中：align:文字居中方式， strong: 加粗效果, editing: 是否处于编辑中状态, 编辑状态对应的数据切换成相应的操作, operate: 表示当前列数据需要切换编辑， 如数字切换成数字器， 效期切换成效期组件操作|
+|columns|表头|Array||操作列的dataIndex请使用"operator"|[{title: '数字',dataIndex: 'number',width: 156, align:'center', strong:true, operate:true}]。 其中：align:文字居中方式， strong: 加粗效果, operate: 表示当前列数据需要切换编辑， 如数字切换成数字器， 效期切换成效期组件操作， 当行数据的editing改变时切换， 另需设置属性对应的编辑组件[属性-opt]的值|
+|dataSource|表格内容|Array|[]|[{key:'', ['columns对应的dataIndex']:'',children:{columns:[], dataSource:[]}}]|columns字段：{...同上} dataSource字段：{editing:true,number:'123', numer-opt:()=>{}}。 其中：align:文字居中方式， strong: 加粗效果, editing: 是否处于编辑中状态, 编辑状态对应的数据切换成相应的操作, operate: 表示当前列数据需要切换编辑， 如数字切换成数字器， 效期切换成效期组件操作|
 |foldRow|切换行内表格|Function|(data)=>{}|(value)=>{}||
 |isControl|是否父行表格控制子数据全部编辑|Boolean|true||设置true后，子元素无法控制是否可编辑， 设置false， 父级无法控制子级编辑， 子级自己控制自己|
 
-实例一：
+注意： 
+为了实现编辑时组件和值的切换。dataSource表格内容提供了三种情况：
+- 内容简单展示值 row['number']
+- 内容需要定制 row['number'] = ()=>{return dom}
+- 内容需要在值与组件之间切换（如数字点击编辑，进入数字器状态），此时columns数组dataIndex为number的对象operate属性需为true, 数据采用 number-opt 来做为编辑时的替换， 其他类似， 均为属性后拼接-opt
+
+示例一：
 ```
 <NbTable
   dataSource={dataSource}

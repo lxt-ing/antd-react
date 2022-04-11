@@ -48,7 +48,6 @@ export default function NbTable(props) {
                     className={Style.th}
                     style={{
                       flex: `0 0 ${column.width}px`,
-                      // width: `${column.width}px`,
                       justifyContent: column['align'],
                       ...column['style']
                     }}
@@ -102,7 +101,6 @@ export default function NbTable(props) {
                               fold && colIndex === columnsCopy.length - 1,
                           })}
                           style={{
-                            // width: `${column.width}px`,
                             flex: `0 0 ${column.width}px`,
                             justifyContent: column['align'],
                             ...column['style']
@@ -136,7 +134,6 @@ export default function NbTable(props) {
                                   <div
                                     className={Style.th}
                                     style={{
-                                      // width: `${column.width}px`,
                                       flex:`0 0 ${column.width}px`,
                                       justifyContent: column['align'],
                                       ...column['style']
@@ -162,7 +159,6 @@ export default function NbTable(props) {
                                           [Style.bold]: column['strong'],
                                         })}
                                         style={{
-                                          // width: `${column.width}px`,
                                           flex: `0 0 ${column.width}px`,
                                           justifyContent: column['align'],
                                           ...column['style']
