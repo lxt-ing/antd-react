@@ -8,7 +8,7 @@
   font-size: 24px;
   box-shadow: 0px 1px 6px 0px @default-text-color-12;
   cursor: pointer;
-  color: #fff;
+  color: @white-text-color;
   border: none;
 }
 .nb-icon {
@@ -33,7 +33,7 @@
 .nb-big-primary-button,
 .nb-main-primary-button,
 .nb-icon-primary-button{
-  background: linear-gradient(180deg, #3385e6 0%, @primary-color 100%);
+  background: linear-gradient(180deg, @3385e6 0%, @primary-color 100%);
   box-shadow: 0px 1px 6px 0px @default-text-color-12;
   &:focus,
   &:hover {
@@ -43,11 +43,11 @@
 .nb-big-danger-button,
 .nb-main-danger-button,
 .nb-icon-danger-button{
-  background: linear-gradient(180deg, #ea5765 0%, @error-color 100%);
+  background: linear-gradient(180deg, @ea5765 0%, @error-color 100%);
   box-shadow: 0px 1px 6px 0px @default-text-color-12;
   &:focus,
   &:hover {
-    background: #f94a5a;
+    background: @danger-color;
   }
 }
 .nb-big-disabled-button,
@@ -104,8 +104,8 @@
   color: @default-text-color-20;
 }
 .nb-text-primary-button {
-  background: linear-gradient(180deg, #3385e6 0%, @primary-color 100%);
-  color: #fff;
+  background: linear-gradient(180deg, @3385e6 0%, @primary-color 100%);
+  color: @white-text-color;
 }
 .nb-text-danger-button {
   color: @error-color;

@@ -299,7 +299,7 @@
       position: relative;
       .line{
         height: 1px;
-        border: 1px solid #E4E7EF;
+        border: 1px solid @E4E7EF;
       }
       .ant-menu-title-content {
         display: flex;
@@ -557,7 +557,7 @@
       .ant-modal-confirm-content{
         font-size: 50px;
         font-family: OPPOSans-M, OPPOSans;
-        color: #181D41;
+        color: @default-text-color;
         text-align: center;
       } 
     }
@@ -574,7 +574,7 @@
     height: 54px;
     font-size: 36px;
     font-family: OPPOSans-M, OPPOSans;
-    color: #181D41;
+    color: @default-text-color;
   }
 }
 
@@ -835,7 +835,7 @@
   }
   &.ant-picker:hover,
   &.ant-picker-focused {
-    border: 2px solid #0066e0;
+    border: 2px solid @primary-color;
   }
   .ant-picker-clear {
     font-size: 32px;
@@ -890,7 +890,7 @@
     padding-top: 21px;
     &:hover {
       font-family: OPPOSans-B, OPPOSans;
-      color: #ffffff;
+      color: @white-text-color;
     }
   }
   .ant-picker-cell-selected {
@@ -908,16 +908,16 @@
       margin-right: 16px;
     }
     > button {
-      color: #cad0e0;
+      color: @CAD0E0;
       width: 48px;
       height: 48px;
       position: relative;
-      background: linear-gradient(180deg, #ffffff 0%, #f4f6f9 100%);
+      background: linear-gradient(180deg, @white-text-color 0%, @F4F6F9 100%);
       box-shadow: 0px 1px 6px 0px rgba(24, 29, 65, 0.12);
       border-radius: 8px;
-      border: 1px solid #cad0e0;
+      border: 1px solid @CAD0E0;
       &:hover {
-        color: #8b8ea0;
+        color: @8B8EA0;
       }
       .icon-Right {
         position: absolute;
@@ -990,7 +990,7 @@
   }
   &.ant-picker:hover,
   &.ant-picker-focused {
-    border: 2px solid #0066e0;
+    border: 2px solid @primary-color;
   }
   .ant-picker-clear {
     font-size: 32px;
@@ -1032,7 +1032,7 @@
   }
   .ant-picker-date-panel .ant-picker-body {
     padding: 35px;
-    border-right: 1px solid #E4E7EF;
+    border-right: 1px solid @E4E7EF;
   }
   &.ant-picker-dropdown {
     font-size: 28px;
@@ -1040,7 +1040,7 @@
   }
   .ant-picker-cell-in-view,.ant-picker-cell-range-hover{
     &:hover{
-      color: #ffffff;
+      color: @white-text-color;
     }
   }
   .ant-picker-cell.ant-picker-cell-in-view.ant-picker-cell-range-hover-start{
@@ -1059,23 +1059,23 @@
   .ant-picker-header {
     align-items: center;
     padding: 0 25px;
-    border-right: 1px solid #E4E7EF;
+    border-right: 1px solid @E4E7EF;
     box-shadow: 0px 2px 4px 0px rgb(24 29 65 / 0.1);
     .ant-picker-header-super-prev-btn,
     .ant-picker-header-next-btn {
       margin-right: 16px;
     }
     > button {
-      color: #cad0e0;
+      color: @CAD0E0;
       width: 48px;
       height: 48px;
       position: relative;
-      background: linear-gradient(180deg, #ffffff 0%, #f4f6f9 100%);
+      background: linear-gradient(180deg, @white-text-color 0%, @F4F6F9 100%);
       box-shadow: 0px 1px 6px 0px rgba(24, 29, 65, 0.12);
       border-radius: 8px;
-      border: 1px solid #cad0e0;
+      border: 1px solid @CAD0E0;
       &:hover {
-        color: #8b8ea0;
+        color: @8B8EA0;
       }
       .icon-Right {
         position: absolute;
@@ -1153,20 +1153,20 @@
   }
   .ant-picker-cell-in-view.ant-picker-cell-range-start:not(.ant-picker-cell-range-start-single)::before, .ant-picker-cell-in-view.ant-picker-cell-range-end:not(.ant-picker-cell-range-end-single)::before,
   .ant-picker-cell-in-view.ant-picker-cell-in-range::before{
-    background: #F3F7FD;
+    background: @F3F7FD;
   }
   .ant-picker-footer{
     position: relative;
     .ant-picker-preset .ant-tag{
       width: 104px;
       height: 48px;
-      background: linear-gradient(180deg, #FFFFFF 0%, #F4F6F9 100%);
+      background: linear-gradient(180deg, @white-text-color 0%, @F4F6F9 100%);
       box-shadow: 0px 1px 6px 0px rgb(24 29 65 / 12%);
       border-radius: 8px;
-      border: 1px solid #CAD0E0;
+      border: 1px solid @CAD0E0;
       font-size: 24px;
       font-family: OPPOSans-M, OPPOSans;
-      color: #0066E0;
+      color: @primary-color;
       line-height: 48px;
       text-align: center;
     }
@@ -1181,13 +1181,13 @@
         height: 48px;
         text-align: center;
         line-height: 48px;
-        background: linear-gradient(180deg, #FFFFFF 0%, #F4F6F9 100%);
+        background: linear-gradient(180deg, @white-text-color 0%, @F4F6F9 100%);
         box-shadow: 0px 1px 6px 0px rgb(24 29 65 / 12%);
         border-radius: 8px;
-        border: 1px solid #CAD0E0;
+        border: 1px solid @CAD0E0;
         font-size: 24px;
         font-family: OPPOSans-M, OPPOSans;
-        color: #181D41;
+        color: @default-text-color;
         cursor: pointer;
       }
     }
@@ -1202,7 +1202,7 @@
   padding: 29px 40px 29px 48px;
   font-size: 40px;
   font-family: OPPOSans-M, OPPOSans;
-  color: #181D41;
+  color: @default-text-color;
   .iconfont{
     margin-right: 16px;
   }
@@ -1213,16 +1213,16 @@
   }
 }
 .nb-warning-message .ant-message-notice-content{
-  border-color: #FCC47F;
-  background: #FEF9F2;
+  border-color: @FCC47F;
+  background: @FEF9F2;
 }
 .nb-success-message .ant-message-notice-content{
-  border-color:  #7FD2B8;
-  background: #F0FBFA;
+  border-color:  @7FD2B8;
+  background: @F0FBFA;
 }
 .nb-error-message .ant-message-notice-content{
-  border-color:   #F2969E;
-  background: #FDF4F5;
+  border-color:   @F2969E;
+  background: @FDF4F5;
 }
 
 // 进度条
@@ -1231,7 +1231,7 @@
   .ant-progress-inner .ant-progress-text{
     font-size: 50px;
     font-family: OPPOSans-B, OPPOSans;
-    color: #0066E0;
+    color: @primary-color;
   }
   .ant-progress-text .anticon{
     font-size: 24px;
@@ -1248,7 +1248,7 @@
     font-size: 28px;
     font-family: OPPOSans-B, OPPOSans;
     font-weight: normal;
-    color: #181D41;
+    color: @default-text-color;
     line-height: 42px;
   }
 }
@@ -1281,7 +1281,7 @@
       height: 100%;
       font-size: 32px;
       line-height: 80px;
-      color:#0066ee;
+      color:@primary-color;
       background-color: transparent;
     }
     &:checked::before{
@@ -1295,7 +1295,7 @@
   }
   .ant-checkbox-disabled{
     .ant-checkbox-input::before{
-      color: #CAD0E0;
+      color: @CAD0E0;
     }
   }
 }
@@ -1315,7 +1315,7 @@
   .ant-switch{
     width: 96px;
     height: 48px;
-    background-color: #CAD0E0;
+    background-color: @CAD0E0;
     .ant-switch-handle{
       width: 44px;
       height: 44px;
@@ -1329,10 +1329,10 @@
     }
   }
   .ant-switch-disabled{
-    background-color: #ECF0F5;
+    background-color: @ECF0F5;
   }
   .ant-switch-checked {
-    background-color: #00A572;
+    background-color: @success-color;
     .ant-switch-handle{
       left: calc(100% - 44px - 4px);  
     }
