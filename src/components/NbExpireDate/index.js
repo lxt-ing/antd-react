@@ -6,6 +6,10 @@ import dayjs from "dayjs"
 import classnames from "classnames"
 export default function NbExpireDate(props) {
   const {date,joinStr="-",yearCount=7, onChange=(value)=>{console.log(value);}} = props;
+  let count = yearCount;
+  if(isNaN(yearCount)){
+    count = 7;
+  }
   let selectYear,selectMonth,selectDay, curYear, years, slideDom, realYear = dayjs(new Date()).year();
   let selectDate = dayjs.isDayjs(date) ? dayjs(date) : dayjs(new Date());
   selectYear = selectDate.year();
@@ -23,7 +27,7 @@ export default function NbExpireDate(props) {
   curYear = dayjs().year();
   years = [];
   const months = ['1月','2月','3月','4月','5月','6月','7月', '8月','9月','10月','11月','12月']
-  for(let i = 0; i<yearCount; i++){
+  for(let i = 0; i<count; i++){
     years.push(curYear+i)
   }
   // 日期点击
@@ -43,10 +47,10 @@ export default function NbExpireDate(props) {
     console.log(realYear, '当前年份');
     let diff = year - realYear
     if(diff>0){
-      if(diff < yearCount-5){
+      if(diff < count-5){
         setTranslateNum(diff)
       }else{
-        setTranslateNum(yearCount-5)
+        setTranslateNum(count-5)
       }
     }
     // 更新年月日
@@ -77,7 +81,7 @@ export default function NbExpireDate(props) {
   }
   // 下一个
   function next(){
-    if(translateNum >= (yearCount - 5))return;
+    if(translateNum >= (count - 5))return;
     setTranslateNum(translateNum+1)
   }
   // 滚动
@@ -93,10 +97,10 @@ export default function NbExpireDate(props) {
       setCoverDate(false)
       let diff = curSelectYear - realYear
       if(diff>0){
-        if(diff < yearCount-5){
+        if(diff < count-5){
           setTranslateNum(diff)
         }else{
-          setTranslateNum(yearCount-5)
+          setTranslateNum(count-5)
         }
       }
     }else{
@@ -152,7 +156,7 @@ export default function NbExpireDate(props) {
       <span onClick={()=>{prev()}} className={"prev-btn"}></span>
       <div className={"header-ul"}>
         <ul style={{
-          width: `${(yearCount-1)*104+96}px`
+          width: `${(count-1)*104+96}px`
         }} ref={(ref)=>slideDom = ref}>
           {
             years.map(year=>{

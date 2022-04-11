@@ -31,6 +31,7 @@ export default function NbTable(props) {
       })}
     >
       <div className={Style.table}>
+        {/* 表头 */}
         <div className={Style.thead}>
           <div className={[Style.tableHeader]}>
             <div className={Style.tr}>
@@ -60,7 +61,9 @@ export default function NbTable(props) {
             </div>
           </div>
         </div>
+        {/* 表内容 */}
         <div className={Style.tbody}>
+          {/* 行内容 */}
           {dataSourceCopy.map((row, rowIndex) => {
             return (
               <div key={`row-${rowIndex}-wrrapper`}>
@@ -119,6 +122,7 @@ export default function NbTable(props) {
                     })}
                   </div>
                 </div>
+                {/* 行的子表格 */}
                 {row?.children?.dataSource?.length ? (
                   <div className={Style.innerRow}>
                         <div key={`row-${rowIndex}-children`} className={
@@ -134,7 +138,8 @@ export default function NbTable(props) {
                                   <div
                                     className={Style.th}
                                     style={{
-                                      flex:`0 0 ${column.width}px`,
+                                      // flex:`0 0 ${column.width}px`,
+                                      width: `${column.width}px`,
                                       justifyContent: column['align'],
                                       ...column['style']
                                     }}
@@ -159,7 +164,8 @@ export default function NbTable(props) {
                                           [Style.bold]: column['strong'],
                                         })}
                                         style={{
-                                          flex: `0 0 ${column.width}px`,
+                                          // flex: `0 0 `,
+                                          width: `${column.width}px`,
                                           justifyContent: column['align'],
                                           ...column['style']
                                         }}

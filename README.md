@@ -648,3 +648,23 @@ item['operator'] = (scopeData) => {
   
 }
 ```
+
+
+
+#### NbTable 基础表格
+使用方式
+```
+<NbExpireDate date={dayjs(item.expiredDate)} onChange={(date)=>{
+  item.changedExpiredDate = dayjs(date).format('YYYY-MM-DD');
+  setDataSource(newData.slice())
+}}></NbExpireDate>
+```
+参数Api (非antd)
+
+|参数|说明|类型|默认值|可取值|备注|
+|:-:|:-:|:-:|:-:|:-:|:-:|
+|date|日期|Object|当前日期|dayjs||
+|joinStr|日期连接符|String|'-'|["-", "/"]||
+|yearCount|显示的年份个数|Number|7|Number||
+|onChange|改变日期|Function|()=>{}|function||
+

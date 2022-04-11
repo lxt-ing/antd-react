@@ -401,7 +401,7 @@ function App() {
                 // 操作的是children行
                 item = item.children.dataSource[lIdx]
               }
-              return <NbExpireDate date={dayjs(item.expiredDate)} onChange={(date)=>{
+              return <NbExpireDate yearCount="sta" date={dayjs(item.expiredDate)} onChange={(date)=>{
                 item.changedExpiredDate = dayjs(date).format('YYYY-MM-DD');
                 setDataSource(newData.slice())
               }}></NbExpireDate>
