@@ -4,12 +4,12 @@ import Style from './index.module.less'
 import classnames from 'classnames'
 import NbArrow from '../NbArrow'
 export default function NbTable(props) {
-  const {isControl=true, fold=false, rowSelection = false, dataSource=[],columns=[], foldRow=(data)=>{console.log(data);} } = props;
+  const {isControl=true, fold=false, rowSelection = true, dataSource=[],columns=[], foldRow=(data)=>{console.log(data);} } = props;
   const dataSourceCopy = dataSource.slice();
   const columnsCopy = columns.slice();
-  const changeData = (rowIndex)=>{
+  const changeData = (rowIndex,key)=>{
     const data = dataSource.slice()
-    data[rowIndex].open = !data[rowIndex].open
+    data[rowIndex][key] = !data[rowIndex][key]
     foldRow(data) 
   }
   if (fold) {
@@ -19,7 +19,7 @@ export default function NbTable(props) {
     })
     dataSourceCopy.forEach((row, i)=>{
       row['arrow'] = <NbArrow open={!row.open} onClick={()=>{
-        changeData(i);
+        changeData(i, 'open');
       }}></NbArrow>
     })
   }
@@ -47,7 +47,8 @@ export default function NbTable(props) {
                   <div
                     className={Style.th}
                     style={{
-                      width: `${column.width}px`,
+                      flex: `0 0 ${column.width}px`,
+                      // width: `${column.width}px`,
                       justifyContent: column['align'],
                       ...column['style']
                     }}
@@ -84,7 +85,9 @@ export default function NbTable(props) {
                           [Style.checkbox]: true,
                         })}
                       >
-                        <NbCheckBox></NbCheckBox>
+                        <NbCheckBox checked={row.isSelected} onClick={()=>{
+                          changeData(rowIndex, 'isSelected')
+                        }}></NbCheckBox>
                       </div>
                     ) : null}
                     {columnsCopy.map((column, colIndex) => {
@@ -99,7 +102,8 @@ export default function NbTable(props) {
                               fold && colIndex === columnsCopy.length - 1,
                           })}
                           style={{
-                            width: `${column.width}px`,
+                            // width: `${column.width}px`,
+                            flex: `0 0 ${column.width}px`,
                             justifyContent: column['align'],
                             ...column['style']
                           }}
@@ -132,7 +136,8 @@ export default function NbTable(props) {
                                   <div
                                     className={Style.th}
                                     style={{
-                                      width: `${column.width}px`,
+                                      // width: `${column.width}px`,
+                                      flex:`0 0 ${column.width}px`,
                                       justifyContent: column['align'],
                                       ...column['style']
                                     }}
@@ -157,7 +162,8 @@ export default function NbTable(props) {
                                           [Style.bold]: column['strong'],
                                         })}
                                         style={{
-                                          width: `${column.width}px`,
+                                          // width: `${column.width}px`,
+                                          flex: `0 0 ${column.width}px`,
                                           justifyContent: column['align'],
                                           ...column['style']
                                         }}
