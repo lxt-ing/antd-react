@@ -5,7 +5,7 @@ import "antd/lib/popover/style"
 import dayjs from "dayjs"
 import classnames from "classnames"
 export default function NbExpireDate(props) {
-  const {date,joinStr="-",yearCount=7, onChange=(value)=>{console.log(value);}} = props;
+  const {date,joinStr="-",yearCount=7, onChange=(value)=>{console.log(value);}, ...rest} = props;
   let count = yearCount;
   if(isNaN(yearCount)){
     count = 7;
@@ -174,7 +174,7 @@ export default function NbExpireDate(props) {
     </div>
   </div>)
   return <div className={'nb-expire-date'}>
-    <Popover  onVisibleChange={(visible)=>handleVisibleChange(visible)} visible={visible} trigger="click" autoAdjustOverflow={true} overlayClassName="nb-expire-date" title={title} content={content}>
+    <Popover  onVisibleChange={(visible)=>handleVisibleChange(visible)} visible={visible} trigger="click" autoAdjustOverflow={true} overlayClassName="nb-expire-date" title={title} content={content} {...rest}>
       <Input value={newDate} placeholder="请选择" readOnly></Input>
     </Popover>
   </div>

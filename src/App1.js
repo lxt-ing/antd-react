@@ -17,7 +17,6 @@ import {
   NbRadioGroup,
   NbCheckbox,
   NbCheckboxGroup,
-  NbDatePicker,
   NbTabs,
   NbMessage,
   NbRangePicker,
@@ -26,6 +25,7 @@ import {
   NbSearch,
   NbSelectButton,
   NbSelectCom,
+  NbDatePicker,
   NbExpireDate
 } from './components/'
 // import { NbTabs, NbProgress, NbSelectCom, NbCascader,NbConfirm,
@@ -37,7 +37,7 @@ function App() {
   const [visible, setVisible] = useState(false)
   const [index, setIndex] = useState(0)
   const [value, setValue] = useState(0)
-  const [date, setDate] = useState('2024-03-12')
+  const [date, setDate] = useState(dayjs('2024-03-12'))
   const [date1, setDate1] = useState([])
   const [checked1, setChecked1] = useState([])
   const [checked, setChecked] = useState(true)
@@ -401,7 +401,7 @@ function App() {
                 // 操作的是children行
                 item = item.children.dataSource[lIdx]
               }
-              return <NbExpireDate yearCount="sta" date={dayjs(item.expiredDate)} onChange={(date)=>{
+              return <NbExpireDate placement="bottom" yearCount="sta" date={dayjs(item.expiredDate)} onChange={(date)=>{
                 item.changedExpiredDate = dayjs(date).format('YYYY-MM-DD');
                 setDataSource(newData.slice())
               }}></NbExpireDate>
@@ -501,6 +501,14 @@ function App() {
         }}
         type="title"
       ></NbTabs>
+      {/* <NbDatePicker onChange={(date, dateString)=>{
+        console.log(date, dateString)
+        setDate(date)
+      }} defaultValue={date}></NbDatePicker>  */}
+      <NbRangePicker onChange={(date, dateString)=>{
+        setDate1(date)
+        console.log(date);
+      }} defaultValue={date1}></NbRangePicker>
       {/* <NbSelectCom optionslist={[{label:1, value:1}]} onChange={()=>{
       }}></NbSelectCom> */}
       {/* <NbLeftMenu></NbLeftMenu> */}
