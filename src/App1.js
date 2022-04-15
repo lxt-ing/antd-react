@@ -26,7 +26,8 @@ import {
   NbSelectButton,
   NbSelectCom,
   NbDatePicker,
-  NbExpireDate
+  NbExpireDate,
+  NbSteps
 } from './components/'
 // import { NbTabs, NbProgress, NbSelectCom, NbCascader,NbConfirm,
 //    NbDatePicker, , NbSelectButton, NbMenu,NbDropdown,NbMessage, NbResult, NbSteps,NbRangePicker, NbAccount, NbBadge, NbPages, NbButton, NbInput,NbDialog } from './components/'
@@ -485,8 +486,11 @@ function App() {
         }
         DropdownTitle={<a>hello</a>}
       ></NbDropdown>
+      <NbSteps stepOptions={
+        [<div><h1>步骤一</h1></div>, <div>步骤二</div>, <div>步骤三</div>]
+      }></NbSteps>
       <NbSelectCom
-        size={'large'}
+        size={'middle'}
         optionslist={[
           { label: 1, value: 1 },
           { label: 1, value: 2 },
@@ -553,7 +557,7 @@ function App() {
         console.log(data);
       }} selectable={true} menuList={[1,2,3,4,5,6]}><a>123s</a></NbMenu>} DropdownTitle={<a>hello</a>}></NbDropdown>
       
-      <NbSteps></NbSteps>
+      
       <NbRangePicker></NbRangePicker>
       <NbAccount></NbAccount>
       <NbBadge count={10}></NbBadge>

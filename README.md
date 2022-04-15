@@ -367,10 +367,16 @@ className、content、icon
 ></NbConfirm>
 ```
 参数Api (antd-Modal组件)
-无，使用antd的Api
+|参数|说明|类型|默认值|可取值|备注|
+|:-:|:-:|:-:|:-:|:-:|:-:|
+|singleBtn|底部为单个按钮|Boolean|--|--||
+|footerDom|底部插槽|VNode|--|--|优先级： 底部插槽 > singleBtn > 取消确定底部|
+|confirmStyle|确定按钮样式|Object|{background: 'linear-gradient(180deg, #3385E6 0%, #0066E0 100%)',color: '#fff'}|--||
+
+其他，使用antd的Api
 
 占用antd字段：
-className
+className, title
 
 #### NbDialog
 使用方式
@@ -411,6 +417,8 @@ className
 |参数|说明|类型|默认值|可取值|备注|
 |:-:|:-:|:-:|:-:|:-:|:-:|
 |open|是否展开|Boolean|false|||
+|onClick|切换展开合并|function|()=>{}|||
+
 
 #### NbRadio NbRadioGroup
 使用方式
@@ -651,7 +659,7 @@ item['operator'] = (scopeData) => {
 
 
 
-#### NbTable 基础表格
+#### NbExpireDate 效期组件
 使用方式
 ```
 <NbExpireDate date={dayjs(item.expiredDate)} onChange={(date)=>{
